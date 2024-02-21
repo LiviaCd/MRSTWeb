@@ -1,0 +1,146 @@
+body {
+	font-family: $font-family-sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	overflow-x: hidden;
+	@extend .text-black-50;
+
+	&:before {
+		content: "";
+		position: fixed;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba($black, .2);
+		transition: .3s all ease;
+	}
+	&.offcanvas-menu {
+		&:before {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	
+}
+h1, h2, h3, h4, h5, .logo {
+	font-family: $font-family-sans-serif-secondary;
+	color: $black;
+}
+a, .btn {
+	transition: .3s all ease;
+	text-decoration: none;
+}
+
+.btn {
+	padding: 13px 30px;
+	border-radius: 30px;
+	border-color: none;
+	font-size: 14px;
+	outline: none!important;
+	box-shadow: none!important;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	&.active, &:focus {
+		outline: none;
+		box-shadow: none;
+	}
+	&.btn-primary {
+		color: $white;
+		background-color: $primary;
+		&:hover {
+			background-color: darken($primary, 5%);
+		}
+	}
+	&.btn-outline-white {
+		border-color: $white;
+		color: $white;
+		&:hover {
+			background-color: $white;
+			color: $black;
+		}
+	}
+	&.btn-black {
+		background: $black;
+		color: $white;
+		border-color: $black;
+		&:hover {
+			border-color: lighten($black, 5%);
+			background: lighten($black, 5%);
+			color: $white;
+		}
+	}
+	&.has-arrow {
+		padding-right: 50px;
+		position: relative;
+		[class^="icon-"] {
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+
+
+.form-control {
+	height: 54px;
+	border-color: rgba($black, .2);
+	margin-bottom: 10px;
+	&:active, &:focus {
+		outline: none;
+		box-shadow: none;
+		border-color: rgba($black, .2)!important;
+	}
+	&::-webkit-input-placeholder { 
+		color: rgba($black, .7);
+	}
+
+	&::-moz-placeholder { 
+		color: rgba($black, .7);
+	}
+	&:-ms-input-placeholder { 
+		color: rgba($black, .7);
+	}
+	&:-moz-placeholder { 
+		color: rgba($black, .7);
+	}
+}
+textarea {
+	height: auto!important;
+}
+
+// PRELOADER STYLE
+#overlayer {
+	width:100%;
+	height:100%;  
+	position:fixed;
+	z-index:7100;
+	background: $white;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.loader {
+	z-index:7700;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.relative {
+	position: relative;
+}
+
+
+textarea {
+	height: auto!important;
+	border-radius: 7px!important;
+}

@@ -1,0 +1,41 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/bundles/bootstrap.css");
+    @Styles.Render("~/bundles/mainPage.css")
+
+
+</head>
+<body>
+    class=" "><!-- START TOPBAR -->
+    <div class="site-mobile-menu site-navbar-target">
+        @Html.Partial("_Header")
+    </div>
+
+    <nav class="site-nav">
+        @Html.Partial("_Navigation")
+    </nav>
+
+    <div class="page-container row-fluid container-fluid">
+
+        @Html.Partial("_NavigationUser")
+    </div>
+
+    <section id="main-content" class=" ">
+        @RenderBody()
+        @Html.Partial("_FooterUser")
+    </section>
+
+    @Html.ActionLink("Application name", "UserPage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    @Styles.Render("~/bundles/navbar/js");
+    @Scripts.Render("~/bundles/mainPageJava/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

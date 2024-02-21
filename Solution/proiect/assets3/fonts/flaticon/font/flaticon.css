@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?951cae9681501b1b89ae0315e997197e") format("truetype"),
+url("./flaticon.woff?951cae9681501b1b89ae0315e997197e") format("woff"),
+url("./flaticon.woff2?951cae9681501b1b89ae0315e997197e") format("woff2"),
+url("./flaticon.eot?951cae9681501b1b89ae0315e997197e#iefix") format("embedded-opentype"),
+url("./flaticon.svg?951cae9681501b1b89ae0315e997197e#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-charity-money:before {
+    content: "\f101";
+}
+.flaticon-social-services:before {
+    content: "\f102";
+}
+.flaticon-money-donation:before {
+    content: "\f103";
+}
+.flaticon-organs-donation:before {
+    content: "\f104";
+}
+.flaticon-donation:before {
+    content: "\f105";
+}
+.flaticon-money-donation-1:before {
+    content: "\f106";
+}

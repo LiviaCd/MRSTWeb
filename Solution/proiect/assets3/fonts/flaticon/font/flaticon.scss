@@ -1,0 +1,49 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?951cae9681501b1b89ae0315e997197e") format("truetype"),
+url("./flaticon.woff?951cae9681501b1b89ae0315e997197e") format("woff"),
+url("./flaticon.woff2?951cae9681501b1b89ae0315e997197e") format("woff2"),
+url("./flaticon.eot?951cae9681501b1b89ae0315e997197e#iefix") format("embedded-opentype"),
+url("./flaticon.svg?951cae9681501b1b89ae0315e997197e#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "charity-money": "\f101",
+    "social-services": "\f102",
+    "money-donation": "\f103",
+    "organs-donation": "\f104",
+    "donation": "\f105",
+    "money-donation-1": "\f106",
+);
+
+.flaticon-charity-money:before {
+    content: map-get($flaticon-map, "charity-money");
+}
+.flaticon-social-services:before {
+    content: map-get($flaticon-map, "social-services");
+}
+.flaticon-money-donation:before {
+    content: map-get($flaticon-map, "money-donation");
+}
+.flaticon-organs-donation:before {
+    content: map-get($flaticon-map, "organs-donation");
+}
+.flaticon-donation:before {
+    content: map-get($flaticon-map, "donation");
+}
+.flaticon-money-donation-1:before {
+    content: map-get($flaticon-map, "money-donation-1");
+}
