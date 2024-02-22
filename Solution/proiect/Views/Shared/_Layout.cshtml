@@ -16,16 +16,11 @@
 
     <div class="content">
         @RenderBody()
-        @Html.Partial("_Content")
+        @Html.Partial("_Footer")
     </div>
 
         @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-        
-
-        <footer>
-            
-        </footer>
 
     @Scripts.Render("~/bundles/mainPageJava/js")
     @RenderSection("scripts", required: false)

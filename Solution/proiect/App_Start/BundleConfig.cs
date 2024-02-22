@@ -24,8 +24,6 @@ namespace proiect.App_Start
               "~/assets3/css/style.css",
               "~/assets3/css/fonts/icomoon/style.css",
               "~/assets3/fonts/flaticon/font/flaticon.css"
-
-
            ));
 
             bundles.Add(new ScriptBundle("~/bundles/mainPageJava/js").Include(
