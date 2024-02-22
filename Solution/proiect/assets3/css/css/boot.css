@@ -1,0 +1,38 @@
+body {
+  font-family: 'icomoon', sans-serif;
+}
+
+form {
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+label {
+  display: inline-block; /* Modificat de la block la inline-block */
+  margin-top: 10px;
+  margin-right: 10px; /* Opțional, pentru a adăuga spațiu între butonul radio și text */
+}
+
+input[type="radio"] {
+  vertical-align: middle; /* Ajută la alinierea mai bună cu textul etichetei */
+  margin-top: 0px; /* Eliminat marja superioară sau ajustat conform necesității */
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 8px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  input[type="submit"]:hover {
+       background-color: #0056b3;
+  }

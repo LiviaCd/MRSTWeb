@@ -1,8 +1,55 @@
-﻿
+﻿@using System.Web.Optimization 
 @{
      ViewBag.Title = "Pretest";
      Layout = "~/Views/Shared/_LayoutSign.cshtml";
 }
 
-<h2>Pretest</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <link href="/assets3/css/css/boot.css" rel="stylesheet" id="boot-css">
+
+     <div class="hero overlay" style="background-image: url('/assets3/images/pretest2.png')">
+          <div class="container">
+               <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 text-center">
+                         <h1 class="heading text-white mb-2" data-aos="fade-up">Află dacă poți fi donator de sânge</h1>
+                         <p data-aos="fade-up" data-aos-delay="100">
+                              <a href="#" class="btn btn-primary me-4">Începe pretestul</a>
+                         </p>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+
+</head>
+<body>
+     <form action="/submit-quiz" method="post">
+          
+          <ol>
+               <li>
+                    <label for="question1">What is the capital of France?</label><br>
+                    <input type="radio" id="question1-option1" name="question1" value="a">
+                    <label for="question1-option1">A. Paris</label><br>
+                    <input type="radio" id="question1-option2" name="question1" value="b">
+                    <label for="question1-option2">B. Berlin</label><br>
+                    <input type="radio" id="question1-option3" name="question1" value="c">
+                    <label for="question1-option3">C. Madrid</label><br>
+               </li>
+               <li>
+                    <label for="question2">What is the largest ocean?</label><br>
+                    <input type="radio" id="question2-option1" name="question2" value="a">
+                    <label for="question2-option1">A. Pacific Ocean</label><br>
+                    <input type="radio" id="question2-option2" name="question2" value="b">
+                    <label for="question2-option2">B. Atlantic Ocean</label><br>
+                    <input type="radio" id="question2-option3" name="question2" value="c">
+                    <label for="question2-option3">C. Indian Ocean</label><br>
+               </li>
+          </ol>
+          <input type="submit" value="Submit Quiz">
+     </form>
+</body>
+</html>
 

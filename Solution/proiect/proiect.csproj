@@ -148,6 +148,7 @@
     <Content Include="assets3\css\bootstrap-reboot.css" />
     <Content Include="assets3\css\bootstrap-utilities.css" />
     <Content Include="assets3\css\bootstrap.css" />
+    <Content Include="assets3\css\css\boot.css" />
     <Content Include="assets3\css\css\bootstrap-reboot.css" />
     <Content Include="assets3\css\flatpickr.min.css" />
     <Content Include="assets3\css\glightbox.min.css" />
@@ -163,6 +164,7 @@
     <Content Include="assets3\fonts\icomoon\fonts\icomoon.svg" />
     <Content Include="assets3\fonts\icomoon\Read Me.txt" />
     <Content Include="assets3\fonts\icomoon\style.css" />
+    <Content Include="assets3\images\about3.jpg" />
     <Content Include="assets3\images\blob.png" />
     <Content Include="assets3\images\dots.png" />
     <Content Include="assets3\images\hero_1.jpg" />
@@ -2652,6 +2654,10 @@
     <Content Include="Views\Shared\_LayoutSign.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Pretest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

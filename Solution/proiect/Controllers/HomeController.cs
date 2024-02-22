@@ -29,6 +29,24 @@ namespace proiect.Controllers
             return View();
         }
 
+          public ActionResult About()
+          {
+               return View();
+          }
+          public ActionResult News()
+          {
+               return View();
+          }
+          public ActionResult Contact()
+          {
+               return View();
+          }
+          public ActionResult Pretest()
+          {
+               return View();
+          }
+
+
 
      }
 }
