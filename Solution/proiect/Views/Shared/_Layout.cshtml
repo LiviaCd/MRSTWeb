@@ -6,23 +6,27 @@
     @Styles.Render("~/bundles/mainPage.css")
 </head>
 <body>
-    <div class="site-mobile-menu site-navbar-target">
-        @Html.Partial("_Header")
-    </div>
 
-    <nav class="site-nav">
-        @Html.Partial("_Navigation")
-    </nav>
+     <div class="site-mobile-menu site-navbar-target">
 
-    <div class="content">
-        @RenderBody()
-        @Html.Partial("_Footer")
-    </div>
+          @Html.Partial("_Header")
+     </div>
 
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+     <nav class="site-nav">
+          @Html.Partial("_Navigation")
 
+     </nav>
 
-    @Scripts.Render("~/bundles/mainPageJava/js")
-    @RenderSection("scripts", required: false)
+     <div class="main-content">
+      @RenderBody()
+     </div>
+
+     <div class="site-footer">
+
+          @Html.Partial("_Footer")
+        
+     </div>
+     @Scripts.Render("~/bundles/mainPageJava/js")
+     @RenderSection("scripts", required: false)
 </body>
 </html>

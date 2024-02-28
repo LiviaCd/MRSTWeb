@@ -1,9 +1,39 @@
 ﻿
 @{
     ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_LayoutSign.cshtml";
 }
 
 <h2>Contact</h2>
 
-@* Test  *@
+@model proiect.Models.UserData
+
+<div class="row">
+     <div class = "col-md-12">
+     <div class ="table">
+          <table class= "table table-bordered">
+               <thead>
+                    <tr>Grupa sangvina</tr>
+                    <tr>Actiune</tr>
+               </thead>
+               <tbody>
+                    @using (Html.BeginForm("BloodType", "Home", FormMethod.Post, new { autocomplete = "off" }))
+                    {
+                         foreach (var prod in Model.BloodType)
+                         {
+                              <tr>
+                                   <td>@prod</td>
+                                   <td>
+                                        <button style="float: right" class="btn btn-primary btn-xs" name="btn"
+                                                type="submit" value="@prod">View</button>
+                                   </td>
+                              </tr>
+
+                         }
+
+                    }
+
+               </tbody>
+          </table>
+     </div>
+          </div>
+     </div>

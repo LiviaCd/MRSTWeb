@@ -1,9 +1,8 @@
-﻿
+﻿@using System.Web.Optimization
 @{
      ViewBag.Title = "About";
-     Layout = "~/Views/Shared/_LayoutSign.cshtml";
 }
-
+@model proiect.Models.UserData
 
 <div class="hero overlay" style="background-image: url('/assets3/images/About-ImagineaPrincipala.png')">
      <div class="container">
@@ -12,7 +11,7 @@
                     <h1 class="heading text-white mb-2" data-aos="fade-up">Despre noi</h1>
                     <p data-aos="fade-up" class=" mb-5 text-white lead text-white">Oferim resurse și suport pentru donatorii actuali și potențiali, asigurându-ne că experiența donării este cât mai simplă și confortabilă posibil.</p>
                     <p data-aos="fade-up" data-aos-delay="100">
-                        
+
                     </p>
 
                </div>
@@ -39,6 +38,40 @@
                          <p><a href="#" class="link-underline">Află mai mult</a></p>
                     </div>
                </div>
+          </div>
+     </div>
+</div>
+
+
+<div class="row">
+     <div class="col-md-12">
+          <div class="table">
+               <table class="table table-bordered">
+                    <thead>
+                         <tr>Grupa sangvina</tr>
+                         <tr>Actiune</tr>
+                    </thead>
+                    <tbody>
+                         @using (Ajax.BeginForm("BloodType", "Home", new AjaxOptions { HttpMethod = "POST",
+                         OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
+                         {
+                              foreach (var prod in Model.BloodType)
+                              {
+                                   <tr>
+                                        <td>@prod</td>
+                                        <td>
+                                             @Html.Hidden("btn", prod)
+                                             <button style="float: right" class="btn btn-primary btn-xs"
+                                                     type="submit">View</button>
+                                        </td>
+                                   </tr>
+
+                              }
+
+                         }
+
+                    </tbody>
+               </table>
           </div>
      </div>
 </div>
