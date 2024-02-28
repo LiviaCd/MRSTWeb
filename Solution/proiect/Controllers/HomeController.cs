@@ -3,6 +3,7 @@ using proiect.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,10 +37,7 @@ namespace proiect.Controllers
 
           public ActionResult About()
           {
-               UserData u = new UserData();
-               u.UserName = "Customer";
-               u.BloodType = new List<string> { "Grupa 0", "Grupa A", "Grupa B", "Grupa AB" };
-               return View(u);
+               return View();
           }
           public ActionResult News()
           {
@@ -51,7 +49,17 @@ namespace proiect.Controllers
           {
                UserData u = new UserData();
                u.UserName = "Customer";
-               u.BloodType = new List<string> { "Grupa 0", "Grupa A", "Grupa B", "Grupa AB" };
+               u.BloodType = new List<BloodTypeModel>
+              {
+                  new BloodTypeModel { Name = "Grupa 0, Rh(+)", ImageUrl = "/assets3/images/1Pozitiv.jpg" },
+                  new BloodTypeModel { Name = "Grupa A, Rh(+)", ImageUrl = "/assets3/images/2Pozitiv.jpg" },
+                  new BloodTypeModel { Name = "Grupa B, Rh(+)", ImageUrl = "/assets3/images/3Pozitiv.jpg" },
+                  new BloodTypeModel { Name = "Grupa AB, Rh(+)", ImageUrl = "/assets3/images/4Pozitiv.jpg" },
+                  new BloodTypeModel { Name = "Grupa 0, Rh(-)", ImageUrl = "/assets3/images/1Negativ.jpg" },
+                  new BloodTypeModel { Name = "Grupa A, Rh(-)", ImageUrl = "/assets3/images/2Negativ.jpg" },
+                  new BloodTypeModel { Name = "Grupa B, Rh(-)", ImageUrl = "/assets3/images/3Negativ.jpg" },
+                  new BloodTypeModel { Name = "Grupa AB, Rh(-)", ImageUrl = "/assets3/images/4Negativ.jpg" }
+              };
                return View(u);
           }
           public ActionResult Pretest()

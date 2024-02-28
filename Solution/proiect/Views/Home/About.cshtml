@@ -42,7 +42,7 @@
      </div>
 </div>
 
-
+<!--
 <div class="row">
      <div class="col-md-12">
           <div class="table">
@@ -52,27 +52,12 @@
                          <tr>Actiune</tr>
                     </thead>
                     <tbody>
-                         @using (Ajax.BeginForm("BloodType", "Home", new AjaxOptions { HttpMethod = "POST",
-                         OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
-                         {
-                              foreach (var prod in Model.BloodType)
-                              {
-                                   <tr>
-                                        <td>@prod</td>
-                                        <td>
-                                             @Html.Hidden("btn", prod)
-                                             <button style="float: right" class="btn btn-primary btn-xs"
-                                                     type="submit">View</button>
-                                        </td>
-                                   </tr>
-
-                              }
-
-                         }
+                          
+                       
 
                     </tbody>
                </table>
           </div>
      </div>
 </div>
-
+     -->
