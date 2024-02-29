@@ -74,11 +74,19 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Identity.Client, Version=4.55.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.55.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -91,6 +99,10 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -106,7 +118,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\System-Web-Helpers.dll.1.0.0\lib\Net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -116,6 +129,10 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services.Description, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Services.Description.8.0.0\lib\net461\System.Web.Services.Description.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
@@ -2424,22 +2441,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="assets3\fonts\flaticon\font\flaticon.eot" />
     <Content Include="assets3\fonts\flaticon\font\flaticon.scss" />
     <Content Include="assets3\fonts\flaticon\font\flaticon.ttf" />
@@ -2634,13 +2635,23 @@
     <Content Include="assetsLog\web\assets\mobirise-icons2\mobirise2.eot" />
     <Content Include="assetsLog\web\assets\mobirise-icons2\mobirise2.ttf" />
     <Content Include="assetsLog\web\assets\mobirise-icons2\mobirise2.woff" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -2660,6 +2671,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Pretest.cshtml" />
     <Content Include="Views\Home\BloodType.cshtml" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2670,16 +2687,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\proiect.BusinessLogic\proiect.BusinessLogic.csproj">
-      <Project>{652adbbb-f7d8-45f3-a6dc-5ab21c3d1661}</Project>
-      <Name>proiect.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\proiect.Domain\proiect.Domain.csproj">
-      <Project>{4ee95299-e715-4cb2-b6fb-84287adc9c5a}</Project>
-      <Name>proiect.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
