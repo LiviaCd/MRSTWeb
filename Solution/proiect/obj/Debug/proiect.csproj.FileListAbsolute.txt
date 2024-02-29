@@ -141,7 +141,6 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Diagnostics.Di
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Memory.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Numerics.Vectors.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Helpers.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Mvc.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Optimization.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Razor.dll
@@ -277,3 +276,7 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.Configuration.
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.Web.Services.Description.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.Configuration.ConfigurationManager.xml
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.Web.Services.Description.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Configuration.ConfigurationManager.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Services.Description.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Configuration.ConfigurationManager.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\System.Web.Services.Description.pdb
