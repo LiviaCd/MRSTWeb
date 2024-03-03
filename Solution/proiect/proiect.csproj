@@ -2689,6 +2689,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\proiect.BusinessLogic\proiect.BusinessLogic.csproj">
+      <Project>{d6707889-ee1d-4e7a-8c7e-0fe1e31f9534}</Project>
+      <Name>proiect.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proiect.Domain\proiect.Domain.csproj">
+      <Project>{df3a552b-1a86-4b0e-8c4b-290989f8ea9a}</Project>
+      <Name>proiect.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

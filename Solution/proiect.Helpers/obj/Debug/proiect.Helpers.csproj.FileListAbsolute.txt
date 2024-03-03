@@ -1,0 +1,6 @@
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\bin\Debug\proiect.Helpers.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\bin\Debug\proiect.Helpers.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\obj\Debug\proiect.Helpers.csproj.AssemblyReference.cache
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\obj\Debug\proiect.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\obj\Debug\proiect.Helpers.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Helpers\obj\Debug\proiect.Helpers.pdb

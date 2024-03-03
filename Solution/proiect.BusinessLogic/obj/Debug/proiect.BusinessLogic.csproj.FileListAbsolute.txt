@@ -1,0 +1,11 @@
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.BusinessLogic.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.BusinessLogic.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Domain.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Helpers.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Domain.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Helpers.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.CopyComplete
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.pdb
