@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
+using proiect.Domain.Entities.BloodType;
 
 
 namespace proiect.BusinessLogic.Core
@@ -22,6 +23,11 @@ namespace proiect.BusinessLogic.Core
                //RETURN SESSION AND STATUS TRUE
 
                return new ULoginResp { Status = false };
+          }
+          
+          public BloodTypeDetail GetBloodTypeUser (int id)
+          {
+               return new BloodTypeDetail();
           }
 
      }

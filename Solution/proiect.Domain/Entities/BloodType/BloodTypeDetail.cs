@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace proiect.BusinessLogic.Core
+namespace proiect.Domain.Entities.BloodType
 {
-     public class AdminApi
+     public class BloodTypeDetail
      {
+
      }
 }

@@ -35,48 +35,6 @@ namespace proiect.Controllers
           {
                return View();
           }
-          private readonly ISession _session;
-
-          public HomeController()
-          {
-               var bl = new BussinessLogic();
-               _session = bl.GetSessionBL();
-          }
-          // GET : Login
-          [HttpPost]
-          [ValidateAntiForgeryToken]
-          public ActionResult LogIn(UserLogin data)
-          {
-               if (ModelState.IsValid)
-               {
-                    ULoginData uData = new ULoginData
-                    {
-                         Credential = data.Credential,
-                         Password = data.Password,
-                         LoginIp = data.LoginIp,
-                         LoginDateTime = DateTime.Now,
-                    };
-                    ULoginResp resp = _session.UserLoginAction(uData);
-                    if (resp.Status)
-                    {
-                         //ADD COOKIE
-
-                         return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                         ModelState.AddModelError("", resp.ActionStatusMsg);
-                         return View();
-                    }
-               }
-               return View();
-          }
-
-
-          public ActionResult SignIn()
-          {
-               return View();
-          }
 
           public ActionResult About()
           {

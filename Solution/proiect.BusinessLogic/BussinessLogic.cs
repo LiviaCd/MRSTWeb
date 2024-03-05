@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.Interfaces;
+using proiect.BusinessLogic;
 
 namespace proiect.BusinessLogic
 {
@@ -13,6 +14,11 @@ namespace proiect.BusinessLogic
           public ISession GetSessionBL()
           {
                return new SessionBL();
+          }
+
+          public IBloodType GetBloodTypeBL()
+          {
+               return new BloodTypeBL();
           }
 
      }
