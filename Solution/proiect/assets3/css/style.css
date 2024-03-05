@@ -12552,7 +12552,7 @@ fieldset:disabled .btn {
 .site-nav {
     background-color: #A32C00;
     position: fixed;
-    top: 0px;
+    top: 10px;
     z-index: 9;
     width: 100%;
 }

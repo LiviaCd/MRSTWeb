@@ -7,3 +7,12 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.csproj.CopyComplete
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\bin\Debug\proiect.Domain.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\bin\Debug\proiect.Domain.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\bin\Debug\proiect.Helpers.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\bin\Debug\proiect.Helpers.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect..260A4561.Up2Date
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.Domain\obj\Debug\proiect.Domain.pdb

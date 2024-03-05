@@ -284,3 +284,7 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.Domain.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.pdb
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.Domain.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.Domain.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.Domain.pdb

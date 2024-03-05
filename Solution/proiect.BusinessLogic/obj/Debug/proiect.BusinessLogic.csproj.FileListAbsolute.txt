@@ -9,3 +9,14 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\p
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.CopyComplete
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.BusinessLogic.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.BusinessLogic.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Domain.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Helpers.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Domain.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.Helpers.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect..7F784422.Up2Date
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.pdb
