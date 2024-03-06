@@ -1,4 +1,5 @@
 ﻿using proiect.BusinessLogic;
+using proiect.BusinessLogic.AppBL;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.BloodType;
 using System;

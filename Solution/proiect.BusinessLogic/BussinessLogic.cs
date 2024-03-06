@@ -7,7 +7,7 @@ using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.Interfaces;
 using proiect.BusinessLogic;
 
-namespace proiect.BusinessLogic
+namespace proiect.BusinessLogic.AppBL
 {
      public class BussinessLogic
      {
