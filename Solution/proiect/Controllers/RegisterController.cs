@@ -33,7 +33,7 @@ namespace proiect.Controllers
                          Credential = data.Credential,
                          Password = data.Password,
                          LoginIp = data.LoginIp,
-                         LoginDateTime = DateTime.Now,
+                         LoginDateTime = DateTime.Now
                     };
                     ULoginResp resp = _session.UserLoginAction(uData);
                     if (resp.Status)

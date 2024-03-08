@@ -288,3 +288,8 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.Domain.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.pdb
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.Domain.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\EntityFramework.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlServer.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.dll.config
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\EntityFramework.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlServer.xml

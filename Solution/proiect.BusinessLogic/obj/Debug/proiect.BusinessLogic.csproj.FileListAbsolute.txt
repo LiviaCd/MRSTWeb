@@ -20,3 +20,8 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\p
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect..7F784422.Up2Date
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\obj\Debug\proiect.BusinessLogic.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\proiect.BusinessLogic.dll.config
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
