@@ -25,6 +25,7 @@ namespace proiect.Controllers
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
+          
           {
                if (ModelState.IsValid)
                {
@@ -32,7 +33,7 @@ namespace proiect.Controllers
                     {
                          Credential = data.Credential,
                          Password = data.Password,
-                         LoginIp = data.LoginIp,
+                         LoginIp = Request.UserHostAddress,
                          LoginDateTime = DateTime.Now
                     };
                     ULoginResp resp = _session.UserLoginAction(uData);
@@ -51,15 +52,15 @@ namespace proiect.Controllers
                return View();
           }
 
-
           public ActionResult SignIn()
           {
                return View();
           }
-
+          
           public ActionResult LogIn()
           {
                return View();
           }
+          
      }
 }

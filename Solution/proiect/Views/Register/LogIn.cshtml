@@ -2,7 +2,9 @@
      ViewBag.Title = "LogIn";
      Layout = "~/Views/Shared/_LayoutSign.cshtml";
 
+
 }
+ @model proiect.Models.User.UserLogin
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +24,9 @@
                box-sizing: border-box;
           }
 
-         body {
-             background-color: #FEFEFA;
-         }
+          body {
+               background-color: #FEFEFA;
+          }
 
           .background {
                width: 430px;
@@ -160,16 +162,16 @@
                     color: #f2f4fb;
                }
 
-         .button {
-             display: inline-block;
-             padding: 10px 20px;
-             text-decoration: none;
-             color: rgb(29, 28, 28);
-             background-color: rgba(124, 70, 70, 0.27);
-             border-radius: 25px;
-             border: none;
-             cursor: pointer;
-         }
+          .button {
+               display: inline-block;
+               padding: 10px 20px;
+               text-decoration: none;
+               color: rgb(29, 28, 28);
+               background-color: rgba(124, 70, 70, 0.27);
+               border-radius: 25px;
+               border: none;
+               cursor: pointer;
+          }
 
                .button:hover {
                     background-color: rgba(215, 86, 86, 0.5);
@@ -181,14 +183,21 @@
           <div class="shape"></div>
           <div class="shape"></div>
      </div>
-     <form>
+
+    
+     <form method="post">
+          @using (Html.BeginForm("LogIn", "Register", FormMethod.Post))
+          {
+          @Html.AntiForgeryToken()
           <h3>Log in</h3>
 
-          <label for="username">Username</label>
-          <input type="text" placeholder="Email or Phone" id="username" maxlength="10" required>
+          <label for="Credential">Username</label>
+          @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "10" })
+          @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
 
-          <label for="password">Password</label>
-          <input type="password" placeholder="Password" id="password" required>
+          <label for="Password">Password</label>
+          @Html.PasswordFor(UserLogin => UserLogin.Password, new { @class = "form-control", placeholder = "Password" })
+          @Html.ValidationMessageFor(UserLogin => UserLogin.Password, "", new { @class = "text-danger" })
 
           <div class="social">
                <div class="go"><i class="fab fa-google"></i>  Google</div>
@@ -196,13 +205,15 @@
           </div>
 
           <div class="log-in">
-               <button type="submit" class="button" onclick="location.href='@Url.Action("UserPage", "Home")'">Log In</button>
+               <button type="submit" class="button">Log In</button>
           </div><br>
 
 
           <div class="sign-in">
-               <small><a href="@Url.Action("SignIn", "Home")">Create Account</a></small>
+               <small><a href="@Url.Action("SignIn", "Register")">Create Account</a></small>
           </div>
+          }
      </form>
+     
 </body>
 </html>
