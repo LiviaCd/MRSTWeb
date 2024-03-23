@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proiect.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,9 +17,9 @@ namespace proiect.Domain.Entities.User
           public int Id { get; set; }
 
           [Required]
-          [Display(Name = "Credential")]
+          [Display(Name = "UserName")]
           [StringLength(30, MinimumLength = 6, ErrorMessage = "UserName cannot be longer than 30 characters")]
-          public string Credential { get; set; }
+          public string UserName { get; set; }
 
           [Required]
           [Display(Name = "Password")]
@@ -36,7 +37,7 @@ namespace proiect.Domain.Entities.User
           [StringLength(30)]
           public string LasIp { get; set; }
 
-          //public URole Level { get; set; }
+          public URole Level { get; set; }
 
           
 

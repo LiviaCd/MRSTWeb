@@ -3,180 +3,189 @@
     ViewBag.Title = "SignIn";
     Layout = "~/Views/Shared/_LayoutSign.cshtml";
 }
+@model proiect.Models.User.UserRegister
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Design by foolishdeveloper.com -->
-    <title>Creare cont</title>
+     <!-- Design by foolishdeveloper.com -->
+     <title>Creare cont</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-        *,
-        *:before,
-        *:after {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+     <!--Stylesheet-->
+     <style media="screen">
+          *,
+          *:before,
+          *:after {
+               padding: 0;
+               margin: 0;
+               box-sizing: border-box;
+          }
 
-        body {
-            background-color: #FEFEFA;
-        }
+          body {
+               background-color: #FEFEFA;
+          }
 
-        .background {
-            width: 430px;
-            height: 520px;
-            position: absolute;
-            transform: translate(-50%,-50%);
-            left: 50%;
-            top: 50%;
-        }
+          .background {
+               width: 430px;
+               height: 520px;
+               position: absolute;
+               transform: translate(-50%,-50%);
+               left: 50%;
+               top: 50%;
+          }
 
-            .background .shape {
-                height: 200px;
-                width: 200px;
-                position: absolute;
-                border-radius: 50%;
-            }
+               .background .shape {
+                    height: 200px;
+                    width: 200px;
+                    position: absolute;
+                    border-radius: 50%;
+               }
 
-        .shape:first-child {
-            background: linear-gradient( #c23030, #f62323 );
-            left: -80px;
-            top: -80px;
-        }
+          .shape:first-child {
+               background: linear-gradient( #c23030, #f62323 );
+               left: -80px;
+               top: -80px;
+          }
 
-        .shape:last-child {
-            background: linear-gradient( to right, #d77e6d, #A32C00 );
-            right: -30px;
-            bottom: -80px;
-        }
+          .shape:last-child {
+               background: linear-gradient( to right, #d77e6d, #A32C00 );
+               right: -30px;
+               bottom: -80px;
+          }
 
-        form {
-            height: 540px;
-            width: 400px;
-            background-color: rgba(255,255,255,0.13);
-            position: absolute;
-            transform: translate(-50%,-50%);
-            top: 50%;
-            left: 50%;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.1);
-            box-shadow: 0 0 40px rgba(8,7,16,0.6);
-            padding: 50px 35px;
-        }
+          form {
+               height: 540px;
+               width: 400px;
+               background-color: rgba(255,255,255,0.13);
+               position: absolute;
+               transform: translate(-50%,-50%);
+               top: 50%;
+               left: 50%;
+               border-radius: 10px;
+               backdrop-filter: blur(10px);
+               border: 2px solid rgba(255,255,255,0.1);
+               box-shadow: 0 0 40px rgba(8,7,16,0.6);
+               padding: 50px 35px;
+          }
 
-            form * {
-                font-family: 'Poppins',sans-serif;
-                color: #342c29;
-                letter-spacing: 0.5px;
-                outline: none;
-                border: none;
-            }
+               form * {
+                    font-family: 'Poppins',sans-serif;
+                    color: #342c29;
+                    letter-spacing: 0.5px;
+                    outline: none;
+                    border: none;
+               }
 
-            form h3 {
-                font-size: 32px;
-                font-weight: 500;
-                line-height: 2px;
-                text-align: center;
-            }
+               form h3 {
+                    font-size: 32px;
+                    font-weight: 500;
+                    line-height: 2px;
+                    text-align: center;
+               }
 
-        label {
-            display: block;
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: 500;
-        }
+          label {
+               display: block;
+               margin-top: 20px;
+               font-size: 16px;
+               font-weight: 500;
+          }
 
-        input {
-            display: block;
-            height: 50px;
-            width: 100%;
-            background-color: rgba(153, 129, 129, 0.27);
-            border-radius: 3px;
-            padding: 0 10px;
-            margin-top: 8px;
-            font-size: 14px;
-            font-weight: 300;
-        }
+          input {
+               display: block;
+               height: 50px;
+               width: 100%;
+               background-color: rgba(153, 129, 129, 0.27);
+               border-radius: 3px;
+               padding: 0 10px;
+               margin-top: 8px;
+               font-size: 14px;
+               font-weight: 300;
+          }
 
-        ::placeholder {
-            color: #202020;
-        }
+          ::placeholder {
+               color: #202020;
+          }
 
-        button {
-            margin-top: 30px;
-            width: 100%;
-            color: rgb(29, 28, 28);
-            background-color: rgba(124, 70, 70, 0.27);
-            padding: 15px 0;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-        }
+          button {
+               margin-top: 30px;
+               width: 100%;
+               color: rgb(29, 28, 28);
+               background-color: rgba(124, 70, 70, 0.27);
+               padding: 15px 0;
+               font-size: 18px;
+               font-weight: 600;
+               border-radius: 25px;
+               cursor: pointer;
+          }
 
-            button:hover {
-                background-color: rgba(215, 86, 86, 0.5);
-            }
+               button:hover {
+                    background-color: rgba(215, 86, 86, 0.5);
+               }
 
-        .social {
-            margin-top: 20px;
-            display: flex;
-        }
+          .social {
+               margin-top: 20px;
+               display: flex;
+          }
 
-            .social div {
-                background: red;
-                width: 150px;
-                border-radius: 3px;
-                padding: 5px 10px 10px 5px;
-                background-color: rgba(126, 106, 106, 0.27);
-                color: #eaf0fb;
-                text-align: center;
-            }
+               .social div {
+                    background: red;
+                    width: 150px;
+                    border-radius: 3px;
+                    padding: 5px 10px 10px 5px;
+                    background-color: rgba(126, 106, 106, 0.27);
+                    color: #eaf0fb;
+                    text-align: center;
+               }
 
-                .social div:hover {
-                    background-color: rgba(36, 35, 45, 0.47);
-                }
+                    .social div:hover {
+                         background-color: rgba(36, 35, 45, 0.47);
+                    }
 
-            .social .fb {
-                margin-left: 25px;
-            }
+               .social .fb {
+                    margin-left: 25px;
+               }
 
-            .social i {
-                margin-right: 4px;
-            }
-    </style>
+               .social i {
+                    margin-right: 4px;
+               }
+     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form>
-        <h3>Sign in</h3>
+     <div class="background">
+          <div class="shape"></div>
+          <div class="shape"></div>
+     </div>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" maxlength="10" required>
+     <form method="post">
+          @using (Html.BeginForm("SignIn", "Register", FormMethod.Post))
+          {
+          @Html.AntiForgeryToken()
+          <h3>Sign in</h3>
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" required>
+          <label for="username">Username</label>
+          @Html.TextBoxFor(UserRegister => UserRegister.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "10" })
+          @Html.ValidationMessageFor(UserRegister => UserRegister.Credential, "", new { @class = "text-danger" })
 
-        <label for="password">Confirm password</label>
-        <input type="password" placeholder="Password" id="password" required>
+          <label for="password">Password</label>
+          @Html.PasswordFor(UserRegister => UserRegister.Password, new { @class = "form-control", placeholder = "Password" })
+          @Html.ValidationMessageFor(UserRegister => UserRegister.Password, "", new { @class = "text-danger" })
 
-        <div class="social">
-            <div class="go"><i class="fab fa-google"></i>  Google</div>
-            <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
+          <label for="password">Confirm password</label>
+          @Html.PasswordFor(UserRegister => UserRegister.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password" })
+          @Html.ValidationMessageFor(UserRegister => UserRegister.ConfirmPassword, "", new { @class = "text-danger" })
 
-        <div class="sign-in">
-             <button class="button" onclick="location.href='@Url.Action("UserPage", "Home")'">Create Account</button>
-        </div>
-    </form>
+          <div class="social">
+               <div class="go"><i class="fab fa-google"></i>  Google</div>
+               <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+          </div>
+
+          <div class="sign-in">
+               <button class="button">Create Account</button>
+          </div>
+          }
+     </form>
 </body>
 </html>
 

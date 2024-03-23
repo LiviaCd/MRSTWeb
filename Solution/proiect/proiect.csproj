@@ -2451,6 +2451,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ViewBloodTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2459,6 +2460,7 @@
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\UserLogin.cs" />
+    <Compile Include="Models\User\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2691,7 +2693,7 @@
     <Content Include="Views\Shared\_FooterUser.cshtml" />
     <Content Include="Views\Home\UserPage.cshtml" />
     <Content Include="Views\Shared\_LayoutSign.cshtml" />
-    <Content Include="Views\Register\LogIn.cshtml" />
+    <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Register\SignIn.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
