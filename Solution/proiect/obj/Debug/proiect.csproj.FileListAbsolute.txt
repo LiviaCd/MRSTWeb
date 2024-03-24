@@ -296,3 +296,11 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlSe
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.pdb
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\proiect.BusinessLogic.dll.config
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.xml
