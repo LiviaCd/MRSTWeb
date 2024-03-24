@@ -52,14 +52,14 @@ namespace proiect.Controllers
                u.UserName = "Customer";
                u.BloodType = new List<BloodTypeModel>
               {
-                  new BloodTypeModel { Name = "Grupa 0, Rh(+)", ImageUrl = "/assets3/images/1Pozitiv.jpg" },
-                  new BloodTypeModel { Name = "Grupa A, Rh(+)", ImageUrl = "/assets3/images/2Pozitiv.jpg" },
-                  new BloodTypeModel { Name = "Grupa B, Rh(+)", ImageUrl = "/assets3/images/3Pozitiv.jpg" },
-                  new BloodTypeModel { Name = "Grupa AB, Rh(+)", ImageUrl = "/assets3/images/4Pozitiv.jpg" },
-                  new BloodTypeModel { Name = "Grupa 0, Rh(-)", ImageUrl = "/assets3/images/1Negativ.jpg" },
-                  new BloodTypeModel { Name = "Grupa A, Rh(-)", ImageUrl = "/assets3/images/2Negativ.jpg" },
-                  new BloodTypeModel { Name = "Grupa B, Rh(-)", ImageUrl = "/assets3/images/3Negativ.jpg" },
-                  new BloodTypeModel { Name = "Grupa AB, Rh(-)", ImageUrl = "/assets3/images/4Negativ.jpg" }
+                  new BloodTypeModel { Name = "Grupa A, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeA.png" },
+                  new BloodTypeModel { Name = "Grupa B, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeB.png" },
+                  new BloodTypeModel { Name = "Grupa AB, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeAB.png" },
+                  new BloodTypeModel { Name = "Grupa O, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeO.png" },
+                  new BloodTypeModel { Name = "Grupa A, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeA.png" },
+                  new BloodTypeModel { Name = "Grupa B, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeB.png" },
+                  new BloodTypeModel { Name = "Grupa AB, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeAB.png" },
+                  new BloodTypeModel { Name = "Grupa O, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeO.png" },
               };
                return View(u);
           }

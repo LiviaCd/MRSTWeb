@@ -1,256 +1,255 @@
 ﻿@using System.Web.Optimization;
 @model proiect.Models.UserData
 @{
-     ViewBag.Title = "Index";
+    ViewBag.Title = "Index";
 }
 <div class="hero overlay" style="background-image: url('/assets3/images/Home-ImagineaPrincipala.png')">
-     <div class="container">
-          <div class="row align-items-center justify-content-between">
-               <div class="col-lg-13">
-                    <span class="subheading-white text-white mb-3" data-aos="fade-up">Donator de sânge</span>
-                    <h1 class="heading text-white mb-2" data-aos="fade-up">Ajută pe acei care au nevoie!</h1>
-                    <p data-aos="fade-up" class=" mb-5 text-white lead text-white-50"></p>
-                    <p data-aos="fade-up" data-aos-delay="100">
-                         <a href="@Url.Action("LogIn", "Login")" class="btn btn-primary me-4 d-inline-flex align-items-center"><span>Începe acum</span></a>
-                         <a href="@Url.Action("Pretest", "Home")" class="text-white glightbox d-inline-flex align-items-center"><span class="icon-play me-2"></span><span>Treci un pretest</span></a>
-                    </p>
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-13">
+                <span class="subheading-white text-white mb-3" data-aos="fade-up">Donator de sânge</span>
+                <h1 class="heading text-white mb-2" data-aos="fade-up">Ajută pe acei care au nevoie!</h1>
+                <p data-aos="fade-up" class=" mb-5 text-white lead text-white-50"></p>
+                <p data-aos="fade-up" data-aos-delay="100">
+                    <a href="@Url.Action("LogIn", "Login")" class="btn btn-primary me-4 d-inline-flex align-items-center"><span>Începe acum</span></a>
+                    <a href="@Url.Action("Pretest", "Home")" class="text-white glightbox d-inline-flex align-items-center"><span class="icon-play me-2"></span><span>Treci un pretest</span></a>
+                </p>
 
-               </div>
+            </div>
 
-               <div style="display: none;" class="col-lg-5">
-                    <form action="#" class="bg-white p-5 rounded donation-form" data-aos="fade-up">
-                         <h3>Quick Donation Form</h3>
-                         <div class="form-field mb-3">
-                              <label for="amount-1" class="amount js-amount" data-value="1.00">
-                                   <input type="radio" id="amount-1" name="radio-amount" checked="">
-                                   <span>$1</span>
-                              </label>
+            <div style="display: none;" class="col-lg-5">
+                <form action="#" class="bg-white p-5 rounded donation-form" data-aos="fade-up">
+                    <h3>Quick Donation Form</h3>
+                    <div class="form-field mb-3">
+                        <label for="amount-1" class="amount js-amount" data-value="1.00">
+                            <input type="radio" id="amount-1" name="radio-amount" checked="">
+                            <span>$1</span>
+                        </label>
 
-                              <label for="amount-2" class="amount js-amount" data-value="5.00">
-                                   <input type="radio" id="amount-2" name="radio-amount">
-                                   <span>$5</span>
-                              </label>
-                              <label for="amount-3" class="amount js-amount" data-value="25.00">
-                                   <input type="radio" id="amount-3" name="radio-amount">
-                                   <span>$25</span>
-                              </label>
-                              <label for="amount-4" class="amount js-amount" data-value="100.00">
-                                   <input type="radio" id="amount-4" name="radio-amount">
-                                   <span>$100</span>
-                              </label>
+                        <label for="amount-2" class="amount js-amount" data-value="5.00">
+                            <input type="radio" id="amount-2" name="radio-amount">
+                            <span>$5</span>
+                        </label>
+                        <label for="amount-3" class="amount js-amount" data-value="25.00">
+                            <input type="radio" id="amount-3" name="radio-amount">
+                            <span>$25</span>
+                        </label>
+                        <label for="amount-4" class="amount js-amount" data-value="100.00">
+                            <input type="radio" id="amount-4" name="radio-amount">
+                            <span>$100</span>
+                        </label>
 
-                         </div>
-                         <div class="field-icon">
-                              <span>$</span>
-                              <input type="text" placeholder="0.00" class="form-control px-4" name="donate-value" value="1.00">
-                         </div>
-                         <div class="form-field mb-3">
-                              <input type="text" placeholder="Name" class="form-control px-4">
-                              <input type="email" placeholder="Email" class="form-control px-4">
-                         </div>
+                    </div>
+                    <div class="field-icon">
+                        <span>$</span>
+                        <input type="text" placeholder="0.00" class="form-control px-4" name="donate-value" value="1.00">
+                    </div>
+                    <div class="form-field mb-3">
+                        <input type="text" placeholder="Name" class="form-control px-4">
+                        <input type="email" placeholder="Email" class="form-control px-4">
+                    </div>
 
-                         <input type="submit" value="Donate now" class="btn btn-secondary w-100">
-                    </form>
-               </div>
-          </div>
-     </div>
+                    <input type="submit" value="Donate now" class="btn btn-secondary w-100">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-     <div class="section bg-light">
-          <div class="container">
-               <div class="row">
-                    <div class="col-lg-6" data-aos="fade-up">
-                         <div class="vision">
-                              <h2>Viziunea noastră</h2>
-                              <p class="mb-4 lead">este de a crea o comunitate globală unită și angajată, unde actul de a dona sânge devine o normă socială recunoscută și valorizată, un gest cotidian de altruism și responsabilitate față de semeni. </p>
-                              <p><a href="#" class="link-underline">Află mai mult</a></p>
-                         </div>
+<div class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-up">
+                <div class="vision">
+                    <h2>Viziunea noastră</h2>
+                    <p class="mb-4 lead">este de a crea o comunitate globală unită și angajată, unde actul de a dona sânge devine o normă socială recunoscută și valorizată, un gest cotidian de altruism și responsabilitate față de semeni. </p>
+                    <p><a href="#" class="link-underline">Află mai mult</a></p>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="mission">
+                    <h2>Misiunea noastră</h2>
+                    <p class="mb-4 lead">este de a facilita și încuraja donarea de sânge prin educarea comunității, simplificarea procesului de donare și construirea unei rețele de sprijin pentru donatori și beneficiari. </p>
+                    <p><a href="#" class="link-underline">Află mai mult</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section flip-section">
+    <div class="blob-1">
+        <img src="~/assets3/images/blob.png" alt="Image" class="img-fluid">
+    </div>
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-7 text-center" data-aos="fade-up">
+                <span class="subheading-white mb-3 text-white">Ajută acum</span>
+                <h2 class="heading text-white">Ajută azi</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-flip">
+                    <div class="flip">
+                        <div class="front">
+                            <!-- front content -->
+                            <div class="flip-content-wrap">
+                                <span class="icon-local_drink"></span>
+                                <h3>Înregistrează-te</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <div class="flip-content-wrap">
+                                <h3>Înregistrează-te</h3>
+                                <p>Crează un cont pe platforma noastră</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                         <div class="mission">
-                              <h2>Misiunea noastră</h2>
-                              <p class="mb-4 lead">este de a facilita și încuraja donarea de sânge prin educarea comunității, simplificarea procesului de donare și construirea unei rețele de sprijin pentru donatori și beneficiari. </p>
-                              <p><a href="#" class="link-underline">Află mai mult</a></p>
-                         </div>
+                </div>
+                <!-- End Card Flip -->
+            </div>
+            <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-flip">
+                    <div class="flip">
+                        <div class="front">
+                            <!-- front content -->
+                            <div class="flip-content-wrap">
+                                <span class="icon-graduation-cap"></span>
+                                <h3>Chestionar</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <div class="flip-content-wrap">
+                                <h3>Chestionar</h3>
+                                <p>Completează chestionarul pentru a te asigura că îndeplinești criteriile de bază</p>
+                            </div>
+                        </div>
                     </div>
-               </div>
-          </div>
-     </div>
+                </div>
 
-
-     <div class="section flip-section">
-          <div class="blob-1">
-               <img src="~/assets3/images/blob.png" alt="Image" class="img-fluid">
-          </div>
-          <div class="container">
-               <div class="row justify-content-center mb-5">
-                    <div class="col-lg-7 text-center" data-aos="fade-up">
-                         <span class="subheading-white mb-3 text-white">Ajută acum</span>
-                         <h2 class="heading text-white">Ajută azi</h2>
+            </div>
+            <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-flip">
+                    <div class="flip">
+                        <div class="front">
+                            <!-- front content -->
+                            <div class="flip-content-wrap">
+                                <span class="icon-dollar"></span>
+                                <h3>Programare</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <div class="flip-content-wrap">
+                                <h3>Programare</h3>
+                                <p>Alege locația și orarul convenabil pentru tine</p>
+                            </div>
+                        </div>
                     </div>
-               </div>
-               <div class="row">
-                    <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="100">
-                         <div class="card-flip">
-                              <div class="flip">
-                                   <div class="front">
-                                        <!-- front content -->
-                                        <div class="flip-content-wrap">
-                                             <span class="icon-local_drink"></span>
-                                             <h3>Înregistrează-te</h3>
-                                        </div>
-                                   </div>
-                                   <div class="back">
-                                        <!-- back content -->
-                                        <div class="flip-content-wrap">
-                                             <h3>Înregistrează-te</h3>
-                                             <p>Crează un cont pe platforma noastră</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-                         <!-- End Card Flip -->
+                </div>
+
+            </div>
+            <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-flip">
+                    <div class="flip">
+                        <div class="front">
+                            <!-- front content -->
+                            <div class="flip-content-wrap">
+                                <span class="icon-medkit"></span>
+                                <h3>Feedback</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <div class="flip-content-wrap">
+                                <h3>Feedback</h3>
+                                <p>După donare, vei primi notificări de mulțumire și recompense virtuale</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="200">
-                         <div class="card-flip">
-                              <div class="flip">
-                                   <div class="front">
-                                        <!-- front content -->
-                                        <div class="flip-content-wrap">
-                                             <span class="icon-graduation-cap"></span>
-                                             <h3>Chestionar</h3>
-                                        </div>
-                                   </div>
-                                   <div class="back">
-                                        <!-- back content -->
-                                        <div class="flip-content-wrap">
-                                             <h3>Chestionar</h3>
-                                             <p>Completează chestionarul pentru a te asigura că îndeplinești criteriile de bază</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row mb-5 align-items-center justify-content-between">
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="0">
+                <span class="subheading mb-3">Cine suntem noi?</span>
+                <h2 class="heading">Despre noi</h2>
+                <p>Un site de donații de sânge este esențial pentru a atrage donatori și a asigura o rezervă adecvată de sânge pentru transfuzii medicale. </p>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <blockquote>
+                    Acesta facilitează conștientizarea publicului, crește numărul de donatori, asigură sângele necesar pentru pacienți și oferă suport și informații esențiale pentru donatori.
+                </blockquote>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-lg-5 pe-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+                <ul class="nav nav-pills mb-5 custom-nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-mission-tab" data-bs-toggle="pill" data-bs-target="#pills-mission" type="button" role="tab" aria-controls="pills-mission" aria-selected="true">Obiecte</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-values-tab" data-bs-toggle="pill" data-bs-target="#pills-values" type="button" role="tab" aria-controls="pills-values" aria-selected="false">Valori</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button" role="tab" aria-controls="pills-history" aria-selected="false">Istorie</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-mission" role="tabpanel" aria-labelledby="pills-mission-tab">
+                        <h2 class="mb-3 text-primary fw-bold">Obiectivele noastre</h2>
+                        <p>Site-ul nostru de donații de sânge are ca obiective principale conștientizarea publicului cu privire la importanța donării de sânge, atragerea unui număr crescut de donatori, facilitarea procesului de donare prin informații clare și programare online, încurajarea donării regulate și asigurarea siguranței și calității sângelui donat. Prin îndeplinirea acestor obiective, site-ul poate juca un rol vital în susținerea sistemului medical și în furnizarea sângelui necesar pacienților.</p>
+
+                        <p class="mt-5">
+                            <a href="#" class="btn btn-primary me-4">Începe acum</a>
+                            <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
+                        </p>
                     </div>
-                    <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="300">
-                         <div class="card-flip">
-                              <div class="flip">
-                                   <div class="front">
-                                        <!-- front content -->
-                                        <div class="flip-content-wrap">
-                                             <span class="icon-dollar"></span>
-                                             <h3>Programare</h3>
-                                        </div>
-                                   </div>
-                                   <div class="back">
-                                        <!-- back content -->
-                                        <div class="flip-content-wrap">
-                                             <h3>Programare</h3>
-                                             <p>Alege locația și orarul convenabil pentru tine</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-
+                    <div class="tab-pane fade" id="pills-values" role="tabpanel" aria-labelledby="pills-values-tab">
+                        <h2 class="mb-3 text-primary fw-bold">Valorile noastre</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, eveniet voluptates eligendi max</p>
+                        <p>Reprehenderit hic illo, nulla autem odit molestiae molestias, dolores accusantium eos? Ut aspernatur fuga labore eius sequi nihil sit iusto, enim. Aliquam, cumque! Quaerat inventore illo dicta, exercitationem natus ducimus?</p>
+                        <p class="mt-5">
+                            <a href="#" class="btn btn-primary me-4">Devină voluntar</a>
+                            <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
+                        </p>
                     </div>
-                    <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="400">
-                         <div class="card-flip">
-                              <div class="flip">
-                                   <div class="front">
-                                        <!-- front content -->
-                                        <div class="flip-content-wrap">
-                                             <span class="icon-medkit"></span>
-                                             <h3>Feedback</h3>
-                                        </div>
-                                   </div>
-                                   <div class="back">
-                                        <!-- back content -->
-                                        <div class="flip-content-wrap">
-                                             <h3>Feedback</h3>
-                                             <p>După donare, vei primi notificări de mulțumire și recompense virtuale</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+                    <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
 
+                        <h2 class="mb-3 text-primary fw-bold">Istoria noastră</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, eveniet voluptates eligendi maxime ad. Quas commodi distinctio modi, aspernatur, quos neque omnis magnam voluptatibus, sapiente fugiat cupiditate velit impedit praesentium.</p>
+                        <p>Reprehenderit hic illo, nulla autem odit molestiae molestias, dolores accusantium eos? Ut aspernatur fuga labore eius sequi nihil sit iusto, enim. Aliquam, cumque! Quaerat inventore illo dicta, exercitationem natus ducimus?</p>
+                        <p class="mt-5">
+                            <a href="#" class="btn btn-primary me-4">Creează istoria</a>
+                            <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
+                        </p>
                     </div>
-               </div>
-          </div>
-     </div>
-
-     <div class="section">
-          <div class="container">
-               <div class="row mb-5 align-items-center justify-content-between">
-                    <div class="col-lg-5" data-aos="fade-up" data-aos-delay="0">
-                         <span class="subheading mb-3">Cine suntem noi?</span>
-                         <h2 class="heading">Despre noi</h2>
-                         <p>Un site de donații de sânge este esențial pentru a atrage donatori și a asigura o rezervă adecvată de sânge pentru transfuzii medicale. </p>
-                    </div>
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                         <blockquote>
-                              Acesta facilitează conștientizarea publicului, crește numărul de donatori, asigură sângele necesar pentru pacienți și oferă suport și informații esențiale pentru donatori.
-                         </blockquote>
-                    </div>
-               </div>
-               <div class="row justify-content-between">
-                    <div class="col-lg-5 pe-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-                         <ul class="nav nav-pills mb-5 custom-nav-pills" id="pills-tab" role="tablist">
-                              <li class="nav-item" role="presentation">
-                                   <button class="nav-link active" id="pills-mission-tab" data-bs-toggle="pill" data-bs-target="#pills-mission" type="button" role="tab" aria-controls="pills-mission" aria-selected="true">Obiecte</button>
-                              </li>
-                              <li class="nav-item" role="presentation">
-                                   <button class="nav-link" id="pills-values-tab" data-bs-toggle="pill" data-bs-target="#pills-values" type="button" role="tab" aria-controls="pills-values" aria-selected="false">Valori</button>
-                              </li>
-                              <li class="nav-item" role="presentation">
-                                   <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button" role="tab" aria-controls="pills-history" aria-selected="false">Istorie</button>
-                              </li>
-                         </ul>
-                         <div class="tab-content" id="pills-tabContent">
-                              <div class="tab-pane fade show active" id="pills-mission" role="tabpanel" aria-labelledby="pills-mission-tab">
-                                   <h2 class="mb-3 text-primary fw-bold">Obiectivele noastre</h2>
-                                   <p>Site-ul nostru de donații de sânge are ca obiective principale conștientizarea publicului cu privire la importanța donării de sânge, atragerea unui număr crescut de donatori, facilitarea procesului de donare prin informații clare și programare online, încurajarea donării regulate și asigurarea siguranței și calității sângelui donat. Prin îndeplinirea acestor obiective, site-ul poate juca un rol vital în susținerea sistemului medical și în furnizarea sângelui necesar pacienților.</p>
-
-                                   <p class="mt-5">
-                                        <a href="#" class="btn btn-primary me-4">Începe acum</a>
-                                        <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
-                                   </p>
-                              </div>
-                              <div class="tab-pane fade" id="pills-values" role="tabpanel" aria-labelledby="pills-values-tab">
-                                   <h2 class="mb-3 text-primary fw-bold">Valorile noastre</h2>
-                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, eveniet voluptates eligendi max</p>
-                                   <p>Reprehenderit hic illo, nulla autem odit molestiae molestias, dolores accusantium eos? Ut aspernatur fuga labore eius sequi nihil sit iusto, enim. Aliquam, cumque! Quaerat inventore illo dicta, exercitationem natus ducimus?</p>
-                                   <p class="mt-5">
-                                        <a href="#" class="btn btn-primary me-4">Devină voluntar</a>
-                                        <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
-                                   </p>
-                              </div>
-                              <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
-
-                                   <h2 class="mb-3 text-primary fw-bold">Istoria noastră</h2>
-                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, eveniet voluptates eligendi maxime ad. Quas commodi distinctio modi, aspernatur, quos neque omnis magnam voluptatibus, sapiente fugiat cupiditate velit impedit praesentium.</p>
-                                   <p>Reprehenderit hic illo, nulla autem odit molestiae molestias, dolores accusantium eos? Ut aspernatur fuga labore eius sequi nihil sit iusto, enim. Aliquam, cumque! Quaerat inventore illo dicta, exercitationem natus ducimus?</p>
-                                   <p class="mt-5">
-                                        <a href="#" class="btn btn-primary me-4">Creează istoria</a>
-                                        <a href="#" class="link-more">Află mai multe <span class="icon-chevron-right"></span></a>
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                         <div class="overlap-imgs">
-                              <img src="~/assets3/images/Home1.png" alt="Image" class="img-fluid rounded" data-aos="fade-up">
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="overlap-imgs">
+                    <img src="~/assets3/images/Home1.png" alt="Image" class="img-fluid rounded" data-aos="fade-up">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
-     
-     
+
 
