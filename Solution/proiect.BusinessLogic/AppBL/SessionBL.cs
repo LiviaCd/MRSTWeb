@@ -17,12 +17,6 @@ namespace proiect.BusinessLogic
      {
           public ULoginResp UserLoginAction(ULoginData data)
           {
-               UDBTable user;
-
-               using (var db = new UserContext())
-               {
-                    user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
-               }
                return RLoginUpService(data);
           }
           public ULoginResp RegisterNewUserAction(URegisterData regData)

@@ -20,9 +20,7 @@ namespace proiect.Controllers
           // GET: Home
           public ActionResult Index()
           {
-               UserData u = new UserData();
-               u.UserName = "Customer";
-
+               UserLogin u = new UserLogin();
                return View(u);
           }
 
@@ -47,21 +45,8 @@ namespace proiect.Controllers
                return View(u);
           }
           public ActionResult Contact()
-          {
-               UserData u = new UserData();
-               u.UserName = "Customer";
-               u.BloodType = new List<BloodTypeModel>
-              {
-                  new BloodTypeModel { Name = "Grupa A, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeA.png" },
-                  new BloodTypeModel { Name = "Grupa B, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeB.png" },
-                  new BloodTypeModel { Name = "Grupa AB, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeAB.png" },
-                  new BloodTypeModel { Name = "Grupa O, Rh(+)", ImageUrl = "/assets3/images/BloodType/typeO.png" },
-                  new BloodTypeModel { Name = "Grupa A, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeA.png" },
-                  new BloodTypeModel { Name = "Grupa B, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeB.png" },
-                  new BloodTypeModel { Name = "Grupa AB, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeAB.png" },
-                  new BloodTypeModel { Name = "Grupa O, Rh(-)", ImageUrl = "/assets3/images/BloodType/typeO.png" },
-              };
-               return View(u);
+          { 
+               return View();
           }
           public ActionResult Pretest()
           {

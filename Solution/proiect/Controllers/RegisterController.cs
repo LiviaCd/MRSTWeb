@@ -25,20 +25,20 @@ namespace proiect.Controllers
         public ActionResult SignIn()
         {
 
-            var regData = new URegisterData
-            {
-                UserName = "andrei",
-                Name = "andreii",
-                Password = "12345678986"
-            };
+            //var regData = new URegisterData
+            //{
+              //  UserName = "andrei",
+               // Name = "andreii",
+                //Password = "12345678986"
+            //};
 
-            ULoginResp resp = _session.RegisterNewUserAction(regData);
+            //ULoginResp resp = _session.RegisterNewUserAction(regData);
 
             return View();
         }
         // GET : Register
-        //[HttpPost]
-        // [ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult SignIn(UserRegister data)
 
