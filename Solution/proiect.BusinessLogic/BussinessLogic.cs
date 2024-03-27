@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.Interfaces;
 using proiect.BusinessLogic;
+using proiect.BusinessLogic.DBModel.Seed;
 
 namespace proiect.BusinessLogic.AppBL
 {
@@ -15,7 +16,6 @@ namespace proiect.BusinessLogic.AppBL
           {
                return new SessionBL();
           }
-
           public IBloodType GetBloodTypeBL()
           {
                return new BloodTypeBL();

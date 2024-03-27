@@ -164,16 +164,16 @@
           @Html.AntiForgeryToken()
           <h3>Sign in</h3>
 
-          <label for="username">Username</label>
-          @Html.TextBoxFor(UserRegister => UserRegister.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "10" })
+          <label for="credential">Credential</label>
+          @Html.TextBoxFor(UserRegister => UserRegister.Credential, new { @class = "form-control", id = "credential", placeholder = "Email or Phone", maxlength = "10" })
           @Html.ValidationMessageFor(UserRegister => UserRegister.Credential, "", new { @class = "text-danger" })
 
           <label for="password">Password</label>
-          @Html.PasswordFor(UserRegister => UserRegister.Password, new { @class = "form-control", placeholder = "Password" })
+          @Html.PasswordFor(UserRegister => UserRegister.Password, new { @class = "form-control", id = "password", placeholder = "Password" })
           @Html.ValidationMessageFor(UserRegister => UserRegister.Password, "", new { @class = "text-danger" })
 
-          <label for="password">Confirm password</label>
-          @Html.PasswordFor(UserRegister => UserRegister.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password" })
+          <label for="confirmpassword">Confirm password</label>
+          @Html.PasswordFor(UserRegister => UserRegister.ConfirmPassword, new { @class = "form-control", id = "confirmpassword", placeholder = "Confirm password" })
           @Html.ValidationMessageFor(UserRegister => UserRegister.ConfirmPassword, "", new { @class = "text-danger" })
 
           <div class="social">

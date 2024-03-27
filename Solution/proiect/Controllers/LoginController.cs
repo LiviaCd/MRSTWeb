@@ -23,14 +23,14 @@ namespace proiect.Controllers
           }
           public ActionResult LogIn()
           {
-               var uLoginData = new ULoginData
-               {
-                    Credential = "user",
-                    Password = "password",
-                    LoginIp = "",
-                    LoginDateTime = DateTime.Now
-               };
-               var test = _session.UserLoginAction(uLoginData);
+               //var uLoginData = new ULoginData
+               //{
+                //    Credential = "liviacoada",
+                //    Password = "liviacoada",
+                //    LoginIp = "",
+                //   LoginDateTime = DateTime.Now
+             // };
+             //  var test = _session.UserLoginAction(uLoginData);
                return View();
           }
 

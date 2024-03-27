@@ -20,8 +20,7 @@ namespace proiect.Controllers
           // GET: Home
           public ActionResult Index()
           {
-               UserLogin u = new UserLogin();
-               return View(u);
+               return View();
           }
 
           public ActionResult UserPage()

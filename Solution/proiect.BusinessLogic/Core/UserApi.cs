@@ -20,25 +20,20 @@ namespace proiect.BusinessLogic.Core
      
      public class UserApi
      {
-
+         
           public ULoginResp RLoginUpService(ULoginData data)
           {
-               //Step 1 - SELECT FROM DB>Users WHERE data.
-               // PASSWORD == data.Password
-
-               //Step 2 - IF object != NULL
-               // CREATE SESSION
-
-               //RETURN SESSION AND STATUS TRUE
-
-               // UDBTable user;
-
-               //               using (var db = new UserContext())
-               //             {
-               //                user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
-               //         }
-               if (data.Credential == "liviacoada" && data.Password == "liviacoada")
-                    return new ULoginResp { Status = true };
+               UDBTable user;
+               using (var db = new UserContext())
+               {
+                    user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
+                    if (user == null) return new ULoginResp { Status = false };
+                    else
+                    {
+                         if (user.Password == data.Password)
+                              return new ULoginResp { Status = true };
+                    }
+               }
                return new ULoginResp { Status = false };
           }
           public ULoginResp RRegisterNewUserAction(URegisterData data)
@@ -46,7 +41,7 @@ namespace proiect.BusinessLogic.Core
                var newUser = new UDBTable
                {
                     UserName = data.UserName,
-                    Password = data.Password, 
+                    Password = data.Password,
                     LasIp = "",
                     LastLogin = DateTime.Now,
                     Level = URole.User
@@ -54,10 +49,18 @@ namespace proiect.BusinessLogic.Core
 
                using (var db = new UserContext())
                {
-                    db.Users.Add(newUser);
+                    var existingUser = db.Users.FirstOrDefault(u => u.UserName == newUser.UserName);
+                    if (existingUser == null)
+                    {
+                         db.Users.Add(newUser);
+                        // db.SaveChanges();
+                         //return new ULoginResp { Status = true, Message = "User registered successfully" };
+                    }
+                   
+                   
+                    
                     try
                     { 
-
                          db.SaveChanges();
                          return new ULoginResp { Status = true, Message = "User registered successfully" };
                     }
@@ -74,7 +77,7 @@ namespace proiect.BusinessLogic.Core
                               }
                          }
                     }
-
+                    
                     return new ULoginResp { Status = false, Message = "Error" };
                }
           }

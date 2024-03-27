@@ -52,7 +52,8 @@ namespace proiect.Controllers
                     ConfirmPassword = data.ConfirmPassword,
                     UserName = data.Credential,
                     LoginIp = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now
+                    LoginDateTime = DateTime.Now,
+                
                 };
                 ULoginResp resp = _session.RegisterNewUserAction(uData);
                 if (resp.Status)
