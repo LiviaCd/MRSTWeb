@@ -17,10 +17,8 @@ using System.Runtime.Remoting.Contexts;
 
 namespace proiect.BusinessLogic.Core
 {
-     
      public class UserApi
      {
-         
           public ULoginResp RLoginUpService(ULoginData data)
           {
                UDBTable user;
@@ -38,51 +36,32 @@ namespace proiect.BusinessLogic.Core
           }
           public ULoginResp RRegisterNewUserAction(URegisterData data)
           {
-               var newUser = new UDBTable
-               {
-                    UserName = data.UserName,
-                    Password = data.Password,
-                    LasIp = "",
-                    LastLogin = DateTime.Now,
-                    Level = URole.User
-               };
-
                using (var db = new UserContext())
                {
-                    var existingUser = db.Users.FirstOrDefault(u => u.UserName == newUser.UserName);
-                    if (existingUser == null)
-                    {
-                         db.Users.Add(newUser);
-                        // db.SaveChanges();
-                         //return new ULoginResp { Status = true, Message = "User registered successfully" };
-                    }
-                   
-                   
-                    
-                    try
-                    { 
-                         db.SaveChanges();
-                         return new ULoginResp { Status = true, Message = "User registered successfully" };
-                    }
-                    catch (DbEntityValidationException e)
-                    {
-                         foreach (var eve in e.EntityValidationErrors)
-                         {
-                              Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                  eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                              foreach (var ve in eve.ValidationErrors)
-                              {
-                                   Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                       ve.PropertyName, ve.ErrorMessage);
-                              }
-                         }
-                    }
-                    
-                    return new ULoginResp { Status = false, Message = "Error" };
-               }
-          }
+                    bool existingUser = db.Users.Any(u => u.UserName == data.Credential);
 
-         
+                    if (existingUser)
+                    {
+                         return new ULoginResp { Status = false, Message = "A user exist" };
+                    }
+                         var newUser = new UDBTable
+                         {
+                              UserName = data.Credential,
+                              Email = data.Email,
+                              Password = data.Password,
+                              LasIp = "",
+                              LastLogin = DateTime.Now,
+                              Level = URole.User
+                         };
+                    if (data.Password != data.ConfirmPassword)
+                         return new ULoginResp { Status = false, Message = "Wrong password" };
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
+                    return new ULoginResp { Status = true, Message = "User registered successfully" };
+               }
+               //return new ULoginResp { Status = false, Message = "Error" };
+          }
+     
           public BloodTypeDetail GetBloodTypeUser (int id)
           {
                return new BloodTypeDetail();

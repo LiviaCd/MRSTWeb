@@ -47,10 +47,10 @@ namespace proiect.Controllers
             {
                 URegisterData uData = new URegisterData
                 {
-                    Name = data.Name,
+                    Credential = data.Credential,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
-                    UserName = data.Credential,
+                    Email = data.Email,
                     LoginIp = Request.UserHostAddress,
                     LoginDateTime = DateTime.Now,
                 
