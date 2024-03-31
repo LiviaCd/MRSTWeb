@@ -16,6 +16,6 @@ namespace proiect.Domain.Entities
         public string LoginIp { get; set; }
         public DateTime LoginDateTime { get; set; }
         public string Email { get; set; }
-          public URole Level { get; set; }
+        public URole Level { get; set; }
      }
 }

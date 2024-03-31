@@ -29,7 +29,13 @@ namespace proiect.BusinessLogic.Core
                     else
                     {
                          if (user.Password == data.Password)
-                              return new ULoginResp { Status = true };
+                         {
+                              if (user.Level == URole.Admin)
+                                   return new ULoginResp { Status = true, Message = "Admin" };
+                              
+                              return new ULoginResp { Status = true};
+                         }
+                              
                     }
                }
                return new ULoginResp { Status = false };

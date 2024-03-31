@@ -16,10 +16,6 @@ namespace proiect.BusinessLogic.AppBL
           {
                return new SessionBL();
           }
-          public IBloodType GetBloodTypeBL()
-          {
-               return new BloodTypeBL();
-          }
 
      }
 }

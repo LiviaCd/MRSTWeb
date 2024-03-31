@@ -9,9 +9,8 @@ namespace proiect.Domain.Enums
 {
      public enum URole
      {
-          None,
-          User,
-          Doctor,
-          Admin
+          None = 0,
+          User = 1,
+          Admin = 2
      }
 }

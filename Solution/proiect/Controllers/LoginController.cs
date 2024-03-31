@@ -3,6 +3,7 @@ using proiect.BusinessLogic.AppBL;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
+using proiect.Domain.Enums;
 using proiect.Models.User;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace proiect.Controllers
      public class LoginController : Controller
      {
           private readonly ISession _session;
+          
           // GET: Register
           public LoginController()
           {
@@ -23,14 +25,6 @@ namespace proiect.Controllers
           }
           public ActionResult LogIn()
           {
-               //var uLoginData = new ULoginData
-               //{
-                //    Credential = "liviacoada",
-                //    Password = "liviacoada",
-                //    LoginIp = "",
-                //   LoginDateTime = DateTime.Now
-             // };
-             //  var test = _session.UserLoginAction(uLoginData);
                return View();
           }
 
@@ -47,13 +41,16 @@ namespace proiect.Controllers
                          Credential = data.Credential,
                          Password = data.Password,
                          LoginIp = Request.UserHostAddress,
-                         LoginDateTime = DateTime.Now
+                         LoginDateTime = DateTime.Now,
                     };
                     ULoginResp resp = _session.UserLoginAction(uData);
                     if (resp.Status)
                     {
-                         //ADD COOKIE
+                         if (resp.Message == "Admin")
+                         //ADD COOKI
+                             return RedirectToAction("About", "Home");
 
+                         
                          return RedirectToAction("Index", "Home");
                     }
                     else

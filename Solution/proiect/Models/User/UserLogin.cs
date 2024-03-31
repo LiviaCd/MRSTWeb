@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proiect.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace proiect.Models.User
      {
           public string Credential { get; set; }
           public string Password { get; set; }
+          
 
      }
 }
