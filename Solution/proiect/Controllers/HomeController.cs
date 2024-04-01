@@ -22,7 +22,14 @@ namespace proiect.Controllers
           {
                return View();
           }
-
+          public ActionResult IndexAdmin()
+          {
+               return View();
+          }
+          public ActionResult Users()
+          {
+               return View();
+          }
           public ActionResult UserPage()
           {
                return View();
@@ -39,9 +46,7 @@ namespace proiect.Controllers
           }
           public ActionResult News()
           {
-               UserData u = new UserData();
-               u.UserName = "Customer";
-               return View(u);
+               return View();
           }
           public ActionResult Contact()
           { 

@@ -1,0 +1,36 @@
+﻿@using System.Web.Optimization;
+
+@model proiect.Models.User.UserLogin
+<div class="container">
+    <div class="menu-bg-wrap">
+        <div class="site-navigation">
+             <div class="row g-0 align-items-center">
+                  <div class="col-2 text-center">
+                       <a href="@Url.Action("Index", "Home")" class="logo m-0 text-white">Donator.md</a>
+                  </div>
+                  <div class="col-8 text-center">
+                       <ul class="js-clone-nav d-none d-lg-inline-block text-center site-menu mx-auto">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("News", "Home")">News</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li><a href="@Url.Action("Users", "Home")">Users</a></li>
+                            <li><a href="@Url.Action("LogIn", "Login")">Log In</a></li>
+                            <li><a href="@Url.Action("SignIn", "Register")">Sign Up</a></li>
+                       </ul>
+                  </div>
+       
+     <div class="col-2 text-end">
+          <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+               <span></span>
+          </a>
+          
+                  <a href="#" class="call-us d-flex align-items-center justify-content-center">
+                       <span class="icon-phone"></span>
+                       <span class="col-8 text-center">@Html.DisplayFor(UserLogin => UserLogin.Credential)</span>
+                  </a>
+                   </div> 
+             </div>
+        </div>
+    </div>
+</div>

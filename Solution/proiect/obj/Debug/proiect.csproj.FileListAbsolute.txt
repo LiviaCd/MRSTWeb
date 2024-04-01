@@ -304,3 +304,5 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.xml
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\EntityFramework.SqlServer.xml
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.pdb
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.AspNet.Identity.Core.xml

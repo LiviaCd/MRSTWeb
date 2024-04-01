@@ -46,11 +46,10 @@ namespace proiect.Controllers
                     ULoginResp resp = _session.UserLoginAction(uData);
                     if (resp.Status)
                     {
+                         //ADD COOKIES
                          if (resp.Message == "Admin")
-                         //ADD COOKI
-                             return RedirectToAction("About", "Home");
+                             return RedirectToAction("IndexAdmin", "Home");
 
-                         
                          return RedirectToAction("Index", "Home");
                     }
                     else
