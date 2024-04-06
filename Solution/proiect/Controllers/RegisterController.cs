@@ -4,12 +4,14 @@ using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
+using proiect.Helpers;
 using proiect.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace proiect.Controllers
 {
@@ -24,15 +26,6 @@ namespace proiect.Controllers
         }
         public ActionResult SignIn()
         {
-
-            //var regData = new URegisterData
-            //{
-              //  UserName = "andrei",
-               // Name = "andreii",
-                //Password = "12345678986"
-            //};
-
-            //ULoginResp resp = _session.RegisterNewUserAction(regData);
 
             return View();
         }
@@ -58,9 +51,18 @@ namespace proiect.Controllers
                 ULoginResp resp = _session.RegisterNewUserAction(uData);
                 if (resp.Status)
                 {
-                    //ADD COOKIE
+                         ULoginData user = new ULoginData
+                         {
+                              Credential = data.Credential,
+                              Password = data.Password
+                         };
 
-                    return RedirectToAction("Index", "Home");
+                         _session.UserLoginAction(user);
+
+                         HttpCookie cookie = _session.GenCookie(user.Credential);
+                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                         return RedirectToAction("Index", "Home");
                 }
                 else
                 {

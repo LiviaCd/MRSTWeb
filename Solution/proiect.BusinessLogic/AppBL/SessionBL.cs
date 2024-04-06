@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.DBModel.Seed;
 using proiect.BusinessLogic.Interfaces;
@@ -24,7 +25,14 @@ namespace proiect.BusinessLogic
           {
                return RRegisterNewUserAction(regData);
           }
+          public HttpCookie GenCookie(string loginCredential)
+          {
+               return Cookie(loginCredential);
+          }
 
-
+          public UserMinimal GetUserByCookie(string apiCookieValue)
+          {
+               return UserCookie(apiCookieValue);
+          }
      }
 }

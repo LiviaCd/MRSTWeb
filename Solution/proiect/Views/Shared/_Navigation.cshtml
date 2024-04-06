@@ -1,6 +1,6 @@
 ﻿@using System.Web.Optimization;
 
-@model proiect.Models.User.UserLogin
+@model proiect.Models.UserData
 <div class="container">
     <div class="menu-bg-wrap">
         <div class="site-navigation">
@@ -25,7 +25,7 @@
 
                     <a href="#" class="call-us d-flex align-items-center justify-content-center">
                          <span class="icon-phone"></span>
-                         <span class="col-8 text-center">@Html.DisplayFor(UserLogin => UserLogin.Credential)</span>
+                         <span class="col-8 text-center">@Html.DisplayFor(UserLogin => UserLogin.UserName)</span>
                     </a>
                 </div>
             </div>

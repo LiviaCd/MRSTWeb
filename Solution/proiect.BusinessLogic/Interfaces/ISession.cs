@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using proiect.Domain.Entities;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
@@ -14,5 +15,7 @@ namespace proiect.BusinessLogic.Interfaces
      {
           ULoginResp UserLoginAction(ULoginData data);
           ULoginResp RegisterNewUserAction(URegisterData regData);
+          HttpCookie GenCookie(string loginCredential);
+          UserMinimal GetUserByCookie(string value);
      }
 }

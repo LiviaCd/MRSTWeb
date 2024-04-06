@@ -30,3 +30,8 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\E
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.xml
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\System.ValueTuple.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\System.ValueTuple.xml

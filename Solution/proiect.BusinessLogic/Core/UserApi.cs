@@ -13,6 +13,13 @@ using System.Reflection;
 using proiect.Domain.Entities;
 using System.Data.Entity.Validation;
 using System.Runtime.Remoting.Contexts;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Management;
+using System.Data.Entity;
+using proiect.Helpers;
+using proiect.Domain.Entities.Session;
+using System.Data;
+using AutoMapper;
 
 
 namespace proiect.BusinessLogic.Core
@@ -22,22 +29,30 @@ namespace proiect.BusinessLogic.Core
           public ULoginResp RLoginUpService(ULoginData data)
           {
                UDBTable user;
-               using (var db = new UserContext())
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Credential))
                {
-                    user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
-                    if (user == null) return new ULoginResp { Status = false };
-                    else
+                    var pass = LoginHelper.HashGen(data.Password);
+                    using (var db = new UserContext())
                     {
-                         if (user.Password == data.Password)
-                         {
-                              if (user.Level == URole.Admin)
-                                   return new ULoginResp { Status = true, Message = "Admin" };
-                              
-                              return new ULoginResp { Status = true};
-                         }
-                              
+                         user = db.Users.FirstOrDefault(us => us.UserName == data.Credential && us.Password == data.Password);
                     }
-               }
+                         if (user == null) 
+                         return new ULoginResp { Status = false, Message = "The Username or Password is Incorect" };
+                         //else
+                         //return new ULoginResp { Status = true };
+
+                    using (var todo = new UserContext())
+                    {
+                         user.LasIp = data.LoginIp;
+                         user.LastLogin = data.LoginDateTime;
+                         todo.Entry(user).State = EntityState.Modified;
+                         todo.SaveChanges();
+                    }
+                       if (user.Level == URole.Admin)
+                       return new ULoginResp { Status = true, Message = "Admin" };
+
+                    }
                return new ULoginResp { Status = false };
           }
           public ULoginResp RRegisterNewUserAction(URegisterData data)
@@ -73,5 +88,74 @@ namespace proiect.BusinessLogic.Core
                return new BloodTypeDetail();
           }
 
+          public System.Web.HttpCookie Cookie(string credential)
+          {
+               var apiCookie = new System.Web.HttpCookie("X-KEY")
+               {
+                    Value = CookieGenerator.Create(credential)
+               };
+               using (var db = new SessionContext())
+               {
+                    Session curent;
+                    var validate = new EmailAddressAttribute();
+                    if (validate.IsValid(credential))
+                    {
+                         curent = (from e in db.Sessions where e.UserName == credential select e).FirstOrDefault();
+                    }
+                    else
+                    {
+                         curent = (from e in db.Sessions where e.UserName == credential select e).FirstOrDefault();
+                    }
+
+                    if (curent != null) 
+                    {
+                         curent.CookieString = apiCookie.Value;
+                         curent.ExpireTime = DateTime.Now.AddMinutes(60);
+                         using (var todo = new SessionContext())
+                         {
+                              todo.Entry(curent).State = EntityState.Modified;
+                              todo.SaveChanges();
+                         }
+                    }
+                    else
+                    {
+                         db.Sessions.Add(new Session { UserName = credential,
+                         CookieString = apiCookie.Value,
+                         ExpireTime = DateTime.Now.AddMinutes(60) });
+                         db.SaveChanges();
+                    }
+               }
+               return apiCookie;
+          }
+          public UserMinimal UserCookie(string cookie)
+          {
+               Session session;
+               UDBTable curentUser;
+
+               using (var db = new SessionContext())
+               {
+                    session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+               }
+
+               if (session == null) return null;
+               using (var db = new UserContext())
+               {
+                    var validate = new EmailAddressAttribute();
+                    if (validate.IsValid(session.UserName))
+                    {
+                         curentUser = db.Users.FirstOrDefault(u => u.Email == session.UserName);
+                    }
+                    else
+                    {
+                         curentUser = db.Users.FirstOrDefault(u => u.UserName == session.UserName);
+                    }
+               }
+
+               if (curentUser == null) return null;
+               Mapper.Initialize(cfg => cfg.CreateMap<UDBTable, UserMinimal>());
+               var userminimal = Mapper.Map<UserMinimal>(curentUser);
+
+               return userminimal;
+          }
      }
 }

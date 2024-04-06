@@ -306,3 +306,10 @@ C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.S
 C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect\bin\Microsoft.SqlServer.Server.xml
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.Helpers.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\proiect.Helpers.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\AutoMapper.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.ValueTuple.dll
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\AutoMapper.pdb
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\AutoMapper.xml
+C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect\bin\System.ValueTuple.xml

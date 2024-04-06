@@ -3,6 +3,7 @@ using proiect.BusinessLogic;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
+using proiect.Extensions;
 using proiect.Models;
 using proiect.Models.User;
 using System;
@@ -15,13 +16,24 @@ using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext
 
 namespace proiect.Controllers
 {
-     public class HomeController : Controller
+     public class HomeController : BaseController
      {
           // GET: Home
           public ActionResult Index()
           {
+               SessionStatus();
+               if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+               {
+                    return RedirectToAction("LogIn", "Login");
+               }
+               var user = System.Web.HttpContext.Current.GetMySessionObject();
+               UserData u = new UserData
+               {
+                   UserName = user.Username
+               };
                return View();
           }
+          
           public ActionResult IndexAdmin()
           {
                return View();
