@@ -28,33 +28,46 @@ namespace proiect.BusinessLogic.Core
      {
           public ULoginResp RLoginUpService(ULoginData data)
           {
-               UDBTable user;
                var validate = new EmailAddressAttribute();
-               if (validate.IsValid(data.Credential))
+               if (!validate.IsValid(data.Credential))
                {
-                    var pass = LoginHelper.HashGen(data.Password);
-                    using (var db = new UserContext())
-                    {
-                         user = db.Users.FirstOrDefault(us => us.UserName == data.Credential && us.Password == data.Password);
-                    }
-                         if (user == null) 
-                         return new ULoginResp { Status = false, Message = "The Username or Password is Incorect" };
-                         //else
-                         //return new ULoginResp { Status = true };
+                    return new ULoginResp { Status = false, Message = "Invalid Email Address" };
+               }
 
-                    using (var todo = new UserContext())
-                    {
-                         user.LasIp = data.LoginIp;
-                         user.LastLogin = data.LoginDateTime;
-                         todo.Entry(user).State = EntityState.Modified;
-                         todo.SaveChanges();
-                    }
-                       if (user.Level == URole.Admin)
-                       return new ULoginResp { Status = true, Message = "Admin" };
+               UDBTable user;
+               using (var db = new UserContext())
+               {
+                    // Find user by username/email. Do not hash password here.
+                    user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
 
+                    // If user is found, verify the password.
+                    if (user != null)
+                    {
+                         // Assuming HashGen can take a salt and you store salt with each user.
+                         var hashedInputPassword = LoginHelper.HashGen(data.Password);
+                         if (user.Password == hashedInputPassword)
+                         {
+                              // Update user's last login details
+                              user.LasIp = data.LoginIp;
+                              user.LastLogin = data.LoginDateTime;
+                              db.Entry(user).State = EntityState.Modified;
+                              db.SaveChanges();
+
+                              // Authentication successful
+                              return new ULoginResp
+                              {
+                                   Status = true,
+                                   Message = user.Level == URole.Admin ? "Admin" : "User"
+                              };
+                         }
                     }
-               return new ULoginResp { Status = false };
+               }
+
+               // Authentication failed
+               return new ULoginResp { Status = false, Message = "The Username or Password is Incorrect" };
           }
+
+
           public ULoginResp RRegisterNewUserAction(URegisterData data)
           {
                using (var db = new UserContext())
@@ -69,7 +82,7 @@ namespace proiect.BusinessLogic.Core
                          {
                               UserName = data.Credential,
                               Email = data.Email,
-                              Password = data.Password,
+                              Password = LoginHelper.HashGen(data.Password),
                               LasIp = "",
                               LastLogin = DateTime.Now,
                               Level = URole.User

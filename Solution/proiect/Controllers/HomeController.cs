@@ -31,12 +31,22 @@ namespace proiect.Controllers
                {
                    UserName = user.Username
                };
-               return View();
+               return View(u);
           }
           
           public ActionResult IndexAdmin()
           {
-               return View();
+               SessionStatus();
+              // if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+              // {
+               //     return RedirectToAction("LogIn", "Login");
+              // }
+               var user = System.Web.HttpContext.Current.GetMySessionObject();
+               UserData u = new UserData
+               {
+                    UserName = user.Username
+               };
+               return View(u);
           }
           public ActionResult Users()
           {

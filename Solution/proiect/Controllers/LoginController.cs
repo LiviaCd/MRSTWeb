@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 
 namespace proiect.Controllers
@@ -36,43 +37,35 @@ namespace proiect.Controllers
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
-
           {
                if (ModelState.IsValid)
                {
-                    Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
-                    var dataUser = Mapper.Map<ULoginData>(data);
-
-                    dataUser.LoginIp = Request.UserHostAddress;
-                    dataUser.LoginDateTime = DateTime.Now;
-
-                    ULoginData uData = new ULoginData
+                    var dataUser = new ULoginData
                     {
                          Credential = data.Credential,
-                         Password = data.Password,
+                         Password = data.Password, // Do not hash here; the service will take care of it.
                          LoginIp = Request.UserHostAddress,
                          LoginDateTime = DateTime.Now,
                     };
-                    ULoginResp resp = _session.UserLoginAction(uData);
+
+                    ULoginResp resp = _session.UserLoginAction(dataUser);
                     if (resp.Status)
                     {
-                         HttpCookie cookie = _session.GenCookie(uData.Credential);
-                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                         if (resp.Message == "Admin")
-                             return RedirectToAction("IndexAdmin", "Home");
-
-                         return RedirectToAction("Index", "Home");
+                         FormsAuthentication.SetAuthCookie(dataUser.Credential, false);
+                         Session["UserName"] = data.Credential;
+                         return RedirectToAction(resp.Message == "Admin" ? "IndexAdmin" : "Index", "Home");
                     }
                     else
                     {
-                         ModelState.AddModelError("", resp.ActionStatusMsg);
-                         return View();
+                         ModelState.AddModelError("", resp.Message);
+                         return View(data);
                     }
                }
-               return View();
+               return View(data);
           }
 
-          
+
+
 
      }
 }
