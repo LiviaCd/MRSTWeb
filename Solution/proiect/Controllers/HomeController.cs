@@ -22,25 +22,21 @@ namespace proiect.Controllers
           // GET: Home
           public ActionResult Index()
           {
-               SessionStatus();
+               string role = SessionStatus();
                if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
                {
-                    return RedirectToAction("LogIn", "Login");
+                    return View (); 
                }
-               return View();
+               else
+               {
+                    if (role == "Admin")
+                       return RedirectToAction("IndexAdmin", "Admin");
+                    else
+                       return RedirectToAction("IndexUserLogin", "UserLogin");
+               }
           }
           
           public ActionResult IndexAdmin()
-          {
-              // SessionStatus();
-              // if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-              // {
-               //     return RedirectToAction("LogIn", "Login");
-              // }
-               
-               return View();
-          }
-          public ActionResult Users()
           {
                return View();
           }
@@ -53,21 +49,29 @@ namespace proiect.Controllers
           {
                return View();
           }
-          [AdminMod]
+          public ActionResult IndexUserLogin()
+          {
+               return View();
+          }
+          //[AdminMod]
           public ActionResult About()
           {
+               string role = SessionStatus();
                return View();
           }
           public ActionResult News()
           {
+               string role = SessionStatus();
                return View();
           }
           public ActionResult Contact()
-          { 
+          {
+               string role = SessionStatus();
                return View();
           }
           public ActionResult Pretest()
           {
+               string role = SessionStatus();
                return View();
           }
           public ActionResult BloodType()

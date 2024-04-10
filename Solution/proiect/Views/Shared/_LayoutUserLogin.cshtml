@@ -1,0 +1,32 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+<html>
+<head>
+
+     @Styles.Render("~/bundles/mainPage.css")
+</head>
+<body>
+
+     <div class="site-mobile-menu site-navbar-target">
+
+          @Html.Partial("_Header")
+     </div>
+
+     <nav class="site-nav">
+          @Html.Partial("_NavigationUserLogin")
+
+     </nav>
+
+     <div class="main-content">
+          @RenderBody()
+     </div>
+
+     <div class="site-footer">
+
+          @Html.Partial("_Footer")
+
+     </div>
+     @Scripts.Render("~/bundles/mainPageJava/js")
+     @RenderSection("scripts", required: false)
+</body>
+</html>

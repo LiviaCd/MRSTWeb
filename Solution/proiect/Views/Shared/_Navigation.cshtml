@@ -16,7 +16,6 @@
                           <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                           <li><a href="@Url.Action("LogIn", "Login")">Log In</a></li>
                           <li><a href="@Url.Action("SignIn", "Register")">Sign Up</a></li>
-                          <li><a href="@Url.Action("LogOut", "Login")">Log Out</a></li>
                      </ul>
                 </div>
                 <div class="col-2 text-end">
@@ -25,8 +24,7 @@
                     </a>
 
                     <a href="#" class="call-us d-flex align-items-center justify-content-center">
-                         <span class="icon-phone"></span>
-                         <span class="col-8 text-center">@HttpContext.Current.Session["UserName"]</span>
+                         
                     </a>
                 </div>
             </div>

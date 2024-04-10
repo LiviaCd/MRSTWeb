@@ -11,6 +11,7 @@ namespace proiect.Domain.Enums
      {
           None = 0,
           User = 1,
-          Admin = 2
+          Doctor = 2,
+          Admin = 3
      }
 }

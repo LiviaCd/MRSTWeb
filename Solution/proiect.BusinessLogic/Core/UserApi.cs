@@ -46,13 +46,17 @@ namespace proiect.BusinessLogic.Core
                {
                     using (var todo = new UserContext())
                     {
+                        
                          user.LasIp = data.LoginIp;
                          user.LastLogin = data.LoginDateTime;
                          todo.Entry(user).State = EntityState.Modified;
-                         todo.SaveChanges();
+                         //todo.SaveChanges();
                     }
                     if (user.Level == URole.Admin)
                          return new ULoginResp { Status = true, Message = "Admin" };
+                    else
+                         if (user.Level == URole.Doctor)
+                         return new ULoginResp { Status = true, Message = "Doctor" };
                     else
                          return new ULoginResp { Status = true, Message = "User" };
                }
@@ -79,9 +83,9 @@ namespace proiect.BusinessLogic.Core
                               UserName = data.Credential,
                               Email = data.Email,
                               Password = LoginHelper.HashGen(data.Password),
-                              LasIp = "",
+                              LasIp = "0.0.0.0",
                               LastLogin = DateTime.Now,
-                              Level = URole.User
+                              Level = URole.Admin
                          };
                     if (data.Password != data.ConfirmPassword)
                          return new ULoginResp { Status = false, Message = "Wrong password" };

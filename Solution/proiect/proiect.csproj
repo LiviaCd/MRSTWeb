@@ -2461,9 +2461,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\AdminModAttribute.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -2719,11 +2721,22 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\ViewBloodType\TypePage.cshtml" />
-    <Content Include="Views\Home\IndexAdmin.cshtml" />
+    <Content Include="Views\Admin\IndexAdmin.cshtml" />
     <Content Include="Views\Shared\_NavigationAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Home\Users.cshtml" />
     <Content Include="Views\Login\LogOut.cshtml" />
+    <Content Include="Views\Admin\AboutAdmin.cshtml" />
+    <Content Include="Views\Admin\ContactAdmin.cshtml" />
+    <Content Include="Views\Admin\NewsAdmin.cshtml" />
+    <Content Include="Views\Admin\PretestAdmin.cshtml" />
+    <Content Include="Views\Admin\UsersAdmin.cshtml" />
+    <Content Include="Views\Shared\_NavigationUserLogin.cshtml" />
+    <Content Include="Views\Shared\_LayoutUserLogin.cshtml" />
+    <Content Include="Views\UserLogin\AboutUserLogin.cshtml" />
+    <Content Include="Views\UserLogin\ContactUserLogin.cshtml" />
+    <Content Include="Views\UserLogin\IndexUserLogin.cshtml" />
+    <Content Include="Views\UserLogin\NewsUserLogin.cshtml" />
+    <Content Include="Views\UserLogin\PretestUserLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
