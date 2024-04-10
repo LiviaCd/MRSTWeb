@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Ajax.Utilities;
 using proiect.BusinessLogic;
-using proiect.BusinessLogic.AppBL;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
@@ -32,28 +31,42 @@ namespace proiect.Controllers
           {
                return View();
           }
+          public ActionResult LogOut()
+          {
+               Session.Abandon();
+               FormsAuthentication.SignOut();
+               if (Response.Cookies["X-KEY"] != null)
+               {
+                    var cookie = new HttpCookie("X-KEY")
+                    {
+                         Expires = DateTime.Now.AddDays(-1),
+                         HttpOnly = true 
+                    };
+                    Response.Cookies.Add(cookie);
+               }
+               return RedirectToAction("LogIn", "Login");
+          }
 
-          // GET : Login
+
+
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
           {
                if (ModelState.IsValid)
                {
-                    var dataUser = new ULoginData
-                    {
-                         Credential = data.Credential,
-                         Password = data.Password, // Do not hash here; the service will take care of it.
-                         LoginIp = Request.UserHostAddress,
-                         LoginDateTime = DateTime.Now,
-                    };
+                    var dataUser = Mapper.Map<ULoginData>(data);
+
+                    dataUser.LoginIp = Request.UserHostAddress;
+                    dataUser.LoginDateTime = DateTime.Now;
 
                     ULoginResp resp = _session.UserLoginAction(dataUser);
                     if (resp.Status)
                     {
-                         FormsAuthentication.SetAuthCookie(dataUser.Credential, false);
+                         HttpCookie cookie = _session.GenCookie(data.Credential);
+                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                          Session["UserName"] = data.Credential;
-                         return RedirectToAction(resp.Message == "Admin" ? "IndexAdmin" : "Index", "Home");
+                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {

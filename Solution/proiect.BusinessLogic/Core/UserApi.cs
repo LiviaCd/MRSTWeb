@@ -20,6 +20,7 @@ using proiect.Helpers;
 using proiect.Domain.Entities.Session;
 using System.Data;
 using AutoMapper;
+using System.Web;
 
 
 namespace proiect.BusinessLogic.Core
@@ -28,45 +29,40 @@ namespace proiect.BusinessLogic.Core
      {
           public ULoginResp RLoginUpService(ULoginData data)
           {
-               var validate = new EmailAddressAttribute();
-               if (!validate.IsValid(data.Credential))
-               {
-                    return new ULoginResp { Status = false, Message = "Invalid Email Address" };
-               }
-
                UDBTable user;
-               using (var db = new UserContext())
-               {
-                    // Find user by username/email. Do not hash password here.
-                    user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
-
-                    // If user is found, verify the password.
-                    if (user != null)
+              // var validate = new EmailAddressAttribute();
+               //if (validate.IsValid(data.Credential))
+               //{
+                    
+                    using (var db = new UserContext())
                     {
-                         // Assuming HashGen can take a salt and you store salt with each user.
-                         var hashedInputPassword = LoginHelper.HashGen(data.Password);
-                         if (user.Password == hashedInputPassword)
-                         {
-                              // Update user's last login details
-                              user.LasIp = data.LoginIp;
-                              user.LastLogin = data.LoginDateTime;
-                              db.Entry(user).State = EntityState.Modified;
-                              db.SaveChanges();
-
-                              // Authentication successful
-                              return new ULoginResp
-                              {
-                                   Status = true,
-                                   Message = user.Level == URole.Admin ? "Admin" : "User"
-                              };
-                         }
+                         user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
                     }
-               }
+                    if (user == null)
+                         return new ULoginResp { Status = false, Message = "The Username or Password is Incorect" };
 
-               // Authentication failed
-               return new ULoginResp { Status = false, Message = "The Username or Password is Incorrect" };
+               var pass = LoginHelper.HashGen(data.Password);
+               if (user != null && user.Password == pass)
+               {
+                    using (var todo = new UserContext())
+                    {
+                         user.LasIp = data.LoginIp;
+                         user.LastLogin = data.LoginDateTime;
+                         todo.Entry(user).State = EntityState.Modified;
+                         todo.SaveChanges();
+                    }
+                    if (user.Level == URole.Admin)
+                         return new ULoginResp { Status = true, Message = "Admin" };
+                    else
+                         return new ULoginResp { Status = true, Message = "User" };
+               }
+               
+
+              // }
+               return new ULoginResp { Status = false };
           }
 
+               
 
           public ULoginResp RRegisterNewUserAction(URegisterData data)
           {
@@ -93,7 +89,6 @@ namespace proiect.BusinessLogic.Core
                     db.SaveChanges();
                     return new ULoginResp { Status = true, Message = "User registered successfully" };
                }
-               //return new ULoginResp { Status = false, Message = "Error" };
           }
      
           public BloodTypeDetail GetBloodTypeUser (int id)
@@ -163,12 +158,11 @@ namespace proiect.BusinessLogic.Core
                          curentUser = db.Users.FirstOrDefault(u => u.UserName == session.UserName);
                     }
                }
-
+               
                if (curentUser == null) return null;
-               Mapper.Initialize(cfg => cfg.CreateMap<UDBTable, UserMinimal>());
-               var userminimal = Mapper.Map<UserMinimal>(curentUser);
+               var userMinimal = Mapper.Map<UserMinimal>(curentUser);
 
-               return userminimal;
+               return userMinimal;
           }
      }
 }

@@ -1,4 +1,7 @@
-﻿using proiect.App_Start;
+﻿using AutoMapper;
+using proiect.App_Start;
+using proiect.Domain.Entities.User;
+using proiect.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,10 @@ namespace proiect
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-        }
+               Mapper.Initialize(cfg => {
+                    cfg.CreateMap<UDBTable, UserMinimal>();
+                    cfg.CreateMap<UserLogin, ULoginData>();
+               });
+          }
     }
 }

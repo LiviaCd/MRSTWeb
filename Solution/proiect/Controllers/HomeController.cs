@@ -1,4 +1,5 @@
 ﻿using Antlr.Runtime.Tree;
+using proiect.Attributes;
 using proiect.BusinessLogic;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Responce;
@@ -26,27 +27,18 @@ namespace proiect.Controllers
                {
                     return RedirectToAction("LogIn", "Login");
                }
-               var user = System.Web.HttpContext.Current.GetMySessionObject();
-               UserData u = new UserData
-               {
-                   UserName = user.Username
-               };
-               return View(u);
+               return View();
           }
           
           public ActionResult IndexAdmin()
           {
-               SessionStatus();
+              // SessionStatus();
               // if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
               // {
                //     return RedirectToAction("LogIn", "Login");
               // }
-               var user = System.Web.HttpContext.Current.GetMySessionObject();
-               UserData u = new UserData
-               {
-                    UserName = user.Username
-               };
-               return View(u);
+               
+               return View();
           }
           public ActionResult Users()
           {
@@ -61,7 +53,7 @@ namespace proiect.Controllers
           {
                return View();
           }
-
+          [AdminMod]
           public ActionResult About()
           {
                return View();

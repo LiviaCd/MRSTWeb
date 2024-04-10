@@ -8,7 +8,7 @@ using proiect.BusinessLogic.Interfaces;
 using proiect.BusinessLogic;
 using proiect.BusinessLogic.DBModel.Seed;
 
-namespace proiect.BusinessLogic.AppBL
+namespace proiect.BusinessLogic
 {
      public class BussinessLogic
      {
