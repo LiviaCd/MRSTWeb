@@ -1,13 +1,9 @@
 ﻿using proiect.BusinessLogic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using proiect.Domain.Enums;
+using proiect.Extensions;
 using System.Web;
 using System.Web.Mvc;
-using proiect.BusinessLogic;
-using proiect.Extensions;
 using System.Web.Routing;
-using proiect.Domain.Enums;
 
 namespace proiect.Attributes
 {
@@ -20,24 +16,6 @@ namespace proiect.Attributes
                var businessLogic = new BusinessLogic.BussinessLogic();
                _sessionBusinessLogic = businessLogic.GetSessionBL();
           }
-          /*
-          public override void OnActionExecuting(ActionExecutingContext filterContext)
-          {
-               var apiCookie = HttpContext.Current.Request.Cookies["X-KEY"];
-               if (apiCookie != null) 
-               {
-                    var profile = _sessionBusinessLogic.GetUserByCookie(apiCookie.Value);
-                    if (profile != null && profile.Level != URole.Admin) 
-                    {
-                         HttpContext.Current.SetMySessionObject(profile);
-                    }
-                    else
-                    {
-                         filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Error", action = "Error404" }));
-                    }
-               }
-          }
-          */
           public override void OnActionExecuting(ActionExecutingContext filterContext)
           {
                var apiCookie = HttpContext.Current.Request.Cookies["X-KEY"];

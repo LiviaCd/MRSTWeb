@@ -1,6 +1,6 @@
 ﻿@using System.Web.Optimization;
 
-@model proiect.Models.User.UserLogin
+@using proiect.VerifyRole
 <div class="container">
     <div class="menu-bg-wrap">
         <div class="site-navigation">
@@ -14,18 +14,35 @@
                           <li><a href="@Url.Action("About", "Home")">About</a></li>
                           <li><a href="@Url.Action("News", "Home")">News</a></li>
                           <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                          <li><a href="@Url.Action("SearchDonatorAdmin", "Admin")">Search donators</a></li>
+                          @if (User.Identity.IsAuthenticated)
+                        {
+                          <li><a href="@Url.Action("LogOut", "Login")">Log Out</a></li>
+                          
+                        }
+                        else
+                        {
                           <li><a href="@Url.Action("LogIn", "Login")">Log In</a></li>
                           <li><a href="@Url.Action("SignIn", "Register")">Sign Up</a></li>
+                        }
+                          @if (IsAdmin.IsUserAdmin())
+                          {
+                          <li><a href="@Url.Action("UsersAdmin", "Admin")">Users</a></li>
+                          }
                      </ul>
                 </div>
                 <div class="col-2 text-end">
-                    <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
-                        <span></span>
-                    </a>
+                     <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+                          <span></span>
+                          @if (User.Identity.IsAuthenticated)
+                          {
+                          <a href="#" class="call-us d-flex align-items-center justify-content-center">
+                               <span class="icon-phone"></span>
+                               <span class="col-8 text-center">@HttpContext.Current.Session["UserName"]</span>
+                          </a>
+                          }
 
-                    <a href="#" class="call-us d-flex align-items-center justify-content-center">
-                         
-                    </a>
+                     </a>
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace proiect.Controllers
 {
@@ -44,7 +45,7 @@ namespace proiect.Controllers
                     };
                     Response.Cookies.Add(cookie);
                }
-               return RedirectToAction("LogIn", "Login");
+               return RedirectToAction("Index", "Home");
           }
 
 
@@ -53,6 +54,7 @@ namespace proiect.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
           {
+               HttpContext.Session["UserProfile"] = data;
                if (ModelState.IsValid)
                {
                     var dataUser = Mapper.Map<ULoginData>(data);
@@ -63,6 +65,7 @@ namespace proiect.Controllers
                     ULoginResp resp = _session.UserLoginAction(dataUser);
                     if (resp.Status)
                     {
+                         FormsAuthentication.SetAuthCookie(data.Credential, false);
                          HttpCookie cookie = _session.GenCookie(data.Credential);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                          Session["UserName"] = data.Credential;

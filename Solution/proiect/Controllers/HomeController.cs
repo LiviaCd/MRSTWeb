@@ -7,6 +7,7 @@ using proiect.Domain.Entities.User;
 using proiect.Extensions;
 using proiect.Models;
 using proiect.Models.User;
+using proiect.VerifyRole;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,17 @@ namespace proiect.Controllers
                else
                {
                     if (role == "Admin")
-                       return RedirectToAction("IndexAdmin", "Admin");
+                    {
+                         IsAdmin.IsUserAdmin();
+                         return RedirectToAction("Index", "Home");
+                    }
+                         
                     else
-                       return RedirectToAction("IndexUserLogin", "UserLogin");
+                    {
+                         
+                         return RedirectToAction("Index", "Home");
+                    }
+                         
                }
           }
           
@@ -53,7 +62,7 @@ namespace proiect.Controllers
           {
                return View();
           }
-          //[AdminMod]
+          [AdminMod]
           public ActionResult About()
           {
                string role = SessionStatus();

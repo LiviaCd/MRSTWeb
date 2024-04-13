@@ -31,5 +31,9 @@ namespace proiect.Controllers
           {
                return View();
           }
+          public ActionResult SearchDonatorUserLogin()
+          {
+               return View();
+          }
      }
 }
