@@ -1,50 +1,128 @@
 ﻿@using System.Web.Optimization;
 
 @using proiect.VerifyRole
-<div class="container">
-    <div class="menu-bg-wrap">
-        <div class="site-navigation">
-            <div class="row g-0 align-items-center">
-                <div class="col-2 text-center">
-                    <a href="@Url.Action("Index", "Home")" class="logo m-0 text-white">Donator.md</a>
-                </div>
-                <div class="col-8 text-center">
-                     <ul class="js-clone-nav d-none d-lg-inline-block text-center site-menu mx-auto">
-                          <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                          <li><a href="@Url.Action("About", "Home")">About</a></li>
-                          <li><a href="@Url.Action("News", "Home")">News</a></li>
-                          <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                          <li><a href="@Url.Action("SearchDonatorAdmin", "Admin")">Search donators</a></li>
-                          @if (User.Identity.IsAuthenticated)
-                        {
-                          <li><a href="@Url.Action("LogOut", "Login")">Log Out</a></li>
-                          
-                        }
-                        else
-                        {
-                          <li><a href="@Url.Action("LogIn", "Login")">Log In</a></li>
-                          <li><a href="@Url.Action("SignIn", "Register")">Sign Up</a></li>
-                        }
-                          @if (IsAdmin.IsUserAdmin())
-                          {
-                          <li><a href="@Url.Action("UsersAdmin", "Admin")">Users</a></li>
-                          }
-                     </ul>
-                </div>
-                <div class="col-2 text-end">
-                     <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
-                          <span></span>
-                          @if (User.Identity.IsAuthenticated)
-                          {
-                          <a href="#" class="call-us d-flex align-items-center justify-content-center">
-                               <span class="icon-phone"></span>
-                               <span class="col-8 text-center">@HttpContext.Current.Session["UserName"]</span>
-                          </a>
-                          }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Navigation Bar</title>
+    <style>
 
-                     </a>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling for the fixed navigation bar */
+        .site-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #A32C00; /* Set the background color to #A32C00 */
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Padding for content to prevent it from being hidden under the fixed navigation bar */
+        .page-content {
+            padding-top: 80px;
+            padding-bottom: 20px;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Optional: Style for navigation links */
+        .site-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+            .site-navigation ul li {
+                display: inline-block;
+                margin-right: 20px;
+            }
+
+                .site-navigation ul li a {
+                    text-decoration: none;
+                    color: #fff; /* Set text color to white */
+                    font-weight: bold;
+                    font-size: 16px;
+                    transition: color 0.3s ease;
+                }
+
+                    .site-navigation ul li a:hover {
+                        color: #ffcc00; /* Change text color on hover */
+                    }
+
+        /* Page heading styles */
+        .page-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Sample section styles */
+        .section {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="menu-bg-wrap">
+            <div class="site-navigation">
+                <div class="row g-0 align-items-center">
+                    <div class="col-2 text-center">
+                        <a href="@Url.Action("Index", "Home")" class="logo m-0 text-white">Donator.md</a>
+                    </div>
+                    <div class="col-8 text-center">
+                        <ul class="js-clone-nav d-none d-lg-inline-block text-center site-menu mx-auto">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("News", "Home")">News</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li><a href="@Url.Action("SearchDonatorAdmin", "Admin")">Search donators</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="@Url.Action("LogOut", "Login")">Log Out</a></li>
+
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("LogIn", "Login")">Log In</a></li>
+                                <li><a href="@Url.Action("SignIn", "Register")">Sign Up</a></li>
+                            }
+                            @if (IsAdmin.IsUserAdmin())
+                            {
+                                <li><a href="@Url.Action("UsersAdmin", "Admin")">Users</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-2 text-end">
+                        <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+                            <span></span>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="#" class="call-us d-flex align-items-center justify-content-center">
+                                    <span class="icon-phone"></span>
+                                    <span class="col-8 text-center">@HttpContext.Current.Session["UserName"]</span>
+                                </a>
+                            }
+
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
