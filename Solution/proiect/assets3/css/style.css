@@ -3388,7 +3388,7 @@ textarea.form-control-lg {
 }
 
 .btn:hover {
-    color: #212529;
+    color: #a83b44;
 }
 
 .btn-check:focus + .btn, .btn:focus {
@@ -14357,5 +14357,6 @@ blockquote {
     transition: margin-left .5s;
     padding: 16px;
 }
+
 
 

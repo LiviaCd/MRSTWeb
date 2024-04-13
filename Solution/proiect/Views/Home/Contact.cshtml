@@ -49,15 +49,18 @@
      @foreach (var bloodType in bloodTypesPositiveRh)
         {
      <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="100">
+         <br>
           <!-- Your card HTML structure -->
           <div class="mt-2">@bloodType.Name</div>
           <img src="@Url.Content(bloodType.ImageUrl)" alt="Image" style="width: 100%; height: auto; margin-right: 10px;">
           @Html.Hidden("btn", bloodType.Name)
           <button class="btn btn-primary btn-xs mt-2" style="width: 100%;" type="submit">View</button>
+         
      </div>
         }
 </div>
 }
+<br>
 
 <!-- Negative RH -->
 <div class="section flip-section">
@@ -76,15 +79,18 @@
      @foreach (var bloodType in bloodTypesNegativeRh)
         {
      <div class="col-lg-3 position-relative" data-aos="fade-up" data-aos-delay="100">
+         <br>
           <!-- Your card HTML structure -->
           <div class="mt-2">@bloodType.Name</div>
           <img src="@Url.Content(bloodType.ImageUrl)" alt="Image" style="width: 100%; height: auto; margin-right: 10px;">
           @Html.Hidden("btn", bloodType.Name)
           <button class="btn btn-primary btn-xs mt-2" style="width: 100%;" type="submit">View</button>
+        
      </div>
         }
 </div>
 }
+<br>
 
 <div class="section flip-section">
 
