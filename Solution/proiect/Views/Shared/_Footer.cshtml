@@ -1,93 +1,125 @@
-﻿
-<div class="section">
-    <div class="blob-1">
-        <img src="~/assets3/images/blob.png" alt="Image" class="img-fluid">
-    </div>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the body expands to at least the height of the viewport */
+            background-color: #f8f9fa;
+        }
 
-    <div class="container">
+        /* Footer styles */
+        .sectionfooter {
+            background-color: #000000;
+            color: #fff;
+            padding: 40px 0;
+            flex-shrink: 0; /* Prevents footer from shrinking */
+            margin-top: auto; /* Pushes footer to bottom */
+        }
 
-        <div class="row">
+        .containerfooter {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-                
-                <div class="widget">
-                    <h3>Navigation</h3>
-                    <ul class="list-unstyled float-left links">
-                        <li><a href="@Url.Action("About", "Home")">About</a></li>
-                        <li><a href="@Url.Action("News", "Home")">News</a></li>
-                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-                
-            </div> <!-- /.col-lg-3 -->
+        .widget {
+            margin-bottom: 30px;
+        }
 
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-                
-                <div class="widget">
-                    <h3>Services</h3>
-                    <ul class="list-unstyled float-left links">
-                        <li><a href="#">Volunteer</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-                
-            </div> <!-- /.col-lg-3 -->
+        .widget h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
 
+        .widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-                
-                <div class="widget">
-                    <h3>Contact</h3>
-                    <address>Strada Studenților 9/7, Chișinău</address>
-                    <ul class="list-unstyled links mb-4">
-                        <li><a href="">022 123 321</a></li>
-                        <li><a href="">info@donator.com</a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-                
-            </div> <!-- /.col-lg-3 -->
+        .widget ul li {
+            margin-bottom: 10px;
+        }
 
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-                
-                <div class="widget">
-                    <h3>Connect</h3>
-                    <ul class="list-unstyled social">
-                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                    </ul>
-                </div>
-                
+        .widget ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social li {
+            margin-right: 10px;
+        }
+
+        .social li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sectionfooter">
+        <div class="containerfooter">
+            <div class="widget">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Contact</h3>
+                <address>Strada Studenților 9/7, Chișinău</address>
+                <ul>
+                    <li><a href="tel:022123321">022 123 321</a></li>
+                    <li><a href="mailto:info@donator.com">info@donator.com</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Connect</h3>
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <style>
+    <!-- Your main content goes here -->
 
-        .blob-1 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%; /* Make the image width same as the container */
-            height: 100%; /* Make the image height same as the container */
-            z-index: 1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            padding-right: var(--bs-gutter-x, 0.75rem);
-            padding-left: var(--bs-gutter-x, 0.75rem);
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        .section {
-            position: relative;
-        }
-    </style>
+</body>
+</html>

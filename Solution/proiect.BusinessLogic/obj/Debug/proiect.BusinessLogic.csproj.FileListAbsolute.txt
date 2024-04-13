@@ -35,3 +35,8 @@ C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\S
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.pdb
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.xml
 C:\Users\Professional\Desktop\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\System.ValueTuple.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\System.ValueTuple.dll
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.pdb
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\AutoMapper.xml
+C:\Users\User\Desktop\MRSTWeb\MRSTWeb\Solution\proiect.BusinessLogic\bin\Debug\System.ValueTuple.xml

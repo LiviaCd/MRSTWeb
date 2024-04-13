@@ -1,54 +1,230 @@
-﻿@using System.Web.Optimization 
-@{
-     ViewBag.Title = "Pretest";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-     <link href="/assets3/css/css/boot.css" rel="stylesheet" id="boot-css">
+        body {
+            background-color: #FEFEFA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
 
-     <div class="hero overlay" style="background-image: url('/assets3/images/pretest2.png')">
-          <div class="container">
-               <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-6 text-center">
-                         <h1 class="heading text-white mb-2" data-aos="fade-up">Află dacă poți fi donator de sânge</h1>
-                         <p data-aos="fade-up" data-aos-delay="100">
-                              <a href="#" class="btn btn-primary me-4">Începe pretestul</a>
-                         </p>
-                    </div>
-               </div>
-          </div>
-     </div>
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px; /* Add margin for spacing */
+            padding: 20px;
+            background-color: rgba(255,255,255,0.13);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            text-align: center;
+        }
 
+            form * {
+                color: #342c29;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
 
+            form h3 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 2px;
+                margin-bottom: 20px;
+            }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 30px;
+            width: 100%;
+            color: rgb(29, 28, 28);
+            background-color: rgba(124, 70, 70, 0.27);
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: rgba(215, 86, 86, 0.5);
+            }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-     <form action="/submit-quiz" method="post">
-          
-          <ol>
-               <li>
-                    <label for="question1">What is the capital of France?</label><br>
-                    <input type="radio" id="question1-option1" name="question1" value="a">
-                    <label for="question1-option1">A. Paris</label><br>
-                    <input type="radio" id="question1-option2" name="question1" value="b">
-                    <label for="question1-option2">B. Berlin</label><br>
-                    <input type="radio" id="question1-option3" name="question1" value="c">
-                    <label for="question1-option3">C. Madrid</label><br>
-               </li>
-               <li>
-                    <label for="question2">What is the largest ocean?</label><br>
-                    <input type="radio" id="question2-option1" name="question2" value="a">
-                    <label for="question2-option1">A. Pacific Ocean</label><br>
-                    <input type="radio" id="question2-option2" name="question2" value="b">
-                    <label for="question2-option2">B. Atlantic Ocean</label><br>
-                    <input type="radio" id="question2-option3" name="question2" value="c">
-                    <label for="question2-option3">C. Indian Ocean</label><br>
-               </li>
-          </ol>
-          <input type="submit" value="Submit Quiz">
-     </form>
+
+    <form action="/submit-quiz" method="post" id="quizForm">
+        <h3>Take the Quiz</h3>
+
+        <div class="quiz-question" id="question1">
+            <label for="question1">Ai avut sau ai vreo afecțiune cardiacă?</label><br>
+            <input type="radio" name="question1" value="a"> Da
+            <input type="radio" name="question1" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question2" style="display: none;">
+            <label for="question2">Ești însărcinată sau ai avut un copil, avort spontan sau întrerupere de sarcină în ultimele 6 luni?</label><br>
+            <input type="radio" name="question2" value="a"> Da
+            <input type="radio" name="question2" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question3" style="display: none;">
+            <label for="question3">Ai donat sânge integral, plasmă sau trombocite în ultimele 16 săptămâni?</label><br>
+            <input type="radio" name="question3" value="a"> Da
+            <input type="radio" name="question3" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question4" style="display: none;">
+            <label for="question4">În ultimele 4 luni ți-ai făcut piercing la urechi, nas, față sau corp?</label><br>
+            <input type="radio" name="question4" value="a"> Da
+            <input type="radio" name="question4" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question5" style="display: none;">
+            <label for="question5">În ultimele 4 luni ai făcut un tatuaj, machiaj semipermanent sau alte tratamente cosmetice care au implicat piercingul pielii?</label><br>
+            <input type="radio" name="question5" value="a"> Da
+            <input type="radio" name="question5" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question6" style="display: none;">
+            <label for="question6">În ultimele 4 luni ai făcut acupunctură?</label><br>
+            <input type="radio" name="question6" value="a"> Da
+            <input type="radio" name="question6" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question7" style="display: none;">
+            <label for="question7">În ultimele 4 luni ai avut o endoscopie flexibilă sau o colonoscopie?</label><br>
+            <input type="radio" name="question7" value="a"> Da
+            <input type="radio" name="question7" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question8" style="display: none;">
+            <label for="question8">În ultimele 4 săptămâni ai intrat în contact cu cineva care avea o boală infecțioasă?</label><br>
+            <input type="radio" name="question8" value="a"> Da
+            <input type="radio" name="question8" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question9" style="display: none;">
+            <label for="question9">Ai avut vreo infecție în ultimele 2 săptămâni sau ai luat antibiotice în ultimele 7 zile?</label><br>
+            <input type="radio" name="question9" value="a"> Da
+            <input type="radio" name="question9" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question10" style="display: none;">
+            <label for="question10">În ultimele 7 zile ai avut tuse, durere în gât sau ai simptome de răceală?</label><br>
+            <input type="radio" name="question10" value="a"> Da
+            <input type="radio" name="question10" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question11" style="display: none;">
+            <label for="question11">Ai avut vreun tratament dentar în ultimele 7 zile sau ai în desfășurare vreun tratament dentar în prezent?</label><br>
+            <input type="radio" name="question11" value="a"> Da
+            <input type="radio" name="question11" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question12" style="display: none;">
+            <label for="question12">Ai primit o vaccinare împotriva coronavirusului în ultimele 48 de ore?</label><br>
+            <input type="radio" name="question12" value="a"> Da
+            <input type="radio" name="question12" value="b"> Nu
+            <span class="error-message"></span>
+        </div>
+
+        <button type="button" onclick="validateAndNext(1)">Next</button>
+    </form>
+
+    <script>
+        function validateAndNext(currentNum) {
+            var currentQuestion = document.getElementById('question' + currentNum);
+            var radios = currentQuestion.querySelectorAll('input[type="radio"]');
+            var radioSelected = false;
+
+            radios.forEach(function (radio) {
+                if (radio.checked) {
+                    radioSelected = true;
+                }
+            });
+
+            var errorMessage = currentQuestion.querySelector('.error-message');
+            if (radioSelected) {
+                errorMessage.textContent = ''; // Clear error message
+                var nextNum = currentNum + 1;
+                var nextQuestion = document.getElementById('question' + nextNum);
+                if (nextQuestion) {
+                    showQuestion(nextNum);
+                } else {
+                    // No more questions, submit the form
+                    document.getElementById('quizForm').submit();
+                }
+            } else {
+                errorMessage.textContent = 'Please select an option before proceeding.';
+            }
+        }
+
+        function showQuestion(questionNum) {
+            var questions = document.querySelectorAll('.quiz-question');
+            questions.forEach(function (question) {
+                question.style.display = 'none';
+            });
+
+            var currentQuestion = document.getElementById('question' + questionNum);
+            if (currentQuestion) {
+                currentQuestion.style.display = 'block';
+            }
+        }
+        if (currentQuestion) {
+            currentQuestion.style.display = 'block';
+        }
+        }
+    </script>
 </body>
 </html>
-
