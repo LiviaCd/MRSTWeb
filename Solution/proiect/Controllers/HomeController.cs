@@ -62,7 +62,7 @@ namespace proiect.Controllers
           {
                return View();
           }
-          [AdminMod]
+          //[AdminMod]
           public ActionResult About()
           {
                string role = SessionStatus();
