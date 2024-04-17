@@ -85,7 +85,7 @@ namespace proiect.BusinessLogic.Core
                               Password = LoginHelper.HashGen(data.Password),
                               LasIp = "0.0.0.0",
                               LastLogin = DateTime.Now,
-                              Level = URole.Admin
+                              Level = URole.Doctor
                          };
                     if (data.Password != data.ConfirmPassword)
                          return new ULoginResp { Status = false, Message = "Wrong password" };
@@ -133,7 +133,7 @@ namespace proiect.BusinessLogic.Core
                     {
                          db.Sessions.Add(new Session { UserName = credential,
                          CookieString = apiCookie.Value,
-                         ExpireTime = DateTime.Now.AddMinutes(2) });
+                         ExpireTime = DateTime.Now.AddMinutes(60) });
                          db.SaveChanges();
                     }
                }

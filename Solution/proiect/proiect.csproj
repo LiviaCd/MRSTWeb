@@ -2733,6 +2733,7 @@
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\LoginUser\SearchDonator.cshtml" />
     <Content Include="Views\Home\ErrorAccessDenied.cshtml" />
+    <Content Include="Views\Shared\_LayoutError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

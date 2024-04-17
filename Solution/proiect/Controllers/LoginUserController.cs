@@ -15,6 +15,7 @@ namespace proiect.Controllers
           {
             return View();
           }
+          [LoginUserMod]
           public ActionResult UserPage()
           {
                return View();
