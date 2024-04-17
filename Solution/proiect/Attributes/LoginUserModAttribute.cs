@@ -7,11 +7,11 @@ using System.Web.Routing;
 
 namespace proiect.Attributes
 {
-     public class AdminModAttribute : ActionFilterAttribute
+     public class LoginUserModAttribute : ActionFilterAttribute
      {
           private readonly ISession _sessionBusinessLogic;
 
-          public AdminModAttribute()
+          public LoginUserModAttribute()
           {
                var businessLogic = new BusinessLogic.BussinessLogic();
                _sessionBusinessLogic = businessLogic.GetSessionBL();
@@ -32,7 +32,7 @@ namespace proiect.Attributes
                     return;
                }
 
-               if (profile.Level != URole.Admin)
+               if (profile.Level != URole.User)
                {
                     filterContext.Result = new RedirectToRouteResult(
                         new RouteValueDictionary(

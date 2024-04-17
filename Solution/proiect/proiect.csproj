@@ -2460,12 +2460,14 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\LoginUserModAttribute.cs" />
     <Compile Include="Attributes\AdminModAttribute.cs" />
+    <Compile Include="Attributes\DoctorModAttribute.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\UserLoginController.cs" />
+    <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -2476,7 +2478,7 @@
     <Compile Include="Models\User\UserLogin.cs" />
     <Compile Include="Models\User\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerifyRole\IsAdmin.cs" />
+    <Compile Include="VerifyRole\RoleChecker.cs" />
     <Compile Include="VerifyRole\IsLoginUser.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2707,7 +2709,7 @@
     <Content Include="Views\Shared\_HeaderUser.cshtml" />
     <Content Include="Views\Shared\_NavigationUser.cshtml" />
     <Content Include="Views\Shared\_FooterUser.cshtml" />
-    <Content Include="Views\Home\UserPage.cshtml" />
+    <Content Include="Views\LoginUser\UserPage.cshtml" />
     <Content Include="Views\Shared\_LayoutSign.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Register\SignIn.cshtml" />
@@ -2723,24 +2725,14 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\ViewBloodType\TypePage.cshtml" />
-    <Content Include="Views\Admin\IndexAdmin.cshtml" />
     <Content Include="Views\Shared\_NavigationAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Login\LogOut.cshtml" />
-    <Content Include="Views\Admin\AboutAdmin.cshtml" />
-    <Content Include="Views\Admin\ContactAdmin.cshtml" />
-    <Content Include="Views\Admin\NewsAdmin.cshtml" />
-    <Content Include="Views\Admin\PretestAdmin.cshtml" />
-    <Content Include="Views\Admin\UsersAdmin.cshtml" />
     <Content Include="Views\Shared\_NavigationUserLogin.cshtml" />
     <Content Include="Views\Shared\_LayoutUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\AboutUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\ContactUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\IndexUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\NewsUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\PretestUserLogin.cshtml" />
-    <Content Include="Views\UserLogin\SearchDonatorUserLogin.cshtml" />
-    <Content Include="Views\Admin\SearchDonatorAdmin.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\LoginUser\SearchDonator.cshtml" />
+    <Content Include="Views\Home\ErrorAccessDenied.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

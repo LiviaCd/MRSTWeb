@@ -50,7 +50,7 @@ namespace proiect.BusinessLogic.Core
                          user.LasIp = data.LoginIp;
                          user.LastLogin = data.LoginDateTime;
                          todo.Entry(user).State = EntityState.Modified;
-                         //todo.SaveChanges();
+                         todo.SaveChanges();
                     }
                     if (user.Level == URole.Admin)
                          return new ULoginResp { Status = true, Message = "Admin" };
@@ -133,7 +133,7 @@ namespace proiect.BusinessLogic.Core
                     {
                          db.Sessions.Add(new Session { UserName = credential,
                          CookieString = apiCookie.Value,
-                         ExpireTime = DateTime.Now.AddMinutes(60) });
+                         ExpireTime = DateTime.Now.AddMinutes(2) });
                          db.SaveChanges();
                     }
                }

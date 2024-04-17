@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proiect.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,33 +9,11 @@ namespace proiect.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
-        public ActionResult IndexAdmin()
+          // GET: Admin
+          [AdminMod]
+          public ActionResult Users()
         {
             return View();
         }
-          public ActionResult ContactAdmin()
-          {
-               return View();
-          }
-
-          public ActionResult AboutAdmin()
-          {
-               return View();
-          }
-          public ActionResult NewsAdmin()
-          {
-               return View();
-          }
-
-          public ActionResult PretestAdmin()
-          {
-               return View();
-          }
-
-          public ActionResult UsersAdmin()
-          {
-               return View();
-          }
-     }
+    }
 }

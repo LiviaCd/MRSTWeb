@@ -20,6 +20,7 @@ namespace proiect.Controllers
 {
      public class HomeController : BaseController
      {
+          
           // GET: Home
           public ActionResult Index()
           {
@@ -28,41 +29,10 @@ namespace proiect.Controllers
                {
                     return View (); 
                }
-               else
-               {
-                    if (role == "Admin")
-                    {
-                         IsAdmin.IsUserAdmin();
-                         return RedirectToAction("Index", "Home");
-                    }
-                         
-                    else
-                    {
-                         
-                         return RedirectToAction("Index", "Home");
-                    }
-                         
-               }
+               return View();
+              // return RedirectToAction("Index", "Home");
           }
           
-          public ActionResult IndexAdmin()
-          {
-               return View();
-          }
-          public ActionResult UserPage()
-          {
-               return View();
-          }
-
-          public ActionResult LogIn()
-          {
-               return View();
-          }
-          public ActionResult IndexUserLogin()
-          {
-               return View();
-          }
-          //[AdminMod]
           public ActionResult About()
           {
                string role = SessionStatus();
@@ -83,6 +53,10 @@ namespace proiect.Controllers
                string role = SessionStatus();
                return View();
           }
+          public ActionResult ErrorAccessDenied()
+          {
+               return View();
+          }
           public ActionResult BloodType()
           {
                var type = Request.QueryString["t"];
@@ -98,8 +72,5 @@ namespace proiect.Controllers
           {
                return RedirectToAction("BloodType", "Home", new {@t = btn}); 
           }
-
-
-
      }
 }

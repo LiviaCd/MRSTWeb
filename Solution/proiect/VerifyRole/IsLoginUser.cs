@@ -9,13 +9,7 @@ namespace proiect.VerifyRole
      {
           public static bool IsUserLogin()
           {
-               if (HttpContext.Current.User.Identity.IsAuthenticated)
-               {
-                    return true;
-               }
-               else
-               { return false; }
-
+               return true;
           }
      }
 }

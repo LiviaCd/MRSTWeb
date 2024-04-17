@@ -54,6 +54,7 @@ namespace proiect.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
           {
+               
                HttpContext.Session["UserProfile"] = data;
                if (ModelState.IsValid)
                {
@@ -79,8 +80,12 @@ namespace proiect.Controllers
                          return View(data);
                     }
                }
+               
+
                return View(data);
           }
+               
+
 
 
 
