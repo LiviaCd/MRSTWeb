@@ -85,7 +85,7 @@ namespace proiect.BusinessLogic.Core
                               Password = LoginHelper.HashGen(data.Password),
                               LasIp = "0.0.0.0",
                               LastLogin = DateTime.Now,
-                              Level = URole.Doctor
+                              Level = URole.User
                          };
                     if (data.Password != data.ConfirmPassword)
                          return new ULoginResp { Status = false, Message = "Wrong password" };

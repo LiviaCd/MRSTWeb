@@ -17,5 +17,6 @@ namespace proiect.BusinessLogic.Interfaces
           ULoginResp RegisterNewUserAction(URegisterData regData);
           HttpCookie GenCookie(string loginCredential);
           UserMinimal GetUserByCookie(string value);
+          List<UserMinimal> GetAllUsers();
      }
 }

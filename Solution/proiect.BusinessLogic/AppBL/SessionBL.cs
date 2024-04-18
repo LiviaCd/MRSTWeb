@@ -34,5 +34,13 @@ namespace proiect.BusinessLogic
           {
                return UserCookie(apiCookieValue);
           }
+          public List<UserMinimal> GetAllUsers()
+          {
+               // Aici ai crea și popula lista de utilizatori. Exemplu:
+               List<UserMinimal> users = new List<UserMinimal>();
+
+               
+               return users;
+          }
      }
 }

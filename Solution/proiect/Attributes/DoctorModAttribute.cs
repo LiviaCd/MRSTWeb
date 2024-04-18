@@ -33,15 +33,16 @@ namespace proiect.Attributes
                     return;
                }
 
-               if (profile.Level != URole.Doctor)
+               if (profile.Level == URole.Doctor || profile.Level == URole.Admin)
+               {
+                    HttpContext.Current.SetMySessionObject(profile);
+               }
+               else
                {
                     filterContext.Result = new RedirectToRouteResult(
                         new RouteValueDictionary(
                             new { controller = "Home", action = "ErrorAccessDenied" }));
-               }
-               else
-               {
-                    HttpContext.Current.SetMySessionObject(profile);
+                    
                }
           }
 
