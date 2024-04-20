@@ -1,0 +1,274 @@
+﻿@{
+    ViewBag.Title = "Ancheta";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model proiect.Models.Ancheta.MAncheta
+<div class="formbold-main-wrapper">
+     <div class="formbold-form-wrapper">
+          <form method="POST">
+               @using (Html.BeginForm("AnchetaPage", "LoginUser", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+               {
+               @Html.AntiForgeryToken()
+               <div class="formbold-input-wrapp formbold-mb-3">
+                    <label for="FirstName" class="formbold-form-label">Nume și prenume</label>
+                    <div>
+                         @Html.TextBoxFor(model => model.FirstName, new { @class = "formbold-form-input", placeholder = "Nume", maxlength = "30" })
+                         @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                         @Html.TextBoxFor(model => model.LastName, new { @class = "formbold-form-input", placeholder = "Prenume", maxlength = "30" })
+                         @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+               </div>
+
+               <div class="formbold-mb-3">
+                    <label for="Age" class="formbold-form-label">Vârstă</label>
+                    @Html.TextBoxFor(model => model.Age, new { @class = "formbold-form-input", placeholder = "ex: 25" })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+               </div>
+
+               <div class="formbold-mb-3">
+                    <label class="formbold-form-label">Genul</label>
+                    @Html.DropDownListFor(model => model.Gender, new SelectList(new List<string> { "Masculin", "Feminin", "Nu vreau să specific" }), new { @class = "formbold-form-input" })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+               </div>
+               <div class="formbold-mb-3">
+                    <label class="formbold-form-label">Grupa sangvina</label>
+                    @Html.DropDownListFor(model => model.BloodType, new SelectList(new List<string> { "Grupa 0 Rh(+)", "Grupa A Rh(+)", "Grupa B Rh(+)", "Grupa AB Rh(+)", "Grupa 0 Rh(-)", "Grupa A Rh(-)", "Grupa B Rh(-)", "Grupa AB Rh(-)", "Nu cunosc grupa sangvina"}), new { @class = "formbold-form-input" })
+                    @Html.ValidationMessageFor(model => model.BloodType, "", new { @class = "text-danger" })
+               </div>
+
+               <div class="formbold-mb-3">
+                    <label for="Email" class="formbold-form-label">Email</label>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "formbold-form-input", type = "email", placeholder = "example@email.com", maxlength = "40" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+               </div>
+
+               <div class="formbold-mb-3">
+                    <label for="City" class="formbold-form-label">Adresa</label>
+                    @Html.TextBoxFor(model => model.City, new { @class = "formbold-form-input", placeholder = "Orașul", maxlength = "40" })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.CityRural, new { @class = "formbold-form-input", placeholder = "Localitatea", maxlength = "40" })
+                    @Html.ValidationMessageFor(model => model.CityRural, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.District, new { @class = "formbold-form-input", placeholder = "Raionul/municipiul", maxlength = "40" })
+                    @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+               </div>
+
+               <div class="formbold-mb-3">
+                    <label for="Phone" class="formbold-form-label">Număr de contact</label>
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "formbold-form-input", placeholder = "ex:061234567", maxlength = "9" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+               </div>
+
+               <div class="formbold-checkbox-wrapper formbold-mb-3">
+                    <label for="supportCheckbox" class="formbold-checkbox-label">
+                         <div class="formbold-relative">
+                              <input type="checkbox" id="supportCheckbox" name="Agreement" class="formbold-input-checkbox" />
+                              <div class="formbold-checkbox-inner">
+                                   <span class="formbold-opacity-0">
+                                        <!-- SVG content -->
+                                   </span>
+                              </div>
+                         </div>
+                         Accept termenii, condițiile și politicile site-ului
+                    </label>
+               </div>
+
+               <button type="submit" class="btn btn-default">Submit</button>
+               }
+               @if (ViewData["ConfirmationMessage"] != null)
+               {
+               <div class="alert alert-success">
+                    @ViewData["ConfirmationMessage"]
+               </div>
+               }
+          </form>
+     </div>
+</div>
+<style>
+
+     body {
+          font-family: 'Inter', sans-serif;
+     }
+
+     .formbold-mb-3 {
+          margin-bottom: 15px;
+     }
+
+     .formbold-relative {
+          position: relative;
+     }
+
+     .formbold-opacity-0 {
+          opacity: 0;
+     }
+
+     .formbold-stroke-current {
+          stroke: #ffffff;
+          z-index: 999;
+     }
+
+     #supportCheckbox:checked ~ div span {
+          opacity: 1;
+     }
+
+     #supportCheckbox:checked ~ div {
+          background: #6a64f1;
+          border-color: #6a64f1;
+     }
+
+     .formbold-main-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 48px;
+     }
+
+     .formbold-form-wrapper {
+          margin: 0 auto;
+          max-width: 570px;
+          width: 100%;
+          background: white;
+          padding: 40px;
+     }
+
+     .formbold-img {
+          display: block;
+          margin: 0 auto 45px;
+     }
+
+     .formbold-input-wrapp > div {
+          display: flex;
+          gap: 20px;
+     }
+
+     .formbold-input-flex {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 15px;
+     }
+
+          .formbold-input-flex > div {
+               width: 50%;
+          }
+
+     .formbold-form-input {
+          width: 100%;
+          padding: 13px 22px;
+          border-radius: 5px;
+          border: 1px solid #dde3ec;
+          background: #ffffff;
+          font-weight: 500;
+          font-size: 16px;
+          color: #536387;
+          outline: none;
+          resize: none;
+     }
+
+          .formbold-form-input::placeholder,
+          select.formbold-form-input,
+          .formbold-form-input[type='date']::-webkit-datetime-edit-text,
+          .formbold-form-input[type='date']::-webkit-datetime-edit-month-field,
+          .formbold-form-input[type='date']::-webkit-datetime-edit-day-field,
+          .formbold-form-input[type='date']::-webkit-datetime-edit-year-field {
+               color: rgba(83, 99, 135, 0.5);
+          }
+
+          .formbold-form-input:focus {
+               border-color: #6a64f1;
+               box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+          }
+
+     .formbold-form-label {
+          color: #536387;
+          font-size: 14px;
+          line-height: 24px;
+          display: block;
+          margin-bottom: 10px;
+     }
+
+     .formbold-checkbox-label {
+          display: flex;
+          cursor: pointer;
+          user-select: none;
+          font-size: 16px;
+          line-height: 24px;
+          color: #536387;
+     }
+
+          .formbold-checkbox-label a {
+               margin-left: 5px;
+               color: #6a64f1;
+          }
+
+     .formbold-input-checkbox {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border-width: 0;
+     }
+
+     .formbold-checkbox-inner {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          margin-right: 16px;
+          margin-top: 2px;
+          border: 0.7px solid #dde3ec;
+          border-radius: 3px;
+     }
+
+     .formbold-form-file {
+          padding: 12px;
+          font-size: 14px;
+          line-height: 24px;
+          color: rgba(83, 99, 135, 0.5);
+     }
+
+          .formbold-form-file::-webkit-file-upload-button {
+               display: none;
+          }
+
+          .formbold-form-file:before {
+               content: 'Upload';
+               display: inline-block;
+               background: #EEEEEE;
+               border: 0.5px solid #E7E7E7;
+               border-radius: 3px;
+               padding: 3px 12px;
+               outline: none;
+               white-space: nowrap;
+               -webkit-user-select: none;
+               cursor: pointer;
+               color: #637381;
+               font-weight: 500;
+               font-size: 12px;
+               line-height: 16px;
+               margin-right: 10px;
+          }
+
+     .formbold-btn {
+          font-size: 16px;
+          border-radius: 5px;
+          padding: 14px 25px;
+          border: none;
+          font-weight: 500;
+          background-color: #6a64f1;
+          color: white;
+          cursor: pointer;
+          margin-top: 25px;
+     }
+
+          .formbold-btn:hover {
+               box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+          }
+
+     .formbold-w-45 {
+          width: 45%;
+     }
+</style>

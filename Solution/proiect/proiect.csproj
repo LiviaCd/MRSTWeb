@@ -2473,13 +2473,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ancheta\MAncheta.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\UserLogin.cs" />
     <Compile Include="Models\User\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerifyRole\RoleChecker.cs" />
-    <Compile Include="VerifyRole\IsLoginUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2725,15 +2724,12 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\ViewBloodType\TypePage.cshtml" />
-    <Content Include="Views\Shared\_NavigationAdmin.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Login\LogOut.cshtml" />
-    <Content Include="Views\Shared\_NavigationUserLogin.cshtml" />
-    <Content Include="Views\Shared\_LayoutUserLogin.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\LoginUser\SearchDonator.cshtml" />
     <Content Include="Views\Home\ErrorAccessDenied.cshtml" />
     <Content Include="Views\Shared\_LayoutError.cshtml" />
+    <Content Include="Views\LoginUser\AnchetaPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

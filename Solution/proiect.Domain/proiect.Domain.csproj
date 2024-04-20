@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Ancheta\Ancheta.cs" />
     <Compile Include="Entities\BloodType\BloodTypeDetail.cs" />
     <Compile Include="Entities\Responce\ULoginResp.cs" />
     <Compile Include="Entities\Session\Session.cs" />

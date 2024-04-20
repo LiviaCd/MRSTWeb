@@ -31,9 +31,6 @@
         @Html.Partial("_FooterUser")
     </section>
 
-    @Html.ActionLink("Application name", "UserPage", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     @Styles.Render("~/bundles/navbar/js");
     @Scripts.Render("~/bundles/mainPageJava/js")
     @RenderSection("scripts", required: false)

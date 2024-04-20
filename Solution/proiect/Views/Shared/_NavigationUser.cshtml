@@ -15,13 +15,13 @@
                          <div class="profile-details col-8">
 
                               <h3>
-                                   <a href="ui-profile.html">Name User</a>
+                                   <a href="ui-profile.html">@HttpContext.Current.Session["UserName"]</a>
 
                                    <!-- Available statuses: online, idle, busy, away and offline -->
                                    <span class="profile-status online"></span>
                               </h3>
 
-                              <p class="profile-title">Web Developer</p>
+                              <p class="profile-title">@HttpContext.Current.Session["Role"]</p>
 
                          </div>
 
@@ -158,7 +158,7 @@
                               </ul>
                          </li>
                          <li class="">
-                              <a href="javascript:;">
+                              <a href="@Url.Action("AnchetaPage", "LoginUser")">
                                    <i class="fa fa-bullseye"></i>
                                    <span class="title">Anchetă</span>
                                    <span class="arrow "></span>

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using proiect.App_Start;
+using proiect.Domain.Entities.Ancheta;
 using proiect.Domain.Entities.User;
+using proiect.Models.Ancheta;
 using proiect.Models.User;
 using System;
 using System.Collections.Generic;
@@ -25,6 +27,7 @@ namespace proiect
                Mapper.Initialize(cfg => {
                     cfg.CreateMap<UDBTable, UserMinimal>();
                     cfg.CreateMap<UserLogin, ULoginData>();
+                    cfg.CreateMap<MAncheta, Ancheta>();
                });
           }
     }

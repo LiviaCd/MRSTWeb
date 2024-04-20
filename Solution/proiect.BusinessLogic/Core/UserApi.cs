@@ -21,6 +21,8 @@ using proiect.Domain.Entities.Session;
 using System.Data;
 using AutoMapper;
 using System.Web;
+using System.Net;
+using proiect.Domain.Entities.Ancheta;
 
 
 namespace proiect.BusinessLogic.Core
@@ -167,6 +169,34 @@ namespace proiect.BusinessLogic.Core
                var userMinimal = Mapper.Map<UserMinimal>(curentUser);
 
                return userMinimal;
+          }
+
+          public void CompleteAncheta(Ancheta ancheta)
+          {
+               var validate = new PhoneAttribute();
+               using (var db = new AnchetaContext())
+               {
+                    if (validate.IsValid(ancheta.Phone))
+               {
+                    ancheta = (from e in db.Anchete where e.Phone == ancheta.Phone select e).FirstOrDefault();
+                         if (ancheta == null)
+                         {
+                              db.Anchete.Add(new Ancheta
+                              {
+                                   FirstName = ancheta.FirstName,
+                                   LastName = ancheta.LastName,
+                                   Age = ancheta.Age,
+                                   Gender = ancheta.Gender,
+                                   Email = ancheta.Email,
+                                   City = ancheta.City,
+                                   CityRural = ancheta.CityRural,
+                                   District  = ancheta.District,
+                                   Phone = ancheta.Phone    
+                              });
+                              db.SaveChanges();
+                         }
+                    } 
+               }
           }
      }
 }

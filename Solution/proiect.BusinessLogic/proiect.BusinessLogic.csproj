@@ -62,6 +62,7 @@
     <Compile Include="BussinessLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\Seed\AnchetaContext.cs" />
     <Compile Include="DBModel\Seed\SessionContext.cs" />
     <Compile Include="DBModel\Seed\UserContext.cs" />
     <Compile Include="Interfaces\ISession.cs" />

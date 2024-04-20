@@ -7,7 +7,6 @@ using proiect.Domain.Entities.User;
 using proiect.Extensions;
 using proiect.Models;
 using proiect.Models.User;
-using proiect.VerifyRole;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace proiect.Controllers
           // GET: Home
           public ActionResult Index()
           {
-               string role = SessionStatus();
+               SessionStatus();
                if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
                {
                     return View (); 
@@ -35,22 +34,22 @@ namespace proiect.Controllers
           
           public ActionResult About()
           {
-               string role = SessionStatus();
+               SessionStatus();
                return View();
           }
           public ActionResult News()
           {
-               string role = SessionStatus();
+               SessionStatus();
                return View();
           }
           public ActionResult Contact()
           {
-               string role = SessionStatus();
+               SessionStatus();
                return View();
           }
           public ActionResult Pretest()
           {
-               string role = SessionStatus();
+               SessionStatus();
                return View();
           }
           public ActionResult ErrorAccessDenied()

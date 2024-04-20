@@ -190,7 +190,7 @@
           <h3>Log in</h3>
 
           <label for="Credential">Username</label>
-          @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "10" })
+          @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "30" })
           @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
 
           <label for="Password">Password</label>
