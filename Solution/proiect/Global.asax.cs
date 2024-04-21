@@ -3,6 +3,7 @@ using proiect.App_Start;
 using proiect.Domain.Entities.Ancheta;
 using proiect.Domain.Entities.User;
 using proiect.Models.Ancheta;
+using proiect.Models.Request;
 using proiect.Models.User;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace proiect
                     cfg.CreateMap<UDBTable, UserMinimal>();
                     cfg.CreateMap<UserLogin, ULoginData>();
                     cfg.CreateMap<MAncheta, Ancheta>();
+                    cfg.CreateMap<MRequest, Ancheta>();
                });
           }
     }

@@ -2475,6 +2475,7 @@
     </Compile>
     <Compile Include="Models\Ancheta\MAncheta.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
+    <Compile Include="Models\Request\MRequest.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\UserLogin.cs" />
     <Compile Include="Models\User\UserRegister.cs" />
@@ -2730,6 +2731,8 @@
     <Content Include="Views\Home\ErrorAccessDenied.cshtml" />
     <Content Include="Views\Shared\_LayoutError.cshtml" />
     <Content Include="Views\LoginUser\AnchetaPage.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\LoginUser\DonatorFind.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

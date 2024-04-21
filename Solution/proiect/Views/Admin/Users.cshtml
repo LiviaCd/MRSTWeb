@@ -1,8 +1,55 @@
 ﻿
 @{
     ViewBag.Title = "Users";
- Layout = "~/Views/Shared/_Layout.cshtml";
+ Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<h2>Users</h2>
+@model List<proiect.Domain.Entities.User.UserMinimal>
+
+<div class="container-fluid">
+
+     <!-- Sidebar -->
+     <div class="row">
+
+          <!-- User Table -->
+          <div class="col-md-9">
+               <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                         <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                    </div>
+                    <div class="card-body">
+                         <div class="table-responsive">
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   <thead>
+                                        <tr>
+                                             <th>ID</th>
+                                             <th>Username</th>
+                                             <th>Email</th>
+                                             <th>Last login</th>
+                                             <th>Level</th>
+                                             <th>Edit</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        @foreach (var user in Model)
+                                       {
+                                        <tr>
+                                             <td>@user.Id</td>
+                                             <td>@user.UserName</td>
+                                             <td>@user.Email</td>
+                                             <td>@user.LastLogin</td>
+                                             <td>@user.Level</td>
+                                             <td>
+                                                  <button onclick="location.href='@Url.Action("EditUser", "Admin", new { id = user.Id })'" class="edit">Edit</button>
+                                             </td>
+                                        </tr>
+                                       }
+                                   </tbody>
+                              </table>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
 

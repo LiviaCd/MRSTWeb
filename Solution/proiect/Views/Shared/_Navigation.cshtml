@@ -90,17 +90,7 @@
 
                                    @if (User.Identity.IsAuthenticated)
                                    {
-                                        var role = (proiect.Domain.Enums.URole)HttpContext.Current.Session["Role"]; 
-
-                                        if (role.ToString() == "Admin")
-                                        {
-                                   <li><a href="@Url.Action("SearchDonator", "LoginUser")">Search Donators</a></li>
-                                   <li><a href="@Url.Action("Users", "Admin")">Users</a></li>
-                                        }
-                                        else if (role.ToString() == "Doctor")
-                                        {
-                                   <li><a href="@Url.Action("SearchDonator", "LoginUser")">Search Donators</a></li>
-                                        }
+                                       
 
                                    <li><a href="@Url.Action("LogOut", "Login")">Log Out</a></li>
                                         }

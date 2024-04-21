@@ -170,33 +170,5 @@ namespace proiect.BusinessLogic.Core
 
                return userMinimal;
           }
-
-          public void CompleteAncheta(Ancheta ancheta)
-          {
-               var validate = new PhoneAttribute();
-               using (var db = new AnchetaContext())
-               {
-                    if (validate.IsValid(ancheta.Phone))
-               {
-                    ancheta = (from e in db.Anchete where e.Phone == ancheta.Phone select e).FirstOrDefault();
-                         if (ancheta == null)
-                         {
-                              db.Anchete.Add(new Ancheta
-                              {
-                                   FirstName = ancheta.FirstName,
-                                   LastName = ancheta.LastName,
-                                   Age = ancheta.Age,
-                                   Gender = ancheta.Gender,
-                                   Email = ancheta.Email,
-                                   City = ancheta.City,
-                                   CityRural = ancheta.CityRural,
-                                   District  = ancheta.District,
-                                   Phone = ancheta.Phone    
-                              });
-                              db.SaveChanges();
-                         }
-                    } 
-               }
-          }
      }
 }

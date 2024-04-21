@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+ Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@model List<proiect.Domain.Entities.Ancheta.Ancheta>
+
+<div class="col-md-9">
+     <div class="card shadow mb-4">
+          <div class="card-header py-3">
+               <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+          </div>
+          <div class="card-body">
+               <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th>Nume</th>
+                                   <th>Prenume</th>
+                                   <th>Varsta</th>
+                                   <th>Genul</th>
+                                   <th>Grupa sangvina</th>
+                                   <th>Email</th>
+                                   <th>Oraș</th>
+                                   <th>Localitate</th>
+                                   <th>Raion/municipiu</th>
+                                   <th>Telefon</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+
+                              @if (Model != null && Model.Any())
+{
+    foreach (var user in Model)
+    {
+                              <tr>
+                                   <td>@user.FirstName</td>
+                                   <td>@user.LastName</td>
+                                   <td>@user.Age</td>
+                                   <td>@user.Gender</td>
+                                   <td>@user.BloodType</td>
+                                   <td>@user.Email</td>
+                                   <td>@user.City</td>
+                                   <td>@user.CityRural</td>
+                                   <td>@user.District</td>
+                                   <td>@user.Phone</td>
+                              </tr>
+    }
+}
+else
+{
+                              <tr>
+                                   <td colspan="10">No data found</td>
+                              </tr>
+}
+
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+     </div>
+</div>
+     </div>
+</div>
+
