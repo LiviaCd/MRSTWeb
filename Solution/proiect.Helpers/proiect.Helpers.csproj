@@ -43,8 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CookieGenerator.cs" />
+    <Compile Include="GenerateRandomCode.cs" />
     <Compile Include="LoginHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendCode.cs" />
+    <Compile Include="SendEmail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

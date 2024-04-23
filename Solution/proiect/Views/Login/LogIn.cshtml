@@ -184,35 +184,38 @@
 
 
      <form method="post">
-          @using (Html.BeginForm("LogIn", "Login", FormMethod.Post))
-          {
-          @Html.AntiForgeryToken()
-          <h3>Log in</h3>
+         @using (Html.BeginForm("LogIn", "Login", FormMethod.Post))
+         {
+             @Html.AntiForgeryToken()
+             <h3>Log in</h3>
 
-          <label for="Credential">Username</label>
-          @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "30" })
-          @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
+             <label for="Credential">Username</label>
+             @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "30" })
+             @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
 
-          <label for="Password">Password</label>
-          @Html.PasswordFor(UserLogin => UserLogin.Password, new { @class = "form-control", placeholder = "Password" })
-          @Html.ValidationMessageFor(UserLogin => UserLogin.Password, "", new { @class = "text-danger" })
+             <label for="Password">Password</label>
+             @Html.PasswordFor(UserLogin => UserLogin.Password, new { @class = "form-control", placeholder = "Password" })
+             @Html.ValidationMessageFor(UserLogin => UserLogin.Password, "", new { @class = "text-danger" })
 
-          <div class="social">
-               <div class="go"><i class="fab fa-google"></i>  Google</div>
-               <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-          </div>
+             <div class="social">
+                 <div class="go"><i class="fab fa-google"></i>  Google</div>
+                 <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+             </div>
 
-          <div class="log-in">
-               <button type="submit" class="button">Log In</button>
-               <!-- Directory Link -->
-               <a href="@Url.Action("Index", "Home")"></a>
-          </div><br>
+             <div class="log-in">
+                 <button type="submit" class="button">Log In</button>
+                 <!-- Directory Link -->
+                 <a href="@Url.Action("Index", "Home")"></a>
+             </div><br>
 
 
-          <div class="sign-in">
-               <small><a href="@Url.Action("SignIn", "Register")">Create Account</a></small>
-          </div>
-          }
+             <div class="sign-in">
+                 <small><a href="@Url.Action("SignIn", "Register")">Create Account</a></small>
+             </div>
+             <div class="sign-in">
+                 <small><a href="@Url.Action("ResetPassword", "LogIn")">Forgot password?</a></small>
+             </div>
+         }
      </form>
 
 </body>

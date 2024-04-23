@@ -3,6 +3,7 @@ using proiect.App_Start;
 using proiect.Domain.Entities.Ancheta;
 using proiect.Domain.Entities.User;
 using proiect.Models.Ancheta;
+using proiect.Models.Password;
 using proiect.Models.Request;
 using proiect.Models.User;
 using System;
@@ -30,6 +31,8 @@ namespace proiect
                     cfg.CreateMap<UserLogin, ULoginData>();
                     cfg.CreateMap<MAncheta, Ancheta>();
                     cfg.CreateMap<MRequest, Ancheta>();
+                   cfg.CreateMap<UserLogin, ModelResetPassword>();
+                   cfg.CreateMap<ModelResetPassword, UserLogin>();
                });
           }
     }

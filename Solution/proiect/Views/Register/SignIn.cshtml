@@ -165,11 +165,11 @@
           <h3>Sign in</h3>
 
           <label for="credential">Credential</label>
-          @Html.TextBoxFor(UserRegister => UserRegister.Credential, new { @class = "form-control", id = "credential", placeholder = "Email or Phone", maxlength = "10" })
+          @Html.TextBoxFor(UserRegister => UserRegister.Credential, new { @class = "form-control", id = "credential", placeholder = "Email or Phone", maxlength = "30" })
           @Html.ValidationMessageFor(UserRegister => UserRegister.Credential, "", new { @class = "text-danger" })
 
           <label for="email">Email</label>
-          @Html.TextBoxFor(UserRegister => UserRegister.Email, new { @class = "form-control", id = "email", autocomplete="on", placeholder = "Email or Phone", maxlength = "10" })
+          @Html.TextBoxFor(UserRegister => UserRegister.Email, new { @class = "form-control", id = "email", autocomplete="on", placeholder = "Email or Phone", maxlength = "30" })
           @Html.ValidationMessageFor(UserRegister => UserRegister.Email, "", new { @class = "text-danger" })
           
           <label for="password">Password</label>

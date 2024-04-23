@@ -1,4 +1,5 @@
-﻿using proiect.BusinessLogic;
+﻿using AutoMapper;
+using proiect.BusinessLogic;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Extensions;
 using System;
@@ -37,5 +38,6 @@ namespace proiect.Controllers
                     }
                }
           }
+       
      }
 }

@@ -2475,6 +2475,7 @@
     </Compile>
     <Compile Include="Models\Ancheta\MAncheta.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
+    <Compile Include="Models\Password\ModelResetPassword.cs" />
     <Compile Include="Models\Request\MRequest.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\UserLogin.cs" />
@@ -2733,6 +2734,10 @@
     <Content Include="Views\LoginUser\AnchetaPage.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\LoginUser\DonatorFind.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
+    <Content Include="Views\Login\ResetCode.cshtml" />
+    <Content Include="Views\Login\VerifyCode.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
