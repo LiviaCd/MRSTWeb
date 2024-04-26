@@ -2474,10 +2474,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ancheta\MAncheta.cs" />
+    <Compile Include="Models\Appointment\Appointment.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
     <Compile Include="Models\Password\ModelResetPassword.cs" />
     <Compile Include="Models\Request\MRequest.cs" />
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\User\ModelNewUser.cs" />
     <Compile Include="Models\User\UserLogin.cs" />
     <Compile Include="Models\User\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2738,6 +2740,8 @@
     <Content Include="Views\Login\ResetCode.cshtml" />
     <Content Include="Views\Login\VerifyCode.cshtml" />
     <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\NewUser.cshtml" />
+    <Content Include="Views\LoginUser\Appointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -43,9 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Ancheta\Ancheta.cs" />
+    <Compile Include="Entities\Appointment\AppointmentDBTable.cs" />
+    <Compile Include="Entities\Appointment\StatusAppointment.cs" />
+    <Compile Include="Entities\Appointment\UAppointment.cs" />
     <Compile Include="Entities\BloodType\BloodTypeDetail.cs" />
     <Compile Include="Entities\Responce\ULoginResp.cs" />
     <Compile Include="Entities\Session\Session.cs" />
+    <Compile Include="Entities\User\ANewUser.cs" />
     <Compile Include="Entities\User\UDBTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\URegisterData.cs" />

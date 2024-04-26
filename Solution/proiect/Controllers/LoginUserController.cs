@@ -15,13 +15,29 @@ using System.Web.Helpers;
 using System.Web.UI;
 using System.Data.Entity.Validation;
 using proiect.Models.Request;
+using proiect.BusinessLogic.Interfaces;
+using proiect.BusinessLogic;
+using proiect.Domain.Entities.Appointment;
+using proiect.Models.Appointment;
 
 namespace proiect.Controllers
 {
     public class LoginUserController : BaseController
     {
-          // GET: LoginUser
-          [DoctorMod]
+        private readonly IUserAction _userAction;
+        // GET: LoginUser
+        public LoginUserController()
+        {
+            var bl = new BussinessLogic();
+            _userAction = bl.GetUserActionBL();
+        }
+        [LoginUserMod]
+        public ActionResult Appointment()
+        {
+            SessionStatus();
+            return View();
+        }
+        [DoctorMod]
           public ActionResult SearchDonator()
           {
                SessionStatus();
@@ -126,7 +142,35 @@ namespace proiect.Controllers
                }
                return View(ancheta);
           }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Appointment(Appointment data)
+        {
+            if (ModelState.IsValid)
+            {
+                UAppointment uData = new UAppointment
+                {
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
+                    Email = data.Email,
+                    Phone = data.Phone,
+                    BloodType = data.BloodType,
+                    Data = data.Data,
+                    Time = data.Time,
+                };
+                StatusAppointment resp = _userAction.UserAppointment(uData);
+                if (resp.Status)
+                {
+                    return RedirectToAction("UserPage", "LoginUser");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return View(data);
+        }
 
-     }
+    }
 
 }

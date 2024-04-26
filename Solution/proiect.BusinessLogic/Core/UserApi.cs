@@ -23,6 +23,7 @@ using AutoMapper;
 using System.Web;
 using System.Net;
 using proiect.Domain.Entities.Ancheta;
+using proiect.Domain.Entities.Appointment;
 
 
 namespace proiect.BusinessLogic.Core
@@ -170,5 +171,26 @@ namespace proiect.BusinessLogic.Core
 
                return userMinimal;
           }
-     }
+        public StatusAppointment NewUserAppointment(UAppointment data)
+        {
+            using (var db = new AppointmentContext())
+            {
+                var newAppointment = new AppointmentDBTable
+                {
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
+                    Email = data.Email,
+                    Phone = data.Phone,
+                    BloodType = data.BloodType,
+                    Data = data.Data,
+                    Time = data.Time,
+                    TimeAppointment = DateTime.Now
+                };
+                db.Appointments.Add(newAppointment);
+                db.SaveChanges();
+                return new StatusAppointment { Status = true };
+            }
+            return new StatusAppointment { Status = false };
+        }
+    }
 }

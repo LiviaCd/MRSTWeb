@@ -21,6 +21,10 @@ namespace proiect.BusinessLogic
           {
                return new MonitoringBL();
           }
+        public IUserAction GetUserActionBL()
+        {
+            return new UserActionBL();
+        }
 
-     }
+    }
 }
