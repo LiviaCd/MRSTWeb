@@ -1,0 +1,344 @@
+﻿
+@{
+    ViewBag.Title = "Pretest";
+    Layout = "~/Views/Shared/_LayoutSign.cshtml";
+}
+@model proiect.Models.User.UserRegister
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FEFEFA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px; /* Add margin for spacing */
+            padding: 20px;
+            background-color: rgba(255,255,255,0.13);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            text-align: center;
+        }
+
+            form * {
+                color: #342c29;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
+
+            form h3 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 2px;
+                margin-bottom: 20px;
+            }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        input[type="button"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 10px; /* Adjusted margin to create space between the label and buttons */
+            width: calc(50% - 5px); /* Adjusted width to make room for margin between buttons */
+            color: rgb(29, 28, 28);
+            background-color: rgba(124, 70, 70, 0.27);
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+
+
+            button:first-child {
+                margin-right: 10px;
+            }
+
+            button:last-child {
+                margin-left: 10px;
+            }
+
+        .half-width-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-page-button {
+            margin-top: 30px;
+            width: 100%;
+            color: rgb(29, 28, 28);
+            background-color: rgba(124, 70, 70, 0.27);
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Additional styles for the "Da" and "Nu" buttons */
+        .error-message {
+            margin-top: 10px;
+            display: block; /* Ensure error message appears below buttons */
+        }
+
+            button:hover {
+                background-color: rgba(215, 86, 86, 0.5);
+            }
+
+        
+    </style>
+</head>
+<body>
+
+    <form action="/submit-quiz" method="post" id="quizForm">
+        <h3>Pot fi donator?</h3>
+
+        <div class="quiz-question" id="question1">
+            <br>
+            <label for="question1">Ai avut sau ai vreo afecțiune cardiacă?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 1)">Da</button>
+                <button type="button" onclick="selectOption('b', 1)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+
+        <div class="quiz-question" id="question2" style="display: none;">
+            <br>
+            <label for="question2">Ești însărcinată sau ai avut un copil, avort spontan sau întrerupere de sarcină în ultimele 6 luni?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 2)">Da</button>
+                <button type="button" onclick="selectOption('b', 2)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question3" style="display: none;">
+            <br>
+            <label for="question3">Ai donat sânge integral, plasmă sau trombocite în ultimele 16 săptămâni?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 3)">Da</button>
+                <button type="button" onclick="selectOption('b', 3)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question4" style="display: none;">
+            <br>
+            <label for="question4">În ultimele 4 luni ți-ai făcut piercing la urechi, nas, față sau corp?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 4)">Da</button>
+                <button type="button" onclick="selectOption('b', 4)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question5" style="display: none;">
+            <br>
+            <label for="question5">În ultimele 4 luni ai făcut un tatuaj, machiaj semipermanent sau alte tratamente cosmetice care au implicat piercingul pielii?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 5)">Da</button>
+                <button type="button" onclick="selectOption('b', 5)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question6" style="display: none;">
+            <br>
+            <label for="question6">În ultimele 4 luni ai făcut acupunctură?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 6)">Da</button>
+                <button type="button" onclick="selectOption('b', 6)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question7" style="display: none;">
+            <br>
+            <label for="question7">În ultimele 4 luni ai avut o endoscopie flexibilă sau o colonoscopie?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 7)">Da</button>
+                <button type="button" onclick="selectOption('b', 7)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question8" style="display: none;">
+            <br>
+            <label for="question8">În ultimele 4 săptămâni ai intrat în contact cu cineva care avea o boală infecțioasă?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 8)">Da</button>
+                <button type="button" onclick="selectOption('b', 8)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question9" style="display: none;">
+            <br>
+            <label for="question9">Ai avut vreo infecție în ultimele 2 săptămâni sau ai luat antibiotice în ultimele 7 zile?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 9)">Da</button>
+                <button type="button" onclick="selectOption('b', 9)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question10" style="display: none;">
+            <br>
+            <label for="question10">În ultimele 7 zile ai avut tuse, durere în gât sau ai simptome de răceală?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 10)">Da</button>
+                <button type="button" onclick="selectOption('b', 10)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question11" style="display: none;">
+            <br>
+            <label for="question11">Ai avut vreun tratament dentar în ultimele 7 zile sau ai în desfășurare vreun tratament dentar în prezent?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 11)">Da</button>
+                <button type="button" onclick="selectOption('b', 11)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question12" style="display: none;">
+            <br>
+            <label for="question12">Ai primit o vaccinare împotriva coronavirusului în ultimele 48 de ore?</label>
+            <br>
+            <div class="half-width-buttons">
+                <button type="button" onclick="selectOption('a', 12)">Da</button>
+                <button type="button" onclick="selectOption('b', 12)">Nu</button>
+            </div>
+            <span class="error-message"></span>
+        </div>
+
+        <div class="quiz-question" id="question13" style="display: none;">
+            <label for="question13">
+                Excelent! Ai trecut testul nostru de eligibilitate de bază și pare că poți dona sânge, plasmă sau trombocite. Așteptăm cu nerăbdare să te vedem în curând.</label>
+            <label>Te rugăm să ții cont că acest verificator acoperă doar motivele cele mai comune pentru care oamenii nu pot dona, iar alte criterii de eligibilitate se aplică. Personalul nostru va lua decizia finală în privința posibilității tale de a dona când vei veni la programarea pentru donare.</label>
+            <button class="main-page-button" type="button" onclick="goToHomePage()">Revină la pagina principală</button>
+        </div>
+
+        <div class="quiz-question" id="question14" style="display: none;">
+            <br>
+            <label for="question14">Regretăm să îți informăm că nu ai trecut de testul nostru de eligibilitate de bază și nu ești eligibil să donezi în acest moment. Există diferite motive pentru aceasta, iar personalul nostru va discuta mai multe detalii cu tine când vei veni la programarea pentru donare. Te rugăm să nu te descurajezi și să revii pentru a încerca din nou în viitor.</label>
+            <button class="main-page-button" type="button" onclick="goToHomePage()">Revină la pagina principală</button>
+        </div>
+
+
+
+    </form>
+
+    <script>
+        function selectOption(option, questionNum) {
+            // Proceed to the next question
+            var nextNum = questionNum + 1;
+
+            // If "Da" is selected and it's not the last question, show question 14
+            if (option === 'a' && nextNum < 14) {
+                showQuestion(14);
+            } else {
+                showQuestion(nextNum);
+            }
+        }
+
+
+
+
+        function showQuestion(questionNum) {
+            var questions = document.querySelectorAll('.quiz-question');
+            questions.forEach(function (question) {
+                question.style.display = 'none';
+            });
+
+            var currentQuestion = document.getElementById('question' + questionNum);
+            if (currentQuestion) {
+                currentQuestion.style.display = 'block';
+            }
+
+            // If it's the last question, check if all answers are "nu"
+            if (questionNum > 12) {
+                checkAllAnswers();
+            }
+        }
+
+        function checkAllAnswers() {
+            var allNo = true;
+            var buttonInputs = document.querySelectorAll('button');
+            buttonInputs.forEach(function (buttonInput) {
+                if (buttonInput.textContent === 'Da') {
+                    allNo = false;
+                }
+            });
+
+            if (allNo) {
+
+                showQuestion(13); 
+            }
+        }
+
+        function goToHomePage() {
+            window.location.href = "@Url.Action("Index", "Home")"; 
+        }
+
+        showQuestion(1);
+    </script>
+
+
+
+</body>
+</html>

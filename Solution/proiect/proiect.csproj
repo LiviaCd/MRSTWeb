@@ -2468,6 +2468,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
+    <Compile Include="Controllers\PretestController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -2719,7 +2720,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Pretest.cshtml" />
+    <Content Include="Views\Pretest\Pretest.cshtml" />
     <Content Include="Views\Home\BloodType.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

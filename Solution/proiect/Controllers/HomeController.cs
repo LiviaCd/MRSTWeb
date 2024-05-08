@@ -47,11 +47,7 @@ namespace proiect.Controllers
                SessionStatus();
                return View();
           }
-          public ActionResult Pretest()
-          {
-               SessionStatus();
-               return View();
-          }
+          
           public ActionResult ErrorAccessDenied()
           {
                return View();
