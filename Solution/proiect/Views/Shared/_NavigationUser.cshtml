@@ -9,7 +9,7 @@
 
                <div class="profile-image col-4">
                     <a href="ui-profile.html">
-                         <img alt="" src="../data/profile/profile.jpg" class="img-fluid rounded-circle">
+                         <img alt="" src="..//data/profile/profile.jpg" class="img-fluid rounded-circle">
                     </a>
                </div>
 
@@ -35,7 +35,7 @@
 
               <li class='menusection'>Main</li>
               <li class="">
-                  <a href="index.html">
+                  <a href="@Url.Action("GeneralUserPage", "LoginUser")">
                       <i class="fa fa-dashboard"></i>
                       <span class="title">General</span>
                   </a>
@@ -44,80 +44,20 @@
                   <a href="javascript:;">
                       <i class="fa fa-suitcase"></i>
                       <span class="title">Profilul meu</span>
-                      <span class="arrow "></span>
                   </a>
-                  <ul class="sub-menu">
-                      <li>
-                          <a class="" href="ui-blogs.html">Blogs</a>
-                      </li>
-                      <li>
-                          <a class="" href="ui-search.html">Search</a>
-                      </li>
-                      <li>
-                          <a class="" href="ui-blog-item.html">Single Blog</a>
-                      </li>
-                  </ul>
-              </li>
+                  
               <li class="">
-                  <a href="javascript:;">
+                  <a href="@Url.Action("NewsUserPage", "LoginUser")">
                       <i class="fa fa-suitcase"></i>
                       <span class="title">Noutăți</span>
-
                   </a>
-                  <ul class="sub-menu">
-                      <li>
-                          <a class="" href="hospital.html" target='_blank'>Hospital Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="music.html" target='_blank'>Music Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="crm.html" target='_blank'>CRM Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="socialmedia.html" target='_blank'>Social Media Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="freelancing.html" target='_blank'>Freelancing Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="university.html" target='_blank'>University Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="ecommerce.html" target='_blank'>Ecommerce Admin</a>
-                      </li>
-                      <li>
-                          <a class="" href="blog.html" target='_blank'>Blog Admin</a>
-                      </li>
-                  </ul>
-              </li>
+                  
               <li class="">
-                  <a href="javascript:;">
+                  <a href="@Url.Action("LocationsPage", "LoginUser")">
                       <i class="fa fa-columns"></i>
                       <span class="title">Locații</span>
-                      <span class="arrow "></span>
                   </a>
-                  <ul class="sub-menu">
-                      <li>
-                          <a class="" href="layout-default.html">Default Layout</a>
-                      </li>
-                      <li>
-                          <a class="" href="layout-collapsed.html">Collapsed Menu</a>
-                      </li>
-                      <li>
-                          <a class="" href="layout-chat.html">Chat Open</a>
-                      </li>
-                      <li>
-                          <a class="" href="layout-boxed.html">Boxed Layout</a>
-                      </li>
-                      <li>
-                          <a class="" href="layout-boxed-collapsed.html">Boxed Collapsed Menu</a>
-                      </li>
-                      <li>
-                          <a class="" href="layout-boxed-chat.html">Boxed Chat Open</a>
-                      </li>
-                  </ul>
-              </li>
+                  
               @if (User.Identity.IsAuthenticated)
               {
                   var role = (proiect.Domain.Enums.URole)HttpContext.Current.Session["Role"];
@@ -298,17 +238,5 @@
 
 
           </ul>
-
-          <div class="menustats">
-               <h5>Project Progress</h5>
-               <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                    </div>
-               </div>
-               <h5>Target Achieved</h5>
-               <div class="progress">
-                    <div class="progress-bar progress-bar-accent" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                    </div>
-               </div>
-          </div>
      </div>
+</div>

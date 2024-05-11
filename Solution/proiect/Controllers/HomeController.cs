@@ -42,7 +42,7 @@ namespace proiect.Controllers
                SessionStatus();
                return View();
           }
-          public ActionResult Contact()
+          public ActionResult Information()
           {
                SessionStatus();
                return View();

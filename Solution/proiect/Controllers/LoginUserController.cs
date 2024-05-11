@@ -56,9 +56,25 @@ namespace proiect.Controllers
                return View(data);
           }
 
+          public ActionResult LocationsPage()
+            {
+                SessionStatus();
+                return View();
+            }
 
+          public ActionResult NewsUserPage()
+            {
+                SessionStatus();
+                return View();
+            }
 
-          [HttpPost]
+          public ActionResult GeneralUserPage()
+            {
+                SessionStatus();
+                return View();
+            }
+
+        [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult SearchDonator(MRequest request)
           {
