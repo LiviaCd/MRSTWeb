@@ -42,10 +42,13 @@ namespace proiect.Controllers
                     Credential = data.Credential,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
+                    Address = data.Address,
+                    Phone = data.Phone,
                     Email = data.Email,
                     LoginIp = Request.UserHostAddress,
                     LoginDateTime = DateTime.Now,
-                
+                    BlockTime = new DateTime(1900, 1, 1)
+
                 };
                 ULoginResp resp = _session.RegisterNewUserAction(uData);
                 if (resp.Status)

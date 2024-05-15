@@ -1,0 +1,43 @@
+﻿﻿
+@{
+    ViewBag.Title = "EditUserInfo";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@model proiect.Domain.Entities.User.UserMinimal
+<h2>EditUserInfo</h2>
+
+<section>
+     <div>
+
+          @using (Html.BeginForm("EditUserInfo", "Admin", FormMethod.Post))
+        {
+          @Html.AntiForgeryToken()
+
+          @Html.ValidationSummary()
+
+          <label for="Username">Name</label>
+          @Html.TextBoxFor(m => m.UserName)
+          @Html.ValidationMessageFor(m => m.UserName)
+          <label for="Email">Email</label>
+          @Html.TextBoxFor(m => m.Email)
+          @Html.ValidationMessageFor(m => m.Email)
+          <label for="Address">Address</label>
+          @Html.TextBoxFor(m => m.Address)
+          @Html.ValidationMessageFor(m => m.Address)
+          <label for="Phone">Phone</label>
+          @Html.TextBoxFor(m => m.Phone)
+          @Html.ValidationMessageFor(m => m.Phone)
+
+          <label for="Level">Level</label>
+          @Html.DropDownListFor(m => m.Level, new SelectList(new[]
+          {
+              new SelectListItem { Text = "Admin", Value = "Admin" },
+              new SelectListItem { Text = "User", Value = "User" },
+          }, "Value", "Text"), new { @class = "dropdown" })
+          <button type="submit" class="accept">Edit</button>
+          <button onclick="location.href=@Url.Action("TestUsers","Admin");return false;" class="cancel">Cancel</button>
+        }
+
+     </div>
+</section>

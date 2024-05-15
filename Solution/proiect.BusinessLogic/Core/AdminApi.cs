@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.ModelBinding;
 using System.Web.UI.WebControls;
 
 namespace proiect.BusinessLogic.Core
@@ -25,9 +26,12 @@ namespace proiect.BusinessLogic.Core
                     UserName = u.UserName,
                     Email = u.Email,
                     Id = u.Id,
+                    Address = u.Address,
+                    Phone = u.Phone,
                     LasIp = u.LasIp,
                     LastLogin = u.LastLogin,
                     Level = u.Level,
+                    BlockTime = u.BlockTime
                 }).ToList();
 
                 return users;
@@ -44,27 +48,33 @@ namespace proiect.BusinessLogic.Core
                 {
                     UserName = user.UserName,
                     Email = user.Email,
+                    Address = user.Address,
+                    Phone = user.Phone,
                     Level = user.Level,
                     Id = user.Id,
+                    LastLogin = user.LastLogin,
+                    BlockTime = user.BlockTime
                 };
             }
         }
 
-        public void REditUser(int Id, UserMinimal userModel)
-        {
-            using (var dbContext = new UserContext())
-            {
-                var user = dbContext.Users.FirstOrDefault(us => us.Id == Id);
-                if (user == null) return;
+          public void REditUser(int Id, UserMinimal userModel)
+          {
+               using (var dbContext = new UserContext())
+               {
+                    var user = dbContext.Users.FirstOrDefault(us => us.Id == Id);
+                    if (user == null) return;
 
-                user.UserName = userModel.UserName;
-                user.Email = userModel.Email;
-                user.Level = userModel.Level;
+                    user.UserName = userModel.UserName;
+                    user.Email = userModel.Email;
+                    user.Address = userModel.Address;
+                    user.Phone = userModel.Phone;
+                    user.Level = userModel.Level;
 
-                dbContext.SaveChanges();
-            }
-        }
-        public ULoginResp AddNewUserAction(ANewUser data)
+                    dbContext.SaveChanges();
+               }
+          }
+          public ULoginResp AddNewUserAction(ANewUser data)
         {
             using (var db = new UserContext())
             {
@@ -106,6 +116,33 @@ namespace proiect.BusinessLogic.Core
             }
         }
 
-    }
+          public void RBlockUser1Day (UserMinimal userData)
+          {
+               using (var dbContext = new UserContext())
+               {
+                    var user = dbContext.Users.FirstOrDefault(us => us.UserName == userData.UserName);
+                    if (user == null) return;
+
+                    user.BlockTime = DateTime.Now.AddHours(24);
+                    dbContext.SaveChanges();
+               }
+          }
+
+          public void RBlockUser3Days(UserMinimal user)
+          {
+               user.BlockTime = DateTime.Now.AddHours(72);
+           
+          }
+          public void RBlockUser30Day(UserMinimal user)
+          {
+               user.BlockTime = DateTime.Now.AddDays(30);
+          }
+
+          public void RBlockUserPermanent(UserMinimal user)
+          {
+               user.BlockTime = DateTime.Now.AddYears(100);
+          }
+
+     }
 }
 

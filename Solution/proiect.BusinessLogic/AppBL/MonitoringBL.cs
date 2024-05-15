@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using proiect.Domain.Enums;
 
 namespace proiect.BusinessLogic.AppBL
 {
@@ -31,5 +32,11 @@ namespace proiect.BusinessLogic.AppBL
         {
             return AddNewUserAction(addData);
         }
-    }
+          public void BlockUser1day(UserMinimal userData)
+          {
+               RBlockUser1Day(userData);
+          }
+
+
+     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -30,7 +31,15 @@ namespace proiect.Domain.Entities.User
           [Display(Name = "Email Address")]
           [StringLength(30)]
           public string Email { get; set; }
-          
+          [Required]
+          [Display(Name = "Address")]
+          [StringLength(50)]
+          public string Address { get; set; }
+          [Required]
+          [Display(Name = "Phone")]
+          [StringLength(9)]
+          public string Phone { get; set; }
+
           [DataType(DataType.Date)]
           public DateTime LastLogin { get; set; }
 
@@ -38,8 +47,7 @@ namespace proiect.Domain.Entities.User
           public string LasIp { get; set; }
 
           public URole Level { get; set; }
-
           
-
+          public DateTime BlockTime { get; set; }
      }
 }

@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Block User";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@model proiect.Domain.Entities.User.UserMinimal
+
+<h2>Block User</h2>
+<section class="block-user">
+     <div class="user-details">
+          <form method="post">
+               @Html.AntiForgeryToken()
+               <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+                    <div class="card p-4">
+                         <div class=" image d-flex flex-column justify-content-center align-items-center">
+                              <button class="btn btn-secondary">
+                                   <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+                              </button>
+                              <span class="name mt-3">@Html.DisplayFor(m => m.UserName)</span>
+                              <span class="idd">@Html.DisplayFor(m => m.Email)</span>
+                              <span class="idd">@Html.DisplayFor(m => m.Address)</span>
+                              <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                   <span class="idd1">@Html.DisplayFor(m => m.Phone)</span>
+                                   <span><i class="fa fa-copy"></i></span>
+                              </div>
+                              <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                   <span class="idd1">Vazut ultima data @Html.DisplayFor(m => m.LastLogin)</span>
+                              </div>
+
+                              <div class="name mt-3">Blocarea contului</div>
+                              <br>
+                              <select id="durationSelect" class="btn1 btn-white-outline">
+                                   <option value="24">24 ore</option>
+                                   <option value="72">72 ore</option>
+                                   <option value="720">30 zile</option>
+                                   <option value="permanent">Permanent</option>
+                              </select>
+                              <br>
+                              <button onclick="location.href='@Url.Action("BlockUser","Admin")';return false;" class="btn-yellow">Blochează utilizatorul</button>
+                              <br>
+                              <button onclick="location.href='@Url.Action("TestUsers","Admin")';return false;" class="btn-yellow">Cancel</button>
+
+
+                              <div class="text mt-3">
+                                   <span>
+                                        La activarea regimului de blocare, utilizatorul nu va avea acces la cont. După expirarea modului respectiv, contul va fi activ din nou<br>
+                                        <br>
+                                   </span>
+                              </div>
+
+
+
+
+
+
+                         </div>
+                    </div>
+               </div>
+
+          </form>
+     </div>
+</section>
+
+<style>
+     * {
+          margin: 0;
+          padding: 0
+     }
+
+     body {
+          
+     }
+
+     .card {
+          width: 350px;
+          background-color: #efefef;
+          border: none;
+          cursor: pointer;
+          transition: all 0.5s;
+     }
+
+     .image img {
+          transition: all 0.5s
+     }
+
+     .card:hover .image img {
+          transform: scale(1.5)
+     }
+
+     .btn {
+          height: 140px;
+          width: 140px;
+          border-radius: 50%
+     }
+
+     .name {
+          font-size: 22px;
+          font-weight: bold
+     }
+
+     .idd {
+          font-size: 14px;
+          font-weight: 600
+     }
+
+     .idd1 {
+          font-size: 12px
+     }
+
+     .number {
+          font-size: 22px;
+          font-weight: bold
+     }
+
+     .follow {
+          font-size: 12px;
+          font-weight: 500;
+          color: #444444
+     }
+
+     .btn1 {
+          height: 40px;
+          width: 150px;
+          border: none;
+          background-color: #000;
+          color: #aeaeae;
+          font-size: 15px
+     }
+
+     .text span {
+          font-size: 13px;
+          color: #545454;
+          font-weight: 500
+     }
+
+     .icons i {
+          font-size: 19px
+     }
+
+     hr .new1 {
+          border: 1px solid
+     }
+
+     .join {
+          font-size: 14px;
+          color: #a0a0a0;
+          font-weight: bold
+     }
+
+     .date {
+          background-color: #ccc
+     }
+     /* Definirea gradientelor pentru fiecare buton */
+     .btn-yellow {
+          background: #0E61D1;
+     }
+
+     .btn-rouge {
+          background: #1432BA;
+     }
+
+     .btn-dark {
+          background: #1B03A3;
+     }
+
+     /* Stilizarea butoanelor */
+     .btn1 {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+     }
+
+     .btn-white-outline {
+          background: #0790E8;
+     }
+
+     .btn-cancel {
+          padding: 10px 20px;
+          border: 2px solid #333;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          color: #1E47F0;
+     }
+
+     /* Adăugarea spațiului între butoane */
+     br {
+          margin-bottom: 10px;
+     }
+
+</style>
+
+
+
+
+
+
+
+
+
+

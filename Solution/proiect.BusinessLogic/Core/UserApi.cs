@@ -33,7 +33,7 @@ namespace proiect.BusinessLogic.Core
           public ULoginResp RLoginUpService(ULoginData data)
           {
                UDBTable user;
-              // var validate = new EmailAddressAttribute();
+               //var validate = new EmailAddressAttribute();
                //if (validate.IsValid(data.Credential))
                //{
                     
@@ -52,6 +52,7 @@ namespace proiect.BusinessLogic.Core
                         
                          user.LasIp = data.LoginIp;
                          user.LastLogin = data.LoginDateTime;
+                         user.BlockTime = DateTime.UtcNow.AddHours(0);
                          todo.Entry(user).State = EntityState.Modified;
                          todo.SaveChanges();
                     }
@@ -65,7 +66,7 @@ namespace proiect.BusinessLogic.Core
                }
                
 
-              // }
+               //}
                return new ULoginResp { Status = false };
           }
 
@@ -81,15 +82,18 @@ namespace proiect.BusinessLogic.Core
                     {
                          return new ULoginResp { Status = false, Message = "A user exist" };
                     }
-                         var newUser = new UDBTable
-                         {
-                              UserName = data.Credential,
-                              Email = data.Email,
-                              Password = LoginHelper.HashGen(data.Password),
-                              LasIp = "0.0.0.0",
-                              LastLogin = DateTime.Now,
-                              Level = URole.User
-                         };
+                    var newUser = new UDBTable
+                    {
+                         UserName = data.Credential,
+                         Email = data.Email,
+                         Address = data.Address,
+                         Phone = data.Phone,
+                         Password = LoginHelper.HashGen(data.Password),
+                         LasIp = "0.0.0.0",
+                         LastLogin = DateTime.Now,
+                         Level = URole.User,
+                         BlockTime = new DateTime(1900, 1, 1)
+                    };
                     if (data.Password != data.ConfirmPassword)
                          return new ULoginResp { Status = false, Message = "Wrong password" };
                     db.Users.Add(newUser);
