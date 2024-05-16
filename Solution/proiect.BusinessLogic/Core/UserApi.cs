@@ -184,15 +184,15 @@ namespace proiect.BusinessLogic.Core
                     FirstName = data.FirstName,
                     LastName = data.LastName,
                     Email = data.Email,
+                    Address = data.Address,
                     Phone = data.Phone,
                     BloodType = data.BloodType,
-                    Data = data.Data,
                     Time = data.Time,
-                    TimeAppointment = DateTime.Now
+                
                 };
                 db.Appointments.Add(newAppointment);
                 db.SaveChanges();
-                return new StatusAppointment { Status = true };
+                    return new StatusAppointment { Status = true };
             }
             return new StatusAppointment { Status = false };
         }

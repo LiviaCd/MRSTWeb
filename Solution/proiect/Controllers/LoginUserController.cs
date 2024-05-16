@@ -169,19 +169,21 @@ namespace proiect.Controllers
                     FirstName = data.FirstName,
                     LastName = data.LastName,
                     Email = data.Email,
+                    Address = data.Address,
                     Phone = data.Phone,
                     BloodType = data.BloodType,
-                    Data = data.Data,
                     Time = data.Time,
                 };
                 StatusAppointment resp = _userAction.UserAppointment(uData);
                 if (resp.Status)
                 {
-                    return RedirectToAction("UserPage", "LoginUser");
+                         ViewData["ConfirmationMessage"] = "Programarea dumneavoastra a fost salvata cu succes!";
+                         return View(data);
                 }
                 else
                 {
-                    return View();
+                         ViewData["ConfirmationMessage"] = "Din pacate, programarea dvs. nu a fost salvata";
+                         return View();
                 }
             }
             return View(data);

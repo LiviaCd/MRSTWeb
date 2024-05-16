@@ -10,9 +10,9 @@ namespace proiect.Domain.Entities.Appointment
 {
     public class AppointmentDBTable
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AppointmentId { get; set; }
+          [Key]
+          [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+          public int AppointmentId { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -32,16 +32,13 @@ namespace proiect.Domain.Entities.Appointment
 
         [Required]
         public string BloodType { get; set; }
-
+          [Required]
+ 
+        public string Address { get; set; }
+ 
+          
+          
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime Data { get; set; }
-
-        [Required]
-        [DataType(DataType.Time)]
         public DateTime Time { get; set; }
-
-        [DataType(DataType.Time)]
-        public DateTime TimeAppointment { get; set; }
     }
 }
