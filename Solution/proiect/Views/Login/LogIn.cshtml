@@ -189,9 +189,9 @@
              @Html.AntiForgeryToken()
              <h3>Log in</h3>
 
-             <label for="Credential">Username</label>
-             @Html.TextBoxFor(UserLogin => UserLogin.Credential, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "30" })
-             @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
+             <label for="Credential">Email</label>
+             @Html.TextBoxFor(UserLogin => UserLogin.Email, new { @class = "form-control", placeholder = "Email or Phone", maxlength = "30" })
+             @Html.ValidationMessageFor(UserLogin => UserLogin.Email, "", new { @class = "text-danger" })
 
              <label for="Password">Password</label>
              @Html.PasswordFor(UserLogin => UserLogin.Password, new { @class = "form-control", placeholder = "Password" })

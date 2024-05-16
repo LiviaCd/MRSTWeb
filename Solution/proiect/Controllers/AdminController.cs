@@ -42,7 +42,8 @@ namespace proiect.Controllers
             {
                 ANewUser uData = new ANewUser
                 {
-                    Credential = data.Credential,
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
                     Email = data.Email,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,

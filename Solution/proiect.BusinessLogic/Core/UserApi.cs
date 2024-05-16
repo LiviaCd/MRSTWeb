@@ -33,13 +33,13 @@ namespace proiect.BusinessLogic.Core
           public ULoginResp RLoginUpService(ULoginData data)
           {
                UDBTable user;
-               //var validate = new EmailAddressAttribute();
-               //if (validate.IsValid(data.Credential))
-               //{
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Email))
+               {
                     
                     using (var db = new UserContext())
                     {
-                         user = db.Users.FirstOrDefault(us => us.UserName == data.Credential);
+                         user = db.Users.FirstOrDefault(us => us.Email == data.Email);
                     }
                     if (user == null)
                          return new ULoginResp { Status = false, Message = "The Username or Password is Incorect" };
@@ -66,7 +66,7 @@ namespace proiect.BusinessLogic.Core
                }
                
 
-               //}
+               }
                return new ULoginResp { Status = false };
           }
 
@@ -76,7 +76,7 @@ namespace proiect.BusinessLogic.Core
           {
                using (var db = new UserContext())
                {
-                    bool existingUser = db.Users.Any(u => u.UserName == data.Credential);
+                    bool existingUser = db.Users.Any(u => u.Email == data.Email);
 
                     if (existingUser)
                     {
@@ -84,7 +84,8 @@ namespace proiect.BusinessLogic.Core
                     }
                     var newUser = new UDBTable
                     {
-                         UserName = data.Credential,
+                         FirstName = data.FirstName,
+                         LastName = data.LastName,
                          Email = data.Email,
                          Address = data.Address,
                          Phone = data.Phone,
@@ -166,7 +167,7 @@ namespace proiect.BusinessLogic.Core
                     }
                     else
                     {
-                         curentUser = db.Users.FirstOrDefault(u => u.UserName == session.UserName);
+                         curentUser = db.Users.FirstOrDefault(u => u.Email == session.UserName);
                     }
                }
                
@@ -196,5 +197,25 @@ namespace proiect.BusinessLogic.Core
             }
             return new StatusAppointment { Status = false };
         }
-    }
+          public List<UAppointment> RShowAppointment(UAppointment data)
+          {
+               using (var dbContext = new AppointmentContext())
+               {
+                    var appoint = dbContext.Appointments.Select(u => new UAppointment
+                    {
+                         FirstName = u.FirstName,
+                         LastName = u.LastName,
+                         Email = u.Email,
+                         Id = u.AppointmentId,
+                         Address = u.Address,
+                         Phone = u.Phone,
+                         Time = u.Time,
+                         BloodType = u.BloodType,
+
+                    }).ToList();
+
+                    return appoint;
+               }
+          }
+     }
 }

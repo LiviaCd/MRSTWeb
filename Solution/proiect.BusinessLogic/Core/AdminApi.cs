@@ -23,7 +23,8 @@ namespace proiect.BusinessLogic.Core
             {
                 var users = dbContext.Users.Select(u => new UserMinimal
                 {
-                    UserName = u.UserName,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
                     Email = u.Email,
                     Id = u.Id,
                     Address = u.Address,
@@ -46,7 +47,8 @@ namespace proiect.BusinessLogic.Core
                 if (user == null) return null;
                 return new UserMinimal
                 {
-                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                     Email = user.Email,
                     Address = user.Address,
                     Phone = user.Phone,
@@ -64,8 +66,8 @@ namespace proiect.BusinessLogic.Core
                {
                     var user = dbContext.Users.FirstOrDefault(us => us.Id == Id);
                     if (user == null) return;
-
-                    user.UserName = userModel.UserName;
+                    user.FirstName = userModel.FirstName;
+                    user.LastName = userModel.LastName;
                     user.Email = userModel.Email;
                     user.Address = userModel.Address;
                     user.Phone = userModel.Phone;
@@ -83,7 +85,7 @@ namespace proiect.BusinessLogic.Core
                     return new ULoginResp { Status = false, Message = "Passwords do not match." };
 
                 // Check for existing user
-                bool existingUser = db.Users.Any(u => u.UserName == data.Credential);
+                bool existingUser = db.Users.Any(u => u.Email == data.Email);
                 if (existingUser)
                 {
                     return new ULoginResp { Status = false, Message = "A user already exists with this username." };
@@ -92,7 +94,8 @@ namespace proiect.BusinessLogic.Core
                 // Create new user
                 var newUser = new UDBTable
                 {
-                    UserName = data.Credential,
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
                     Email = data.Email,
                     Password = LoginHelper.HashGen(data.Password),
                     LasIp = "",
@@ -120,7 +123,7 @@ namespace proiect.BusinessLogic.Core
           {
                using (var dbContext = new UserContext())
                {
-                    var user = dbContext.Users.FirstOrDefault(us => us.UserName == userData.UserName);
+                    var user = dbContext.Users.FirstOrDefault(us => us.Email == userData.Email);
                     if (user == null) return;
 
                     user.BlockTime = DateTime.Now.AddHours(24);

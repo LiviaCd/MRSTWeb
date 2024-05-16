@@ -37,7 +37,13 @@ namespace proiect.Controllers
             SessionStatus();
             return View();
         }
-        [DoctorMod]
+          [LoginUserMod]
+          public ActionResult MyAppointments()
+          {
+               SessionStatus();
+               return View();
+          }
+          [DoctorMod]
           public ActionResult SearchDonator()
           {
                SessionStatus();
@@ -188,7 +194,25 @@ namespace proiect.Controllers
             }
             return View(data);
         }
+         public ActionResult MyAppointments (Appointment data)
+          {
+               if (ModelState.IsValid) 
+               {
+                    UAppointment uData = new UAppointment
+                    {
+                         FirstName = data.FirstName,
+                         LastName = data.LastName,
+                         Email = data.Email,
+                         Address = data.Address,
+                         Phone = data.Phone,
+                         BloodType = data.BloodType,
+                         Time = data.Time,
+                    };
+                   _userAction.ShowAppointment(uData);
+               }
+               return View(data);
+          }
 
-    }
+     }
 
 }

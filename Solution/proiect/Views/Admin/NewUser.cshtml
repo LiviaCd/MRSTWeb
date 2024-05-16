@@ -5,52 +5,61 @@
 @model proiect.Models.User.ModelNewUser
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
-        <form method="POST">
-            @using (Html.BeginForm("NewUser", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+         <form method="POST">
+              @using (Html.BeginForm("NewUser", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                @Html.AntiForgeryToken()
-                <div class="formbold-input-wrapp formbold-mb-3">
-                    <label for="username" class="formbold-form-label">UserName</label>
-                    <div>
-                        @Html.TextBoxFor(model => model.Credential, new { @class = "formbold-form-input", placeholder = "Nume", maxlength = "30" })
-                        @Html.ValidationMessageFor(model => model.Credential, "", new { @class = "text-danger" })
+              @Html.AntiForgeryToken()
+              <div class="formbold-input-wrapp formbold-mb-3">
+                   <label for="first name" class="formbold-form-label">First Name</label>
+                   <div>
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "formbold-form-input", placeholder = "Nume", maxlength = "30" })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
 
-                    </div>
-                </div>
+                   </div>
+              </div>
 
-                <div class="formbold-mb-3">
-                    <label for="email" class="formbold-form-label">Email</label>
-                    @Html.TextBoxFor(model => model.Email, new { @class = "formbold-form-input", placeholder = "ex: 25" })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
+              <div class="formbold-input-wrapp formbold-mb-3">
+                   <label for="last name" class="formbold-form-label">Last Name</label>
+                   <div>
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "formbold-form-input", placeholder = "Prenume", maxlength = "30" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
 
-                <div class="formbold-mb-3">
-                    <label for="password" class="formbold-form-label">Password</label>
-                    @Html.TextBoxFor(model => model.Password, new { @class = "formbold-form-input", type = "email", placeholder = "example@email.com", maxlength = "40" })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
+                   </div>
+              </div>
 
-                <div class="formbold-mb-3">
-                    <label for="confirm password" class="formbold-form-label">Confirm password</label>
-                    @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "formbold-form-input", type = "email", placeholder = "example@email.com", maxlength = "40" })
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                </div>
+              <div class="formbold-mb-3">
+                   <label for="email" class="formbold-form-label">Email</label>
+                   @Html.TextBoxFor(model => model.Email, new { @class = "formbold-form-input", placeholder = "ex: 25" })
+                   @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+              </div>
 
-                <div class="formbold-mb-3">
-                    <label class="formbold-form-label">Level</label>
-                    @Html.DropDownListFor(model => model.Level, new SelectList(new List<string> { "User", "Doctor", "Admin" }), new { @class = "formbold-form-input" })
-                    @Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger" })
-                </div>
+              <div class="formbold-mb-3">
+                   <label for="password" class="formbold-form-label">Password</label>
+                   @Html.TextBoxFor(model => model.Password, new { @class = "formbold-form-input", type = "email", placeholder = "example@email.com", maxlength = "40" })
+                   @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+              </div>
 
-                <button type="submit" class="btn btn-default">Adauga utilizator</button>
+              <div class="formbold-mb-3">
+                   <label for="confirm password" class="formbold-form-label">Confirm password</label>
+                   @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "formbold-form-input", type = "email", placeholder = "example@email.com", maxlength = "40" })
+                   @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+              </div>
+
+              <div class="formbold-mb-3">
+                   <label class="formbold-form-label">Level</label>
+                   @Html.DropDownListFor(model => model.Level, new SelectList(new List<string> { "User", "Doctor", "Admin" }), new { @class = "formbold-form-input" })
+                   @Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger" })
+              </div>
+
+              <button type="submit" class="btn btn-default">Adauga utilizator</button>
             }
-            @if (ViewData["ConfirmationMessage"] != null)
+              @if (ViewData["ConfirmationMessage"] != null)
             {
-                <div class="alert alert-success">
-                    @ViewData["ConfirmationMessage"]
-                </div>
+              <div class="alert alert-success">
+                   @ViewData["ConfirmationMessage"]
+              </div>
             }
-        </form>
+         </form>
     </div>
 </div>
 <style>

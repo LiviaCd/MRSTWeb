@@ -1,4 +1,5 @@
 ﻿using proiect.Domain.Entities.Appointment;
+using proiect.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace proiect.BusinessLogic.Interfaces
     public interface IUserAction
     {
         StatusAppointment UserAppointment(UAppointment data);
+        List<UAppointment> ShowAppointment(UAppointment data);
     }
+
 }

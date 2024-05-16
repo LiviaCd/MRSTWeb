@@ -2747,6 +2747,7 @@
     <Content Include="Views\Admin\EditUserInfo.cshtml" />
     <Content Include="Views\Admin\TestUsers.cshtml" />
     <Content Include="Views\Admin\BlockUser.cshtml" />
+    <Content Include="Views\LoginUser\MyAppointments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

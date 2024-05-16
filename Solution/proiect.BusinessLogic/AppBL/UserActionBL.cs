@@ -15,5 +15,9 @@ namespace proiect.BusinessLogic.AppBL
         {
             return NewUserAppointment(data);
         }
+          public List<UAppointment> ShowAppointment(UAppointment data) 
+          {
+               return RShowAppointment(data);
+          }
     }
 }

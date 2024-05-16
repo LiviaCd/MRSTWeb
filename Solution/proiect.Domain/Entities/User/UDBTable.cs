@@ -16,21 +16,27 @@ namespace proiect.Domain.Entities.User
           [Key]
           [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
           public int Id { get; set; }
+          [Required]
+          [Display(Name = "Email Address")]
+          [StringLength(30)]
+          public string Email { get; set; }
 
           [Required]
-          [Display(Name = "UserName")]
-          [StringLength(30, MinimumLength = 6, ErrorMessage = "UserName cannot be longer than 30 characters")]
-          public string UserName { get; set; }
+          [Display(Name = "First Name")]
+          [StringLength(30)]
+          public string FirstName { get; set; }
+          
+          [Required]
+          [Display(Name = "Last Name")]
+          [StringLength(30)]
+          public string LastName { get; set; }
 
           [Required]
           [Display(Name = "Password")]
           [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 characters")]
           public string Password { get; set; }
           
-          [Required]
-          [Display(Name = "Email Address")]
-          [StringLength(30)]
-          public string Email { get; set; }
+          
           [Required]
           [Display(Name = "Address")]
           [StringLength(50)]

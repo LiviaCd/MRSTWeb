@@ -39,7 +39,8 @@ namespace proiect.Controllers
             {
                 URegisterData uData = new URegisterData
                 {
-                    Credential = data.Credential,
+                    FirstName = data.FirstName,
+                    LastName = data.LastName,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
                     Address = data.Address,
@@ -55,13 +56,13 @@ namespace proiect.Controllers
                 {
                          ULoginData user = new ULoginData
                          {
-                              Credential = data.Credential,
+                              Email = data.Email,
                               Password = data.Password
                          };
 
                          _session.UserLoginAction(user);
 
-                         HttpCookie cookie = _session.GenCookie(user.Credential);
+                         HttpCookie cookie = _session.GenCookie(user.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                          return RedirectToAction("Index", "Home");

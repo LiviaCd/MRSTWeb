@@ -49,7 +49,7 @@ namespace proiect.Controllers
             {
                 if (user.Password == user.ConfirmPassword)
                 {
-                    var existingUser = _dbContext.Users.FirstOrDefault(u => u.UserName == user.Credential);
+                    var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
 
                     if (existingUser != null)
                     {
@@ -85,9 +85,9 @@ namespace proiect.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(UserLogin user)
         {
-            if (user.Credential != null)
+            if (user.Email != null)
             {
-                string email = user.Credential;
+                string email = user.Email;
                 string codeSend = SendCode.SendCodeToUser(email); // Generate and send code to user's email
                 TempData["ResetEmail"] = email; // Store the email in TempData to retrieve later
                 TempData["CodeSend"] = codeSend; // Store the code in TempData to retrieve later
@@ -110,7 +110,7 @@ namespace proiect.Controllers
                 // Redirect to a view where user can input new password
                 using (var db = new UserContext())
                 {
-                    userLogin = db.Users.FirstOrDefault(us => us.UserName == email);
+                    userLogin = db.Users.FirstOrDefault(us => us.Email == email);
                 }
                 if (userLogin == null)
                     Session["LoginStatus"] = "login";
@@ -178,10 +178,10 @@ namespace proiect.Controllers
                     ULoginResp resp = _session.UserLoginAction(dataUser);
                     if (resp.Status)
                     {
-                         FormsAuthentication.SetAuthCookie(data.Credential, false);
-                         HttpCookie cookie = _session.GenCookie(data.Credential);
+                         FormsAuthentication.SetAuthCookie(data.Email, false);
+                         HttpCookie cookie = _session.GenCookie(data.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                         Session["UserName"] = data.Credential;
+                         Session["UserName"] = data.Email;
                          return RedirectToAction("Index", "Home");
                     }
                     else

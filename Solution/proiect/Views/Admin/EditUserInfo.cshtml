@@ -16,9 +16,14 @@
 
           @Html.ValidationSummary()
 
-          <label for="Username">Name</label>
-          @Html.TextBoxFor(m => m.UserName)
-          @Html.ValidationMessageFor(m => m.UserName)
+          <label for="first name">First Name</label>
+          @Html.TextBoxFor(m => m.FirstName)
+          @Html.ValidationMessageFor(m => m.FirstName)
+
+          <label for="last name">Last Name</label>
+          @Html.TextBoxFor(m => m.LastName)
+          @Html.ValidationMessageFor(m => m.LastName)
+
           <label for="Email">Email</label>
           @Html.TextBoxFor(m => m.Email)
           @Html.ValidationMessageFor(m => m.Email)
@@ -33,6 +38,7 @@
           @Html.DropDownListFor(m => m.Level, new SelectList(new[]
           {
               new SelectListItem { Text = "Admin", Value = "Admin" },
+          new SelectListItem { Text = "Doctor", Value = "Doctor" },
               new SelectListItem { Text = "User", Value = "User" },
           }, "Value", "Text"), new { @class = "dropdown" })
           <button type="submit" class="accept">Edit</button>

@@ -29,7 +29,7 @@ namespace proiect.Controllers
                     {
                          System.Web.HttpContext.Current.SetMySessionObject(profile);
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
-                         System.Web.HttpContext.Current.Session["Username"] = profile.UserName;
+                         System.Web.HttpContext.Current.Session["Username"] = profile.Email;
                          System.Web.HttpContext.Current.Session["Role"] = profile.Level;
                     }
                     else

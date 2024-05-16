@@ -9,7 +9,7 @@ namespace proiect.Domain.Entities.Appointment
 {
     public class UAppointment
     {
-
+        public int Id { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
