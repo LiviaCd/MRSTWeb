@@ -52,7 +52,6 @@ namespace proiect.BusinessLogic.Core
                         
                          user.LasIp = data.LoginIp;
                          user.LastLogin = data.LoginDateTime;
-                         user.BlockTime = DateTime.UtcNow.AddHours(0);
                          todo.Entry(user).State = EntityState.Modified;
                          todo.SaveChanges();
                     }
@@ -215,6 +214,29 @@ namespace proiect.BusinessLogic.Core
                     }).ToList();
 
                     return appoint;
+               }
+          }
+          public UserMinimal RGetUserByEmail(string email)
+          {
+               using (var dbContext = new UserContext())
+               {
+                    var userData = dbContext.Users.FirstOrDefault(u => u.Email == email);
+                    if (userData == null)
+                         return null;
+                    else
+                    {
+                         var user = new UserMinimal
+                         {
+                              FirstName = userData.FirstName,
+                              LastName = userData.LastName,
+                              Email = userData.Email,
+                              Address = userData.Address,
+                              Phone = userData.Phone,
+                              LastLogin = userData.LastLogin,
+
+                         };
+                         return user;
+                    }   
                }
           }
      }

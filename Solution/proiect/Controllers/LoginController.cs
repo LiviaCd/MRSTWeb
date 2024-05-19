@@ -3,6 +3,7 @@ using Microsoft.Ajax.Utilities;
 using proiect.BusinessLogic;
 using proiect.BusinessLogic.DBModel.Seed;
 using proiect.BusinessLogic.Interfaces;
+using proiect.Domain.Entities;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
 using proiect.Domain.Enums;
@@ -33,6 +34,7 @@ namespace proiect.Controllers
           }
           public ActionResult LogIn()
           {
+               SessionStatus();
                return View();
           }
         public ActionResult ChangePassword()
@@ -129,22 +131,10 @@ namespace proiect.Controllers
         {
             return View();
         }
-       
-        
 
-        
-       
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetCode(UserLogin data)
-        {
-            var dataUser = Mapper.Map<ModelResetPassword>(data);
+          
 
-            return View();
-        }
-        */
-        public ActionResult LogOut()
+          public ActionResult LogOut()
           {
                Session.Abandon();
                FormsAuthentication.SignOut();
@@ -166,35 +156,56 @@ namespace proiect.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin data)
           {
-               
+               SessionStatus();
+               // Store user profile in session
                HttpContext.Session["UserProfile"] = data;
+
                if (ModelState.IsValid)
                {
+                    // Map user login data
                     var dataUser = Mapper.Map<ULoginData>(data);
-
                     dataUser.LoginIp = Request.UserHostAddress;
                     dataUser.LoginDateTime = DateTime.Now;
 
+                    // Perform the user login action
                     ULoginResp resp = _session.UserLoginAction(dataUser);
+
                     if (resp.Status)
                     {
+                         // Set authentication cookie
                          FormsAuthentication.SetAuthCookie(data.Email, false);
+
+                         // Generate and add custom cookie
                          HttpCookie cookie = _session.GenCookie(data.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                         // Store user name in session
                          Session["UserName"] = data.Email;
-                         return RedirectToAction("Index", "Home");
+
+                         // Check block time
+                         DateTime? blockTime = Session["BlockTime"] as DateTime?;
+                         if (blockTime.HasValue && blockTime > DateTime.Now)
+                         {
+                              return RedirectToAction("AccountBlock", "LoginUser");
+                         }
+                         else
+                         {
+                              // Handle case where block time is still active
+                              return RedirectToAction("UserPage", "LoginUser");
+                         }
                     }
                     else
                     {
+                         // Add error message to model state
                          ModelState.AddModelError("", resp.Message);
-                         return View(data);
                     }
                }
-               
 
+               // Return the view with model state errors if any
                return View(data);
           }
-               
+
+
 
 
 

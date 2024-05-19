@@ -45,6 +45,8 @@ namespace proiect.Controllers
                     FirstName = data.FirstName,
                     LastName = data.LastName,
                     Email = data.Email,
+                    Address = data.Address,
+                    Phone = data.Phone,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
                     Level = data.Level
@@ -52,15 +54,17 @@ namespace proiect.Controllers
                 ULoginResp resp = _monitoring.AddNewUser(uData);
                 if (resp.Status)
                 {
-                    return RedirectToAction("Users", "Admin");
+                         ViewData["ConfirmationMessage"] = "Utilizatorul a fost creat cu succes";
+                         return RedirectToAction("TestUsers", "Admin");
                 }
                 else
                 {
-                    ModelState.AddModelError("", resp.Message); 
-                    return RedirectToAction("UserPage", "LoginUser");
+                    ModelState.AddModelError("", resp.Message);
+                         ViewData["ConfirmationMessage"] = "Utilizatorul nu a fost creat";
+                        // return RedirectToAction("NewUser", "Admin");
                 }
             }
-            return View(data);
+               return View(data);
         }
           [AdminMod]
           public ActionResult TestUsers()
@@ -122,13 +126,35 @@ namespace proiect.Controllers
           [HttpPost]
           [Route("Admin/BlockUser/{id}")]
           [ValidateAntiForgeryToken]
-          public ActionResult BlockUser(UserMinimal userModel)
+          public ActionResult BlockUser(int id, UserMinimal userModel)
           {
                SessionStatus();
                if (ModelState.IsValid)
                {
-                    _monitoring.BlockUser1day(userModel);
-                    return RedirectToAction("TestUsers");
+               switch(userModel.Option)
+                    {
+                         case "Blocare 24 ore":
+                              {
+                                   _monitoring.BlockUser1day(id, userModel);
+                              }
+                              break;
+                         case "Blocare 72 ore":
+                              {
+                                   _monitoring.BlockUser3day(id, userModel);
+                              }
+                              break;
+                         case "Blocare 30 zile":
+                              {
+                                   _monitoring.BlockUser30day(id, userModel);
+                              }
+                              break;
+                         case "Blocare permanenta":
+                              {
+                                   _monitoring.BlockUserPermanent(id, userModel);
+                              }
+                              break;
+                    }
+                    
                }
                return View("BlockUser", userModel);
           }

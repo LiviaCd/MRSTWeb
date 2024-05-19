@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using proiect.BusinessLogic.Interfaces;
@@ -33,7 +34,7 @@ namespace proiect.Attributes
                     return;
                }
 
-               if (profile.Level == URole.Doctor || profile.Level == URole.Admin)
+               if ((profile.Level == URole.Doctor || profile.Level == URole.Admin) && profile.BlockTime < DateTime.Now)
                {
                     HttpContext.Current.SetMySessionObject(profile);
                }
@@ -41,8 +42,8 @@ namespace proiect.Attributes
                {
                     filterContext.Result = new RedirectToRouteResult(
                         new RouteValueDictionary(
-                            new { controller = "Home", action = "ErrorAccessDenied" }));
-                    
+                            new { controller = "LoginUser", action = "AccountBlock" }));
+
                }
           }
 

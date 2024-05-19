@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHeader.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+</head>
+<body>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="container">
+          <div class="icon">🔒</div>
+          <h1 class="error-code">Oops! - Contul dvs. este blocat!</h1>
+          <p class="error-description">
+               Am detectat activitate suspectă în contul dvs. și, pentru securitatea dvs., am blocat-o temporar până la
+          @HttpContext.Current.Session["BlockTime"]
+          <p class="error-description">
+               Dacă credeți că aceasta este o greșeală, vă rugăm să contactați echipa noastră de asistență.
+          </p>
+          <br>
+          <br>
+          <a href="mailto:donator.md@mail.ru" class="contact-link">Contact Support</a>
+     </div>
+     <br>
+     <div class="container">
+          <a href="@Url.Action("LogOut", "Login")" class="w3-button w3-red w3-margin-top">Reveniți la Home</a>
+     </div>
+
+     <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+     body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: Arial, sans-serif;
+          background-color: #fff;
+          color: #333;
+     }
+
+     
+
+     .site-title {
+          margin: 0;
+          font-size: 2rem;
+          color: #0056b3;
+     }
+
+     .site-subtitle {
+          margin: 0;
+          font-size: 1.2rem;
+          color: #0056b3;
+     }
+
+     nav ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          margin: 10px 0 0 0;
+     }
+
+          nav ul li {
+               margin: 0 15px;
+          }
+
+               nav ul li a {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: 1rem;
+               }
+
+     .container {
+          text-align: center;
+     }
+
+     .icon {
+          font-size: 10rem;
+          color: #ccc;
+     }
+
+     .error-code {
+          font-size: 2.5rem;
+          margin: 20px 0;
+     }
+
+     .error-description {
+          max-width: 600px;
+          margin: 0 auto;
+          font-size: 1rem;
+          color: #666;
+     }
+     .contact-link {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 10px 20px;
+          background-color: #A32C00;
+          text-align: center;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.3;
+     }
+
+          .contact-link:hover {
+               background-color: #003f7f;
+          }
+
+</style>

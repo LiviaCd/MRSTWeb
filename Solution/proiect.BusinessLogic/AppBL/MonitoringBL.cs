@@ -32,11 +32,23 @@ namespace proiect.BusinessLogic.AppBL
         {
             return AddNewUserAction(addData);
         }
-          public void BlockUser1day(UserMinimal userData)
+          public void BlockUser1day(int id, UserMinimal userData)
           {
-               RBlockUser1Day(userData);
+               RBlockUser1Day(id, userData);
           }
 
+          public void BlockUser3day(int id, UserMinimal userData)
+          {
+               RBlockUser3Day(id, userData);
+          }
+          public void BlockUser30day(int id, UserMinimal userData)
+          {
+               RBlockUser30Day(id, userData);
+          }
+          public void BlockUserPermanent(int id, UserMinimal userData)
+          {
+               RBlockUserPermanent(id, userData);
+          }
 
      }
 }

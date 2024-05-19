@@ -1,0 +1,30 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "_LayoutHeader";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+     @Styles.Render("~/bundles/mainPage.css")
+</head>
+<body>
+
+     
+     <nav class="site-nav">
+          @Html.Partial("_Navigation")
+
+     </nav>
+
+
+     <div class="main-content">
+          @RenderBody()
+     </div>
+
+
+     @Scripts.Render("~/bundles/mainPageJava/js")
+     @RenderSection("scripts", required: false)
+</body>
+</html>
+

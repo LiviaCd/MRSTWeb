@@ -97,10 +97,13 @@ namespace proiect.BusinessLogic.Core
                     FirstName = data.FirstName,
                     LastName = data.LastName,
                     Email = data.Email,
+                    Address = data.Address,
+                    Phone = data.Phone,
                     Password = LoginHelper.HashGen(data.Password),
                     LasIp = "",
                     LastLogin = DateTime.Now,
-                    Level = URole.User
+                    Level = URole.User,
+                    BlockTime = new DateTime(1900, 1, 1)
                 };
 
                 // Add new user to database and save changes
@@ -119,11 +122,11 @@ namespace proiect.BusinessLogic.Core
             }
         }
 
-          public void RBlockUser1Day (UserMinimal userData)
+          public void RBlockUser1Day (int id, UserMinimal userData)
           {
                using (var dbContext = new UserContext())
                {
-                    var user = dbContext.Users.FirstOrDefault(us => us.Email == userData.Email);
+                    var user = dbContext.Users.FirstOrDefault(us => us.Id == id);
                     if (user == null) return;
 
                     user.BlockTime = DateTime.Now.AddHours(24);
@@ -131,19 +134,42 @@ namespace proiect.BusinessLogic.Core
                }
           }
 
-          public void RBlockUser3Days(UserMinimal user)
+          public void RBlockUser3Day(int id, UserMinimal userData)
           {
-               user.BlockTime = DateTime.Now.AddHours(72);
+               using (var dbContext = new UserContext())
+               {
+                    var user = dbContext.Users.FirstOrDefault(us => us.Id == id);
+                    if (user == null) return;
+
+                    user.BlockTime = DateTime.Now.AddHours(72);
+                    dbContext.SaveChanges();
+               }
            
           }
-          public void RBlockUser30Day(UserMinimal user)
+          public void RBlockUser30Day(int id, UserMinimal userData)
           {
-               user.BlockTime = DateTime.Now.AddDays(30);
+               using (var dbContext = new UserContext())
+               {
+                    var user = dbContext.Users.FirstOrDefault(us => us.Id == id);
+                    if (user == null) return;
+
+                    user.BlockTime = DateTime.Now.AddDays(30);
+                    dbContext.SaveChanges();
+               }
+               
           }
 
-          public void RBlockUserPermanent(UserMinimal user)
+          public void RBlockUserPermanent(int id, UserMinimal userData)
           {
-               user.BlockTime = DateTime.Now.AddYears(100);
+               using (var dbContext = new UserContext())
+               {
+                    var user = dbContext.Users.FirstOrDefault(us => us.Id == id);
+                    if (user == null) return;
+
+                    user.BlockTime = DateTime.Now.AddYears(100);
+                    dbContext.SaveChanges();
+               }
+             
           }
 
      }

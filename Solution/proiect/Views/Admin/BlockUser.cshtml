@@ -30,14 +30,10 @@
 
                               <div class="name mt-3">Blocarea contului</div>
                               <br>
-                              <select id="durationSelect" class="btn1 btn-white-outline">
-                                   <option value="24">24 ore</option>
-                                   <option value="72">72 ore</option>
-                                   <option value="720">30 zile</option>
-                                   <option value="permanent">Permanent</option>
-                              </select>
+                              @Html.DropDownListFor(model => model.Option, new SelectList(new List<string> { "Blocare 24 ore", "Blocare 72 ore", "Blocare 30 zile", "Blocare permanenta" }), new { @class = "formbold-form-input" })
+                              @Html.ValidationMessageFor(model => model.Option, "", new { @class = "text-danger" })
                               <br>
-                              <button onclick="location.href='@Url.Action("BlockUser","Admin")';return false;" class="btn-yellow">Blochează utilizatorul</button>
+                              <button type="submit" class="accept">Blocare</button>
                               <br>
                               <button onclick="location.href='@Url.Action("TestUsers","Admin")';return false;" class="btn-yellow">Cancel</button>
 

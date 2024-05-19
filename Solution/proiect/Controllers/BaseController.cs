@@ -25,19 +25,21 @@ namespace proiect.Controllers
                if (apiCookie != null)
                {
                     var profile = _session.GetUserByCookie(apiCookie.Value);
-                    if (profile != null)
+                    if (profile != null && profile.BlockTime < DateTime.Now)
                     {
                          System.Web.HttpContext.Current.SetMySessionObject(profile);
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
                          System.Web.HttpContext.Current.Session["Username"] = profile.Email;
                          System.Web.HttpContext.Current.Session["Role"] = profile.Level;
+                         System.Web.HttpContext.Current.Session["BlockTime"] = profile.BlockTime;
+
                     }
                     else
                     {
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+
                     }
                }
           }
-       
      }
 }

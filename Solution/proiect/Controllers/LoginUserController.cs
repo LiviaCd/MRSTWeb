@@ -19,18 +19,23 @@ using proiect.BusinessLogic.Interfaces;
 using proiect.BusinessLogic;
 using proiect.Domain.Entities.Appointment;
 using proiect.Models.Appointment;
+using static System.Net.WebRequestMethods;
+using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace proiect.Controllers
 {
     public class LoginUserController : BaseController
     {
         private readonly IUserAction _userAction;
-        // GET: LoginUser
-        public LoginUserController()
+        
+          // GET: LoginUser
+          public LoginUserController()
         {
             var bl = new BussinessLogic();
             _userAction = bl.GetUserActionBL();
-        }
+          
+          }
         [LoginUserMod]
         public ActionResult Appointment()
         {
@@ -39,6 +44,13 @@ namespace proiect.Controllers
         }
           [LoginUserMod]
           public ActionResult MyAppointments()
+          {
+               SessionStatus();
+               return View();
+          }
+
+          [LoginUserMod]
+          public ActionResult UserPageNow()
           {
                SessionStatus();
                return View();
@@ -53,9 +65,22 @@ namespace proiect.Controllers
           public ActionResult UserPage()
           {
                SessionStatus();
+               /*
+               DateTime? blockTime = HttpContext.Session["BlockTime"] as DateTime?;
+
+               if (blockTime < DateTime.Now)
+               {
+                    return RedirectToAction("UserPageNow", "LoginUser");
+               }
+               else
+               {
+                    return RedirectToAction("AccountBlock", "LoginUser");
+               }
+               */
                return View();
           }
-         
+
+
           public ActionResult DonatorFind()
           {
                var data = TempData["foundData"] as List<Ancheta>; 
@@ -74,13 +99,44 @@ namespace proiect.Controllers
                 return View();
             }
 
-          public ActionResult GeneralUserPage()
-            {
-                SessionStatus();
-                return View();
-            }
+          public ActionResult ProfilePage()
+          {
+               SessionStatus();
+               if (Session["Username"] != null)
+               {
+                    string email = Session["Username"].ToString();
+                    var userFromDB = _userAction.GetUserByEmail(email);
+                    if (userFromDB != null)
+                    {
+                         return View(userFromDB);
+                    }
+               }
+               return RedirectToAction("LogIn", "Login"); 
+          }
 
-        [HttpPost]
+          [AdminMod]
+          [HttpPost]
+          public ActionResult ProfilePage(UserMinimal userMinimal)
+          {
+               SessionStatus();
+               var userFromDB = _userAction.GetUserByEmail(userMinimal.Email);
+               if (userFromDB == null)
+               {
+                    return View();
+               }
+               else
+               {
+                    return View(userFromDB);
+               }
+          }
+
+          public ActionResult AccountBlock()
+          {
+               SessionStatus();
+               return View();
+          }
+
+          [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult SearchDonator(MRequest request)
           {

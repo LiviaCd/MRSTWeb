@@ -21,5 +21,6 @@ namespace proiect.Domain.Entities.User
           public string LasIp { get; set; }
           public URole Level { get; set; }
           public DateTime BlockTime { get; set; }
+          public string Option { get; set; }
      }
 }

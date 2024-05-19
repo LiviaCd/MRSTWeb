@@ -1,6 +1,7 @@
 ﻿using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Appointment;
+using proiect.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,11 @@ namespace proiect.BusinessLogic.AppBL
           {
                return RShowAppointment(data);
           }
+          public UserMinimal GetUserByEmail(string email)
+          {
+               return RGetUserByEmail(email);
+          }
     }
+
+
 }

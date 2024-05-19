@@ -16,7 +16,10 @@ namespace proiect.BusinessLogic.Interfaces
         ULoginResp AddNewUser(ANewUser addData);
         UserMinimal RGetUserById(int id);
         void EditUser(int id, UserMinimal user);
-          void BlockUser1day(UserMinimal user);
+          void BlockUser1day(int id, UserMinimal user);
+          void BlockUser3day(int id, UserMinimal user);
+          void BlockUser30day(int id, UserMinimal user);
+          void BlockUserPermanent(int id, UserMinimal user);
 
-    }
+     }
 }
