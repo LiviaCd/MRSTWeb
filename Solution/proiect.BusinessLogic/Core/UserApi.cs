@@ -233,11 +233,29 @@ namespace proiect.BusinessLogic.Core
                               Address = userData.Address,
                               Phone = userData.Phone,
                               LastLogin = userData.LastLogin,
-
+                              LasIp = userData.LasIp,
                          };
                          return user;
                     }   
                }
           }
+          public void REditProfile(UserMinimal userModel)
+          {
+               using (var dbContext = new UserContext())
+               {
+                    string email = HttpContext.Current.Session["Username"].ToString();
+                    var user = dbContext.Users.FirstOrDefault(us => us.Email == email);
+                    if (user == null) return;
+
+                    user.FirstName = userModel.FirstName;
+                    user.LastName = userModel.LastName;
+                    user.Address = userModel.Address;
+                    user.Phone = userModel.Phone;
+                 
+
+                    dbContext.SaveChanges();
+               }
+          }
+
      }
 }

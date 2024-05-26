@@ -99,36 +99,7 @@ namespace proiect.Controllers
                 return View();
             }
 
-          public ActionResult ProfilePage()
-          {
-               SessionStatus();
-               if (Session["Username"] != null)
-               {
-                    string email = Session["Username"].ToString();
-                    var userFromDB = _userAction.GetUserByEmail(email);
-                    if (userFromDB != null)
-                    {
-                         return View(userFromDB);
-                    }
-               }
-               return RedirectToAction("LogIn", "Login"); 
-          }
-
-          [AdminMod]
-          [HttpPost]
-          public ActionResult ProfilePage(UserMinimal userMinimal)
-          {
-               SessionStatus();
-               var userFromDB = _userAction.GetUserByEmail(userMinimal.Email);
-               if (userFromDB == null)
-               {
-                    return View();
-               }
-               else
-               {
-                    return View(userFromDB);
-               }
-          }
+          
 
           public ActionResult AccountBlock()
           {
@@ -267,6 +238,84 @@ namespace proiect.Controllers
                    _userAction.ShowAppointment(uData);
                }
                return View(data);
+          }
+
+          public ActionResult ProfilePage()
+          {
+               SessionStatus();
+               if (Session["Username"] != null)
+               {
+                    string email = Session["Username"].ToString();
+                    var userFromDB = _userAction.GetUserByEmail(email);
+                    if (userFromDB != null)
+                    {
+                         return View(userFromDB);
+                    }
+               }
+               return RedirectToAction("LogIn", "Login");
+          }
+
+          [AdminMod]
+          [HttpPost]
+          public ActionResult ProfilePage(UserMinimal userMinimal)
+          {
+               SessionStatus();
+               var userFromDB = _userAction.GetUserByEmail(userMinimal.Email);
+               if (userFromDB == null)
+               {
+                    return View();
+               }
+               else
+               {
+                    return View(userFromDB);
+               }
+          }
+          [HttpGet]
+          public ActionResult EditProfile()
+          {
+               SessionStatus();
+
+               if (Session["Username"] != null)
+               {
+                    string email = Session["Username"].ToString();
+                    var userFromDB = _userAction.GetUserByEmail(email);
+
+                    if (userFromDB != null)
+                    {
+                         var userModel = new UserMinimal
+                         {
+                              Email = userFromDB.Email,
+                              FirstName = userFromDB.FirstName,
+                              LastName = userFromDB.LastName,
+                              Address = userFromDB.Address,
+                              Phone = userFromDB.Phone,
+                              LastLogin = userFromDB.LastLogin,
+                              Level = userFromDB.Level,
+                              LasIp = userFromDB.LasIp,
+                         };
+
+                         return View(userModel);
+                    }
+               }
+
+               return RedirectToAction("LogIn", "Login");
+          }
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult EditProfile(UserMinimal userMinimal)
+          {
+               SessionStatus();
+
+               if (userMinimal == null)
+               {
+                    ModelState.AddModelError(string.Empty, "Invalid user data.");
+                    return View(userMinimal);
+               }
+
+               _userAction.EditProfile(userMinimal);
+               TempData["SuccessMessage"] = "Profile updated successfully.";
+               return RedirectToAction("ProfilePage");
           }
 
      }

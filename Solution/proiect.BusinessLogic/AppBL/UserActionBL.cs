@@ -24,6 +24,10 @@ namespace proiect.BusinessLogic.AppBL
           {
                return RGetUserByEmail(email);
           }
+          public void EditProfile(UserMinimal user) 
+          {
+               REditProfile(user);
+          }
     }
 
 

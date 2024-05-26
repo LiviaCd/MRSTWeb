@@ -13,6 +13,7 @@ namespace proiect.BusinessLogic.Interfaces
         StatusAppointment UserAppointment(UAppointment data);
         List<UAppointment> ShowAppointment(UAppointment data);
         UserMinimal GetUserByEmail(string email);
+        void EditProfile (UserMinimal userMinimal);
     }
 
 }

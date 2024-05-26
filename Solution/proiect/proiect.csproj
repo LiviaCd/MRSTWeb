@@ -2751,6 +2751,7 @@
     <Content Include="Views\LoginUser\AccountBlock.cshtml" />
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\LoginUser\UserPageNow.cshtml" />
+    <Content Include="Views\LoginUser\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
