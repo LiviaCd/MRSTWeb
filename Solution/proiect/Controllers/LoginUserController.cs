@@ -22,26 +22,31 @@ using proiect.Models.Appointment;
 using static System.Net.WebRequestMethods;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using proiect.Models.Profile;
+using System.IO;
+using proiect.Domain.Entities.Profile;
+using proiect.BusinessLogic.AppBL;
+using proiect.Extensions;
 
 namespace proiect.Controllers
 {
-    public class LoginUserController : BaseController
-    {
-        private readonly IUserAction _userAction;
-        
+     public class LoginUserController : BaseController
+     {
+          private readonly IUserAction _userAction;
+
           // GET: LoginUser
           public LoginUserController()
-        {
-            var bl = new BussinessLogic();
-            _userAction = bl.GetUserActionBL();
-          
+          {
+               var bl = new BussinessLogic();
+               _userAction = bl.GetUserActionBL();
+
           }
-        [LoginUserMod]
-        public ActionResult Appointment()
-        {
-            SessionStatus();
-            return View();
-        }
+          [LoginUserMod]
+          public ActionResult Appointment()
+          {
+               SessionStatus();
+               return View();
+          }
           [LoginUserMod]
           public ActionResult MyAppointments()
           {
@@ -83,23 +88,23 @@ namespace proiect.Controllers
 
           public ActionResult DonatorFind()
           {
-               var data = TempData["foundData"] as List<Ancheta>; 
+               var data = TempData["foundData"] as List<Ancheta>;
                return View(data);
           }
 
           public ActionResult LocationsPage()
-            {
-                SessionStatus();
-                return View();
-            }
+          {
+               SessionStatus();
+               return View();
+          }
 
           public ActionResult NewsUserPage()
-            {
-                SessionStatus();
-                return View();
-            }
+          {
+               SessionStatus();
+               return View();
+          }
 
-          
+
 
           public ActionResult AccountBlock()
           {
@@ -128,7 +133,7 @@ namespace proiect.Controllers
                }
                else
                {
-                    TempData["foundData"] = foundData; 
+                    TempData["foundData"] = foundData;
                     return RedirectToAction("DonatorFind", "LoginUser");
 
                }
@@ -142,26 +147,26 @@ namespace proiect.Controllers
                SessionStatus();
                return View();
           }
-          
+
           [HttpPost]
           [ValidateAntiForgeryToken]
-          public ActionResult AnchetaPage (MAncheta ancheta)
+          public ActionResult AnchetaPage(MAncheta ancheta)
           {
                var validate = new PhoneAttribute();
-                    if (validate.IsValid(ancheta.Phone))
-                    {
-                         var dataAncheta = Mapper.Map<Ancheta>(ancheta);
+               if (validate.IsValid(ancheta.Phone))
+               {
+                    var dataAncheta = Mapper.Map<Ancheta>(ancheta);
 
-                         dataAncheta.FirstName = ancheta.FirstName;
-                         dataAncheta.LastName = ancheta.LastName;
-                         dataAncheta.Age = ancheta.Age;
-                         dataAncheta.Gender = ancheta.Gender;
-                         dataAncheta.BloodType = ancheta.BloodType;
-                         dataAncheta.Email = ancheta.Email;
-                         dataAncheta.City = ancheta.City;
-                         dataAncheta.CityRural = ancheta.CityRural;
-                         dataAncheta.District = ancheta.District;
-                         dataAncheta.Phone = ancheta.Phone;
+                    dataAncheta.FirstName = ancheta.FirstName;
+                    dataAncheta.LastName = ancheta.LastName;
+                    dataAncheta.Age = ancheta.Age;
+                    dataAncheta.Gender = ancheta.Gender;
+                    dataAncheta.BloodType = ancheta.BloodType;
+                    dataAncheta.Email = ancheta.Email;
+                    dataAncheta.City = ancheta.City;
+                    dataAncheta.CityRural = ancheta.CityRural;
+                    dataAncheta.District = ancheta.District;
+                    dataAncheta.Phone = ancheta.Phone;
                     using (var db = new AnchetaContext())
                     {
                          dataAncheta = (from e in db.Anchete where e.Phone == ancheta.Phone select e).FirstOrDefault();
@@ -191,39 +196,11 @@ namespace proiect.Controllers
                }
                return View(ancheta);
           }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Appointment(Appointment data)
-        {
-            if (ModelState.IsValid)
-            {
-                UAppointment uData = new UAppointment
-                {
-                    FirstName = data.FirstName,
-                    LastName = data.LastName,
-                    Email = data.Email,
-                    Address = data.Address,
-                    Phone = data.Phone,
-                    BloodType = data.BloodType,
-                    Time = data.Time,
-                };
-                StatusAppointment resp = _userAction.UserAppointment(uData);
-                if (resp.Status)
-                {
-                         ViewData["ConfirmationMessage"] = "Programarea dumneavoastra a fost salvata cu succes!";
-                         return View(data);
-                }
-                else
-                {
-                         ViewData["ConfirmationMessage"] = "Din pacate, programarea dvs. nu a fost salvata";
-                         return View();
-                }
-            }
-            return View(data);
-        }
-         public ActionResult MyAppointments (Appointment data)
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult Appointment(Appointment data)
           {
-               if (ModelState.IsValid) 
+               if (ModelState.IsValid)
                {
                     UAppointment uData = new UAppointment
                     {
@@ -235,7 +212,35 @@ namespace proiect.Controllers
                          BloodType = data.BloodType,
                          Time = data.Time,
                     };
-                   _userAction.ShowAppointment(uData);
+                    StatusAppointment resp = _userAction.UserAppointment(uData);
+                    if (resp.Status)
+                    {
+                         ViewData["ConfirmationMessage"] = "Programarea dumneavoastra a fost salvata cu succes!";
+                         return View(data);
+                    }
+                    else
+                    {
+                         ViewData["ConfirmationMessage"] = "Din pacate, programarea dvs. nu a fost salvata";
+                         return View();
+                    }
+               }
+               return View(data);
+          }
+          public ActionResult MyAppointments(Appointment data)
+          {
+               if (ModelState.IsValid)
+               {
+                    UAppointment uData = new UAppointment
+                    {
+                         FirstName = data.FirstName,
+                         LastName = data.LastName,
+                         Email = data.Email,
+                         Address = data.Address,
+                         Phone = data.Phone,
+                         BloodType = data.BloodType,
+                         Time = data.Time,
+                    };
+                    _userAction.ShowAppointment(uData);
                }
                return View(data);
           }
@@ -249,27 +254,37 @@ namespace proiect.Controllers
                     var userFromDB = _userAction.GetUserByEmail(email);
                     if (userFromDB != null)
                     {
+                         var model = new MProfile
+                         {
+                              Email = userFromDB.Email,
+                              PhotoPath = userFromDB.PhotoPath,
+                              PhotoFile = userFromDB.PhotoFile,
+                         };
                          return View(userFromDB);
                     }
                }
                return RedirectToAction("LogIn", "Login");
           }
 
-          [AdminMod]
           [HttpPost]
-          public ActionResult ProfilePage(UserMinimal userMinimal)
+          public ActionResult ProfilePage(UserMinimal user)
           {
-               SessionStatus();
-               var userFromDB = _userAction.GetUserByEmail(userMinimal.Email);
-               if (userFromDB == null)
+               var userProfile = _userAction.GetUserByEmail(user.Email);
+               if (userProfile == null)
                {
-                    return View();
+                    return RedirectToAction("Error", "Home");
                }
-               else
+
+               var model = new MProfile
                {
-                    return View(userFromDB);
-               }
+                    Email = userProfile.Email,
+                    PhotoPath = userProfile.PhotoPath,
+                    PhotoFile = userProfile.PhotoFile,
+               };
+
+               return View(model);
           }
+
           [HttpGet]
           public ActionResult EditProfile()
           {
@@ -317,7 +332,100 @@ namespace proiect.Controllers
                TempData["SuccessMessage"] = "Profile updated successfully.";
                return RedirectToAction("ProfilePage");
           }
+          public ActionResult AddPhoto()
+          {
+               SessionStatus();
+               return View();
+          }
+          /*
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult AddPhoto(UserMinimal profil)
+          {
+               SessionStatus();
+               if (ModelState.IsValid)
+               {
+                    profil.Email = Session["Username"].ToString();
+                    if (profil.PhotoFile != null && profil.PhotoFile.ContentLength > 0)
+                    {
+                         var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                         var extension = Path.GetExtension(profil.PhotoFile.FileName);
+                         if (!allowedExtensions.Contains(extension.ToLower()))
+                         {
+                              ModelState.AddModelError("PhotoFile", "Formatul fișierului nu este suportat. Se acceptă doar fișiere de tipul jpg, jpeg, png sau gif.");
+                              return View(profil);
+                         }
 
+                         var maxSize = 2 * 1024 * 1024; // 2MB
+                         if (profil.PhotoFile.ContentLength > maxSize)
+                         {
+                              ModelState.AddModelError("PhotoFile", "Dimensiunea fișierului depășește limita maximă permisă de 2MB.");
+                              return View(profil);
+                         }
+
+                         string fileName = $"{profil.Email}{extension}";
+                         string path = Path.Combine(Server.MapPath("~/Content/photoUser/"), fileName);
+
+                         if (System.IO.File.Exists(path))
+                         {
+                              ModelState.AddModelError("PhotoFile", "Există deja un fișier cu același nume. Te rugăm să încarci un fișier cu alt nume.");
+                              return View(profil);
+                         }
+
+                         try
+                         {
+                              profil.PhotoFile.SaveAs(path);
+                              profil.PhotoPath = "~/Content/photoUser/" + fileName;
+                         }
+                         catch (Exception ex)
+                         {
+                              ModelState.AddModelError("", "A apărut o eroare în timpul salvării fișierului.");
+                              // Logare sau gestionare a erorii
+                              return View(profil);
+                         }
+                    }
+
+                    var userProfile = new UserProfileDBTable
+                    {
+                         Email = profil.Email,
+                         PhotoPath = profil.PhotoPath
+                    };
+                    _userAction.AddPhotoUser(userProfile);
+                    return RedirectToAction("ProfilePage", "LoginUser", new { email = profil.Email });
+               }
+               return RedirectToAction("Error", "Home");
+          }
+          */
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult AddPhoto(MProfile profil)
+          {
+               SessionStatus();
+               var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+               if (user != null)
+               {
+                    if (ModelState.IsValid)
+                    {
+                         if (profil.PhotoFile != null)
+                         {
+                              string fileName = Path.GetFileName(profil.PhotoFile.FileName);
+                              string extension = Path.GetExtension(fileName);
+                              fileName = fileName + extension;
+                              string path = Path.Combine(Server.MapPath("~/Content/PhotosUsers/"), fileName);
+                              profil.PhotoPath = "~/Content/PhotosUsers/" + fileName;
+                              profil.PhotoFile.SaveAs(path);
+                         }
+                         var userProfile = new UserProfileDBTable
+                         {
+                              Email = Session["Username"].ToString(),
+                              PhotoPath = profil.PhotoPath
+                         };
+                         _userAction.AddPhotoUser(userProfile);
+                         return RedirectToAction("ProfilePage", "LoginUser");
+                    }
+               }
+               return RedirectToAction("Error", "Home");
+          }
      }
-
 }

@@ -1,4 +1,5 @@
 ﻿using proiect.Domain.Entities.Appointment;
+using proiect.Domain.Entities.Profile;
 using proiect.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace proiect.BusinessLogic.Interfaces
         List<UAppointment> ShowAppointment(UAppointment data);
         UserMinimal GetUserByEmail(string email);
         void EditProfile (UserMinimal userMinimal);
+        void AddPhotoUser(UserProfileDBTable user);
     }
 
 }

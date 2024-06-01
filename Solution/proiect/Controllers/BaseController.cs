@@ -30,8 +30,18 @@ namespace proiect.Controllers
                          System.Web.HttpContext.Current.SetMySessionObject(profile);
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
                          System.Web.HttpContext.Current.Session["Username"] = profile.Email;
+                         System.Web.HttpContext.Current.Session["FirstName"] = profile.FirstName;
+                         System.Web.HttpContext.Current.Session["LastName"] = profile.LastName;
                          System.Web.HttpContext.Current.Session["Role"] = profile.Level;
                          System.Web.HttpContext.Current.Session["BlockTime"] = profile.BlockTime;
+                         if (profile.PhotoPath != null)
+                         {
+                              System.Web.HttpContext.Current.Session["Photo"] = profile.PhotoPath;
+                         }
+                         else
+                         {
+                              System.Web.HttpContext.Current.Session["Photo"] = "~/Content/PhotosUsers/user.png";
+                         }
 
                     }
                     else

@@ -2115,6 +2115,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PhotosUsers\user.png" />
     <Content Include="Content\Site.css" />
     <Content Include="data\ajax-modal-content.txt" />
     <Content Include="data\albums\album-1.jpg" />
@@ -2478,6 +2479,7 @@
     <Compile Include="Models\Appointment\Appointment.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
     <Compile Include="Models\Password\ModelResetPassword.cs" />
+    <Compile Include="Models\Profile\MProfile.cs" />
     <Compile Include="Models\Request\MRequest.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\User\ModelNewUser.cs" />
@@ -2752,6 +2754,7 @@
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\LoginUser\UserPageNow.cshtml" />
     <Content Include="Views\LoginUser\EditProfile.cshtml" />
+    <Content Include="Views\LoginUser\AddPhoto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

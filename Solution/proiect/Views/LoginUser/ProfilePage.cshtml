@@ -26,14 +26,14 @@
                          <div class="card">
                               <div class="card-body">
                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        <img src="@Url.Content(HttpContext.Current.Session["Photo"] as string)" alt="Admin" class="img-fluid rounded" style="width: 150px; height: auto;">
                                         <div class="mt-3">
                                              <h4></h4>
                                              <p class="text-secondary mb-1"></p>
                                              <p class="text-secondary mb-1"></p>
                                              <p class="text-muted font-size-sm"></p>
                                              <button class="btn btn-primary">@HttpContext.Current.Session["Role"]</button>
-                                             <button class="btn btn-outline-primary"></button>
+                                             <a href="@Url.Action("AddPhoto", "LoginUser")" class="btn btn-outline-primary">Add photo</a>
                                              <button class="btn btn-outline-primary"></button>
                                         </div>
                                    </div>

@@ -9,14 +9,14 @@
 
                <div class="profile-image col-4">
                     <a href="ui-profile.html">
-                         <img alt="" src="..//data/profile/profile.jpg" class="img-fluid rounded-circle">
+                         <img src="@Url.Content(HttpContext.Current.Session["Photo"] as string)" alt="Admin" class="img-fluid rounded" style="width: 150px; height: auto;">
                     </a>
                </div>
 
                <div class="profile-details col-8">
 
                     <h3>
-                         <a href="ui-profile.html">@HttpContext.Current.Session["UserName"]</a>
+                         <a href="ui-profile.html">@HttpContext.Current.Session["FirstName"] @HttpContext.Current.Session["LastName"]</a>
 
                          <!-- Available statuses: online, idle, busy, away and offline -->
                          <span class="profile-status online"></span>

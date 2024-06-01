@@ -1,6 +1,7 @@
 ﻿using proiect.BusinessLogic.Core;
 using proiect.BusinessLogic.Interfaces;
 using proiect.Domain.Entities.Appointment;
+using proiect.Domain.Entities.Profile;
 using proiect.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,13 @@ namespace proiect.BusinessLogic.AppBL
           {
                REditProfile(user);
           }
-    }
 
-
+          public void AddPhotoUser(UserProfileDBTable user)
+          {
+               RAddPhotoUser(user);
+          }
+     }
 }
+
+
+

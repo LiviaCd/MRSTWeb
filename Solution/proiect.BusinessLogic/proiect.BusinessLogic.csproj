@@ -66,6 +66,7 @@
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\Seed\AnchetaContext.cs" />
     <Compile Include="DBModel\Seed\AppointmentContext.cs" />
+    <Compile Include="DBModel\Seed\ProfileContext.cs" />
     <Compile Include="DBModel\Seed\SessionContext.cs" />
     <Compile Include="DBModel\Seed\UserContext.cs" />
     <Compile Include="Interfaces\IHomeAction.cs" />

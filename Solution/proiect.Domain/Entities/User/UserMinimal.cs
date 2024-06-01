@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace proiect.Domain.Entities.User
 {
@@ -22,5 +23,7 @@ namespace proiect.Domain.Entities.User
           public URole Level { get; set; }
           public DateTime BlockTime { get; set; }
           public string Option { get; set; }
+          public string PhotoPath { get; set; }
+          public HttpPostedFileBase PhotoFile { get; set; }
      }
 }

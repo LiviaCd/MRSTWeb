@@ -24,6 +24,7 @@ using System.Web;
 using System.Net;
 using proiect.Domain.Entities.Ancheta;
 using proiect.Domain.Entities.Appointment;
+using proiect.Domain.Entities.Profile;
 
 
 namespace proiect.BusinessLogic.Core
@@ -36,7 +37,7 @@ namespace proiect.BusinessLogic.Core
                var validate = new EmailAddressAttribute();
                if (validate.IsValid(data.Email))
                {
-                    
+
                     using (var db = new UserContext())
                     {
                          user = db.Users.FirstOrDefault(us => us.Email == data.Email);
@@ -44,32 +45,32 @@ namespace proiect.BusinessLogic.Core
                     if (user == null)
                          return new ULoginResp { Status = false, Message = "The Username or Password is Incorect" };
 
-               var pass = LoginHelper.HashGen(data.Password);
-               if (user != null && user.Password == pass)
-               {
-                    using (var todo = new UserContext())
+                    var pass = LoginHelper.HashGen(data.Password);
+                    if (user != null && user.Password == pass)
                     {
-                        
-                         user.LasIp = data.LoginIp;
-                         user.LastLogin = data.LoginDateTime;
-                         todo.Entry(user).State = EntityState.Modified;
-                         todo.SaveChanges();
+                         using (var todo = new UserContext())
+                         {
+
+                              user.LasIp = data.LoginIp;
+                              user.LastLogin = data.LoginDateTime;
+                              todo.Entry(user).State = EntityState.Modified;
+                              todo.SaveChanges();
+                         }
+                         if (user.Level == URole.Admin)
+                              return new ULoginResp { Status = true, Message = "Admin" };
+                         else
+                              if (user.Level == URole.Doctor)
+                              return new ULoginResp { Status = true, Message = "Doctor" };
+                         else
+                              return new ULoginResp { Status = true, Message = "User" };
                     }
-                    if (user.Level == URole.Admin)
-                         return new ULoginResp { Status = true, Message = "Admin" };
-                    else
-                         if (user.Level == URole.Doctor)
-                         return new ULoginResp { Status = true, Message = "Doctor" };
-                    else
-                         return new ULoginResp { Status = true, Message = "User" };
-               }
-               
+
 
                }
                return new ULoginResp { Status = false };
           }
 
-               
+
 
           public ULoginResp RRegisterNewUserAction(URegisterData data)
           {
@@ -101,8 +102,8 @@ namespace proiect.BusinessLogic.Core
                     return new ULoginResp { Status = true, Message = "User registered successfully" };
                }
           }
-     
-          public BloodTypeDetail GetBloodTypeUser (int id)
+
+          public BloodTypeDetail GetBloodTypeUser(int id)
           {
                return new BloodTypeDetail();
           }
@@ -126,7 +127,7 @@ namespace proiect.BusinessLogic.Core
                          curent = (from e in db.Sessions where e.UserName == credential select e).FirstOrDefault();
                     }
 
-                    if (curent != null) 
+                    if (curent != null)
                     {
                          curent.CookieString = apiCookie.Value;
                          curent.ExpireTime = DateTime.Now.AddMinutes(60);
@@ -138,9 +139,12 @@ namespace proiect.BusinessLogic.Core
                     }
                     else
                     {
-                         db.Sessions.Add(new Session { UserName = credential,
-                         CookieString = apiCookie.Value,
-                         ExpireTime = DateTime.Now.AddMinutes(60) });
+                         db.Sessions.Add(new Session
+                         {
+                              UserName = credential,
+                              CookieString = apiCookie.Value,
+                              ExpireTime = DateTime.Now.AddMinutes(60)
+                         });
                          db.SaveChanges();
                     }
                }
@@ -150,7 +154,7 @@ namespace proiect.BusinessLogic.Core
           {
                Session session;
                UDBTable curentUser;
-
+               UserProfileDBTable userProfile;
                using (var db = new SessionContext())
                {
                     session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
@@ -169,33 +173,46 @@ namespace proiect.BusinessLogic.Core
                          curentUser = db.Users.FirstOrDefault(u => u.Email == session.UserName);
                     }
                }
-               
-               if (curentUser == null) return null;
-               var userMinimal = Mapper.Map<UserMinimal>(curentUser);
 
+               if (curentUser == null) return null;
+
+               var userMinimal = Mapper.Map<UserMinimal>(curentUser);
+               using (var dbContext = new ProfileContext())
+               {
+                    userProfile = dbContext.PhotoProfile.FirstOrDefault(p => p.Email == curentUser.Email);
+                    if (userProfile == null)
+                         return userMinimal;
+                    else
+                    {
+                         userMinimal.PhotoPath = userProfile.PhotoPath;
+
+                    }
+
+
+               }
                return userMinimal;
           }
-        public StatusAppointment NewUserAppointment(UAppointment data)
-        {
-            using (var db = new AppointmentContext())
-            {
-                var newAppointment = new AppointmentDBTable
-                {
-                    FirstName = data.FirstName,
-                    LastName = data.LastName,
-                    Email = data.Email,
-                    Address = data.Address,
-                    Phone = data.Phone,
-                    BloodType = data.BloodType,
-                    Time = data.Time,
-                
-                };
-                db.Appointments.Add(newAppointment);
-                db.SaveChanges();
+          public StatusAppointment NewUserAppointment(UAppointment data)
+          {
+               using (var db = new AppointmentContext())
+               {
+                    var newAppointment = new AppointmentDBTable
+                    {
+                         FirstName = data.FirstName,
+                         LastName = data.LastName,
+                         Email = data.Email,
+                         Address = data.Address,
+                         Phone = data.Phone,
+                         BloodType = data.BloodType,
+                         Time = data.Time,
+
+                    };
+                    db.Appointments.Add(newAppointment);
+                    db.SaveChanges();
                     return new StatusAppointment { Status = true };
-            }
-            return new StatusAppointment { Status = false };
-        }
+               }
+               return new StatusAppointment { Status = false };
+          }
           public List<UAppointment> RShowAppointment(UAppointment data)
           {
                using (var dbContext = new AppointmentContext())
@@ -218,6 +235,7 @@ namespace proiect.BusinessLogic.Core
           }
           public UserMinimal RGetUserByEmail(string email)
           {
+               var user = new UserMinimal();
                using (var dbContext = new UserContext())
                {
                     var userData = dbContext.Users.FirstOrDefault(u => u.Email == email);
@@ -225,7 +243,7 @@ namespace proiect.BusinessLogic.Core
                          return null;
                     else
                     {
-                         var user = new UserMinimal
+                         user = new UserMinimal
                          {
                               FirstName = userData.FirstName,
                               LastName = userData.LastName,
@@ -235,8 +253,19 @@ namespace proiect.BusinessLogic.Core
                               LastLogin = userData.LastLogin,
                               LasIp = userData.LasIp,
                          };
+
+                         using (var db = new ProfileContext())
+                         {
+                              var userPhoto = db.PhotoProfile.FirstOrDefault(u => u.Email == email);
+                              if (userPhoto == null) return user;
+                              else
+                              {
+                                   user.PhotoPath = userPhoto.PhotoPath;
+                              }
+
+                         }
                          return user;
-                    }   
+                    }
                }
           }
           public void REditProfile(UserMinimal userModel)
@@ -251,11 +280,30 @@ namespace proiect.BusinessLogic.Core
                     user.LastName = userModel.LastName;
                     user.Address = userModel.Address;
                     user.Phone = userModel.Phone;
-                 
+
 
                     dbContext.SaveChanges();
                }
           }
+          public void RAddPhotoUser(UserProfileDBTable profileTable)
+          {
+               using (var dbContext = new ProfileContext())
+               {
+                    var user = dbContext.PhotoProfile.SingleOrDefault(us => us.Email == profileTable.Email);
+                    if (user == null)
+                    {
+                         dbContext.PhotoProfile.Add(profileTable);
+                    }
+                    else
+                    {
+                         user.PhotoPath = profileTable.PhotoPath; // Update the existing record
+                         dbContext.Entry(user).State = EntityState.Modified; // Mark entity as modified
+                    }
+                    dbContext.SaveChanges();
+               }
+          }
+
 
      }
 }
+
