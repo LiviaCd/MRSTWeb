@@ -59,16 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppBL\ChatBL.cs" />
     <Compile Include="AppBL\MonitoringBL.cs" />
     <Compile Include="AppBL\UserActionBL.cs" />
     <Compile Include="BussinessLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
+    <Compile Include="Core\ChatApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\Seed\AnchetaContext.cs" />
     <Compile Include="DBModel\Seed\AppointmentContext.cs" />
+    <Compile Include="DBModel\Seed\ChatMessageContext.cs" />
     <Compile Include="DBModel\Seed\ProfileContext.cs" />
     <Compile Include="DBModel\Seed\SessionContext.cs" />
     <Compile Include="DBModel\Seed\UserContext.cs" />
+    <Compile Include="Interfaces\IChatMessage.cs" />
     <Compile Include="Interfaces\IHomeAction.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Interfaces\IUserAction.cs" />

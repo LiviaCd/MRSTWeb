@@ -48,6 +48,10 @@
     <Compile Include="Entities\Appointment\StatusAppointment.cs" />
     <Compile Include="Entities\Appointment\UAppointment.cs" />
     <Compile Include="Entities\BloodType\BloodTypeDetail.cs" />
+    <Compile Include="Entities\ChatMessage\ChatDBTable.cs" />
+    <Compile Include="Entities\ChatMessage\DChatMessage.cs" />
+    <Compile Include="Entities\ChatMessage\FindUsers.cs" />
+    <Compile Include="Entities\ChatMessage\UserViewChat.cs" />
     <Compile Include="Entities\Profile\UserProfileDBTable.cs" />
     <Compile Include="Entities\Responce\ULoginResp.cs" />
     <Compile Include="Entities\Session\Session.cs" />

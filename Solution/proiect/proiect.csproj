@@ -2466,6 +2466,7 @@
     <Compile Include="Attributes\DoctorModAttribute.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChatMessageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
@@ -2478,6 +2479,8 @@
     <Compile Include="Models\Ancheta\MAncheta.cs" />
     <Compile Include="Models\Appointment\Appointment.cs" />
     <Compile Include="Models\BloodTypeModels\BloodTypeDetail.cs" />
+    <Compile Include="Models\ChatMessage\ChatPageViewModel.cs" />
+    <Compile Include="Models\ChatMessage\MChatMessage.cs" />
     <Compile Include="Models\Password\ModelResetPassword.cs" />
     <Compile Include="Models\Profile\MProfile.cs" />
     <Compile Include="Models\Request\MRequest.cs" />
@@ -2755,6 +2758,9 @@
     <Content Include="Views\LoginUser\UserPageNow.cshtml" />
     <Content Include="Views\LoginUser\EditProfile.cshtml" />
     <Content Include="Views\LoginUser\AddPhoto.cshtml" />
+    <Content Include="Views\ChatMessage\ChatPage.cshtml" />
+    <Content Include="Views\ChatMessage\SendMessageUser.cshtml" />
+    <Content Include="Views\ChatMessage\SearchUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

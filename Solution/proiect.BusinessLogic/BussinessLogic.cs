@@ -25,6 +25,10 @@ namespace proiect.BusinessLogic
         {
             return new UserActionBL();
         }
+          public IChatMessage GetChatBL() 
+          {
+               return new ChatBL();
+          }
 
     }
 }
