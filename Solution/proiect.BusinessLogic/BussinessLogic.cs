@@ -21,10 +21,22 @@ namespace proiect.BusinessLogic
           {
                return new MonitoringBL();
           }
-        public IUserAction GetUserActionBL()
+        public IProfile GetProfileBL()
         {
-            return new UserActionBL();
+            return new ProfileBL();
         }
+          public IAncheta GetAnchetaBL()
+          {
+               return new AnchetaBL();
+          }
+          public IAppointment GetAppointmentBL()
+          {
+               return new AppointmentBL();
+          }
+          public IClinic GetClinicBL()
+          {
+               return new ClinicBL();
+          }
           public IChatMessage GetChatBL() 
           {
                return new ChatBL();

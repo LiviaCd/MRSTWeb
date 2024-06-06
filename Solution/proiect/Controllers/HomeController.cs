@@ -42,6 +42,12 @@ namespace proiect.Controllers
                SessionStatus();
                return View();
           }
+
+          public ActionResult AddNewsPage()
+          {
+               SessionStatus();
+               return View();
+          }
           public ActionResult Information()
           {
                SessionStatus();

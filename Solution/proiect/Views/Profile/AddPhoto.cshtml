@@ -6,7 +6,7 @@
 <div class="container">
      <h2>Upload Profile Photo</h2>
      <form method="post" enctype="multipart/form-data">
-          @using (Html.BeginForm("AddPhoto", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+          @using (Html.BeginForm("AddPhoto", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
           {
           @Html.AntiForgeryToken()
 

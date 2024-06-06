@@ -41,7 +41,7 @@
                   </a>
               </li>
               <li class="">
-                   <a href="@Url.Action("ProfilePage", "LoginUser")">
+                   <a href="@Url.Action("ProfilePage", "Profile")">
                         <i class="fa fa-suitcase"></i>
                         <span class="title">Profilul meu</span>
                    </a>
@@ -65,7 +65,7 @@
                   if (role.ToString() == "Admin")
                   {
                       <li class="">
-                          <a href="@Url.Action("SearchDonator", "LoginUser")">
+                          <a href="@Url.Action("SearchDonator", "Clinic")">
                               <i class="fa fa-dashboard"></i>
                               <span class="title">Căutare donatori</span>
                           </a>
@@ -81,7 +81,7 @@
                   else if (role.ToString() == "Doctor")
                   {
                       <li class="">
-                          <a href="@Url.Action("SearchDonator", "LoginUser")">
+                          <a href="@Url.Action("SearchDonator", "Clinic")">
                               <i class="fa fa-dashboard"></i>
                               <span class="title">Căutare donatori</span>
                           </a>
@@ -98,7 +98,7 @@
                   </a>
               </li>
               <li class="">
-                  <a href="@Url.Action("AnchetaPage", "LoginUser")">
+                  <a href="@Url.Action("AnchetaPage", "Ancheta")">
                       <i class="fa fa-bullseye"></i>
                       <span class="title">Anchetă</span>
                       <span class="arrow "></span>
@@ -125,7 +125,7 @@
                   </ul>
               </li>
               <li class="">
-                   <a href="@Url.Action("Appointment", "LoginUser")">
+                   <a href="@Url.Action("Appointment", "Appointment")">
                         <i class="fa fa-dashboard"></i>
                         <span class="title">Programările mele</span>
                    </a>
