@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using proiect.Domain.Enums;
+using proiect.Domain.Entities.News;
 
 namespace proiect.BusinessLogic.Interfaces
 {
@@ -16,10 +17,13 @@ namespace proiect.BusinessLogic.Interfaces
         ULoginResp AddNewUser(ANewUser addData);
         UserMinimal RGetUserById(int id);
         void EditUser(int id, UserMinimal user);
-          void BlockUser1day(int id, UserMinimal user);
-          void BlockUser3day(int id, UserMinimal user);
-          void BlockUser30day(int id, UserMinimal user);
-          void BlockUserPermanent(int id, UserMinimal user);
+        void BlockUser1day(int id, UserMinimal user);
+        void BlockUser3day(int id, UserMinimal user);
+        void BlockUser30day(int id, UserMinimal user);
+        void BlockUserPermanent(int id, UserMinimal user);
+        bool AddNewNews(AddNews news);
+        AddNews RGetNewsById (int Id);
+        void EditNewsAction(int id, AddNews news);
 
      }
 }

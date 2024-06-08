@@ -1,6 +1,6 @@
 ﻿@model proiect.Domain.Entities.News.AddNews
 @{
-    ViewBag.Title = "AddNews";
+    ViewBag.Title = "Edit News";
 Layout = "~/Views/Shared/_LayoutHeader.cshtml";
 
 }
@@ -9,7 +9,7 @@ Layout = "~/Views/Shared/_LayoutHeader.cshtml";
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Adaugă Noutăți</title>
+     <title>Editeaza Noutăți</title>
      <style>
           body {
                font-family: Arial, sans-serif;
@@ -55,29 +55,22 @@ Layout = "~/Views/Shared/_LayoutHeader.cshtml";
 </head>
 <body>
      <br><br><br>
-     <h1 class="heading text-black mb-2" data-aos="fade-up" style="font-size: 2em; font-weight: bold; text-align: center;">Adaugă Noutăți</h1>
+     <h1 class="heading text-black mb-2" data-aos="fade-up" style="font-size: 2em; font-weight: bold; text-align: center;">Editeaza Noutăți</h1>
+     <form method="post">
+
+         
+          @Html.AntiForgeryToken()
+
+          <label for="title">Titlu:</label>
+          @Html.TextBoxFor(m => m.Title)
+
+          <label for="body">Conținut:</label>
+          @Html.TextAreaFor(m => m.Body, new { @class = "formbold-form-input", @rows = 9 })
 
 
-     @using (Html.BeginForm("AddNewsPage", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-     {
-     @Html.AntiForgeryToken()
-
-     <label for="title">Titlu:</label>
-     @Html.TextBoxFor(model => model.Title, new { @class = "formbold-form-input"})
-     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-
-     <label for="body">Conținut:</label>
-     @Html.TextAreaFor(model => model.Body, new { @class = "formbold-form-input", @rows = 9 })
-     @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
-
-
-     <label for="photoFile">Fotografie:</label>
-     @Html.TextBoxFor(model => model.PhotoFile, new { @class = "formbold-form-input", type = "file"})
-     @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
-
-     <button type="submit">Adaugă noutatea</button>
-     }
-
+          <button type="submit">Editeaza noutatea</button>
+     
+</form>
 
 </body>
 </html>

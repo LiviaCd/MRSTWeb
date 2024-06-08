@@ -5,45 +5,182 @@
 }
 
 @model proiect.Domain.Entities.User.UserMinimal
-<h2>EditUserInfo</h2>
+<div class="container">
+     <div class="main-body">
 
-<section>
-     <div>
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+              
+          </nav>
+          <!-- /Breadcrumb -->
+          <form method="post">
+               @Html.AntiForgeryToken()
+               <br>
+               <br>
+               <div class="row gutters-sm">
 
-          @using (Html.BeginForm("EditUserInfo", "Admin", FormMethod.Post))
-        {
-          @Html.AntiForgeryToken()
+                    <div class="col-md-4 mb-3">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="d-flex flex-column align-items-center text-center">
+                                        @if (!string.IsNullOrEmpty(Model.PhotoPath))
+                                {
+                                        <img src="@Url.Content(Model.PhotoPath)" alt="Admin" class="img-fluid rounded" style="width: 150px; height: auto;">
+                                }
+                                else
+                                {
+                                        <img src="~/Content/PhotosUsers/user.png" alt="Admin" class="img-fluid rounded" style="width: 150px; height: auto;">
+                                }
+                                        <div class="mt-3">
+                                             <h4></h4>
+                                             <p class="text-secondary mb-1"></p>
+                                             <p class="text-secondary mb-1"></p>
+                                             <p class="text-muted font-size-sm"></p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
 
-          @Html.ValidationSummary()
+                    </div>
+                    <div class="col-md-8">
+                         <div class="card mb-3">
+                              <div class="card-body">
+                                   <div class="row">
+                                        <div class="col-sm-3">
+                                             <h6 class="mb-0">Numele și prenumele</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                             @Html.TextBoxFor(m => m.FirstName)  @Html.TextBoxFor(m => m.LastName)
+                                        </div>
 
-          <label for="first name">First Name</label>
-          @Html.TextBoxFor(m => m.FirstName)
-          @Html.ValidationMessageFor(m => m.FirstName)
+                                   </div>
+                                   <hr>
+                                   <div class="row">
+                                        <div class="col-sm-3">
+                                             <h6 class="mb-0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                             @Html.DisplayFor(m => m.Email)
+                                        </div>
+                                   </div>
+                                   <hr>
+                                   <div class="row">
+                                        <div class="col-sm-3">
+                                             <h6 class="mb-0">Adresa</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                             @Html.TextBoxFor(m => m.Address)
+                                        </div>
+                                   </div>
+                                   <hr>
+                                   <div class="row">
+                                        <div class="col-sm-3">
+                                             <h6 class="mb-0">Telefon</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                             @Html.TextBoxFor(m => m.Phone)
+                                        </div>
+                                   </div>
+                                   <hr>
+                                   <div class="row">
+                                        <div class="col-sm-3">
+                                             <h6 class="mb-0">Rol</h6>
+                                        </div>
+                                      
+                                        <div class="col-sm-9 text-secondary">
+                                             @Html.DropDownListFor(m => m.Level, new SelectList(new[]
+                                             {
+                                                 new SelectListItem { Text = "Admin", Value = "Admin" },
+                                             new SelectListItem { Text = "Doctor", Value = "Doctor" },
+                                                 new SelectListItem { Text = "User", Value = "User" },
+                                             }, "Value", "Text"), new { @class = "dropdown" })
+                                             </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                             <div class="col-sm-3">
+                                                  <h6 class="mb-0">Ultima logare</h6>
+                                             </div>
+                                             <div class="col-sm-9 text-secondary">
+                                                  @Html.DisplayFor(m => m.LastLogin)
+                                             </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                             <div class="col-sm-12">
+                                                  <button type="submit" class="btn btn-primary " target="__blank">Save</button>
+                                             </div>
+                                        </div>
+                                   </div>
+                         </div>
 
-          <label for="last name">Last Name</label>
-          @Html.TextBoxFor(m => m.LastName)
-          @Html.ValidationMessageFor(m => m.LastName)
 
-          <label for="Email">Email</label>
-          @Html.TextBoxFor(m => m.Email)
-          @Html.ValidationMessageFor(m => m.Email)
-          <label for="Address">Address</label>
-          @Html.TextBoxFor(m => m.Address)
-          @Html.ValidationMessageFor(m => m.Address)
-          <label for="Phone">Phone</label>
-          @Html.TextBoxFor(m => m.Phone)
-          @Html.ValidationMessageFor(m => m.Phone)
 
-          <label for="Level">Level</label>
-          @Html.DropDownListFor(m => m.Level, new SelectList(new[]
-          {
-              new SelectListItem { Text = "Admin", Value = "Admin" },
-          new SelectListItem { Text = "Doctor", Value = "Doctor" },
-              new SelectListItem { Text = "User", Value = "User" },
-          }, "Value", "Text"), new { @class = "dropdown" })
-          <button type="submit" class="accept">Edit</button>
-          <button onclick="location.href=@Url.Action("TestUsers","Admin");return false;" class="cancel">Cancel</button>
-        }
+
+
+                    </div>
+               </div>
 
      </div>
-</section>
+</div>
+
+<style>
+     body {
+          margin-top: 20px;
+          color: #1a202c;
+          text-align: left;
+          background-color: #fff;
+     }
+
+     .main-body {
+          padding: 15px;
+     }
+
+     .card {
+          box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+     }
+
+     .card {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          word-wrap: break-word;
+          background-color: #fff;
+          background-clip: border-box;
+          border: 0 solid rgba(0,0,0,.125);
+          border-radius: .25rem;
+     }
+
+     .card-body {
+          flex: 1 1 auto;
+          min-height: 1px;
+          padding: 1rem;
+     }
+
+     .gutters-sm {
+          margin-right: -8px;
+          margin-left: -8px;
+     }
+
+          .gutters-sm > .col, .gutters-sm > [class*=col-] {
+               padding-right: 8px;
+               padding-left: 8px;
+          }
+
+     .mb-3, .my-3 {
+          margin-bottom: 1rem !important;
+     }
+
+     .bg-gray-300 {
+          background-color: #e2e8f0;
+     }
+
+     .h-100 {
+          height: 100% !important;
+     }
+
+     .shadow-none {
+          box-shadow: none !important;
+     }
+</style>

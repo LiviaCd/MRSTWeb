@@ -1,5 +1,6 @@
 ﻿using proiect.BusinessLogic.DBModel.Seed;
 using proiect.Domain.Entities;
+using proiect.Domain.Entities.News;
 using proiect.Domain.Entities.Responce;
 using proiect.Domain.Entities.User;
 using proiect.Domain.Enums;
@@ -41,11 +42,12 @@ namespace proiect.BusinessLogic.Core
 
         public UserMinimal RGetUserById(int Id)
         {
+               UserMinimal userToReturn;
             using (var dbContext = new UserContext())
             {
                 var user = dbContext.Users.FirstOrDefault(us => us.Id == Id);
                 if (user == null) return null;
-                return new UserMinimal
+                userToReturn = new UserMinimal
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
@@ -58,6 +60,13 @@ namespace proiect.BusinessLogic.Core
                     BlockTime = user.BlockTime
                 };
             }
+            using (var db = new ProfileContext())
+               {
+                    var us = db.PhotoProfile.FirstOrDefault(u => u.Email == userToReturn.Email);
+                    if (us == null) return userToReturn;
+                    userToReturn.PhotoPath = us.PhotoPath;
+                    return userToReturn;
+               }
         }
 
           public void REditUser(int Id, UserMinimal userModel)
@@ -68,7 +77,7 @@ namespace proiect.BusinessLogic.Core
                     if (user == null) return;
                     user.FirstName = userModel.FirstName;
                     user.LastName = userModel.LastName;
-                    user.Email = userModel.Email;
+                    user.Email = user.Email;
                     user.Address = userModel.Address;
                     user.Phone = userModel.Phone;
                     user.Level = userModel.Level;
@@ -171,6 +180,56 @@ namespace proiect.BusinessLogic.Core
                }
              
           }
+          public bool RAddNewNews(AddNews news)
+          {
+               using (var dbContext = new NewsContext())
+               {
+                    var user = dbContext.News.SingleOrDefault(us => us.Id == news.Id);
+                    if (user == null)
+                    {
+                         dbContext.News.Add(news);
+                    }
+                    else
+                    {
+                         user.PhotoPath = news.PhotoPath; // Update the existing record
+                         dbContext.Entry(user).State = EntityState.Modified; // Mark entity as modified
+                    }
+                    dbContext.SaveChanges();
+                    return true;
+               }
+               return false;
+          }
+          public AddNews RGetNewsById(int Id)
+          {
+               AddNews newsToReturn;
+               using (var dbContext = new NewsContext())
+               {
+                    var user = dbContext.News.FirstOrDefault(us => us.Id == Id);
+                    if (user == null) return null;
+                    newsToReturn = new AddNews
+                    {
+                         Title = user.Title,
+                         Body = user.Body,
+                         Created = user.Created,
+                         PhotoPath = user.PhotoPath,
+                         Id = user.Id
+                    };
+                    return newsToReturn;
+               }
+          }
+          public void REditNewsAction(int id, AddNews news)
+          {
+               using (var dbContext = new NewsContext())
+               {
+                    var user = dbContext.News.FirstOrDefault(us => us.Id == id);
+                    if (user == null) return;
+                    user.Title = news.Title;
+                    user.Body = news.Body;
+
+                    dbContext.SaveChanges();
+               }
+          }
+
 
      }
 }

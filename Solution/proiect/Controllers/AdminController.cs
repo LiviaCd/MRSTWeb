@@ -136,25 +136,29 @@ namespace proiect.Controllers
                          case "Blocare 24 ore":
                               {
                                    _monitoring.BlockUser1day(id, userModel);
+                                   return RedirectToAction("TestUsers");
                               }
                               break;
                          case "Blocare 72 ore":
                               {
                                    _monitoring.BlockUser3day(id, userModel);
+                                   return RedirectToAction("TestUsers");
                               }
                               break;
                          case "Blocare 30 zile":
                               {
                                    _monitoring.BlockUser30day(id, userModel);
+                                   return RedirectToAction("TestUsers");
                               }
                               break;
                          case "Blocare permanenta":
                               {
                                    _monitoring.BlockUserPermanent(id, userModel);
+                                   return RedirectToAction("TestUsers");
                               }
                               break;
                     }
-                    
+                   
                }
                return View("BlockUser", userModel);
           }

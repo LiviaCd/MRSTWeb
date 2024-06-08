@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using proiect.Domain.Enums;
+using proiect.Domain.Entities.News;
 
 namespace proiect.BusinessLogic.AppBL
 {
@@ -48,6 +49,19 @@ namespace proiect.BusinessLogic.AppBL
           public void BlockUserPermanent(int id, UserMinimal userData)
           {
                RBlockUserPermanent(id, userData);
+          }
+          public bool AddNewNews(AddNews news)
+          {
+               return RAddNewNews(news);
+          }
+
+          public AddNews GetNewsById(int Id)
+          {
+               return RGetNewsById(Id);
+          }
+          public void EditNewsAction(int id, AddNews news)
+          {
+               REditNewsAction(id, news);
           }
 
      }

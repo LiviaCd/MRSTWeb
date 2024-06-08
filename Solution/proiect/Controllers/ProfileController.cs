@@ -140,7 +140,7 @@ namespace proiect.Controllers
                               PhotoPath = profil.PhotoPath
                          };
                          _profile.AddPhotoUser(userProfile);
-                         return RedirectToAction("ProfilePage", "LoginUser");
+                         return RedirectToAction("ProfilePage", "Profile");
                     }
                }
                return RedirectToAction("Error", "Home");

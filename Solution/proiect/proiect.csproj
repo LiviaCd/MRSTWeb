@@ -2766,6 +2766,7 @@
     <Content Include="Views\ChatMessage\SendMessageUser.cshtml" />
     <Content Include="Views\ChatMessage\SearchUser.cshtml" />
     <Content Include="Views\Home\AddNewsPage.cshtml" />
+    <Content Include="Views\Home\EditNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2776,6 +2777,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\datatables-\extensions\FixedColumns\examples\integration\" />
+    <Folder Include="Content\PhotoNews\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
