@@ -15,9 +15,21 @@ namespace proiect.BusinessLogic.AppBL
           {
                return NewUserAppointment(data);
           }
-          public List<UAppointment> ShowAppointment(UAppointment data)
+          public List<UAppointment> ShowAppointment()
           {
-               return RShowAppointment(data);
+               return RShowAppointment();
+          }
+          public UAppointment GetAppointmentById(int id)
+          {
+               return RGetAppointmentById(id);
+          }
+          public void EditAppointment(int id, UAppointment app)
+          {
+               REditAppointment(id, app);
+          }
+          public void DeleteAppointment(int id) 
+          {
+               RDeleteAppointment(id);
           }
      }
 }

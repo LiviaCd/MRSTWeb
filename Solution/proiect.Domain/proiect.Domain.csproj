@@ -47,6 +47,7 @@
     <Compile Include="Entities\Appointment\AppointmentDBTable.cs" />
     <Compile Include="Entities\Appointment\StatusAppointment.cs" />
     <Compile Include="Entities\Appointment\UAppointment.cs" />
+    <Compile Include="Entities\BloodR\BloodResource.cs" />
     <Compile Include="Entities\BloodType\BloodTypeDetail.cs" />
     <Compile Include="Entities\ChatMessage\ChatDBTable.cs" />
     <Compile Include="Entities\ChatMessage\DChatMessage.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Entities\User\UserMinimal.cs" />
     <Compile Include="Enums\UOption.cs" />
     <Compile Include="Enums\URole.cs" />
+    <Compile Include="Enums\UTimeHour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

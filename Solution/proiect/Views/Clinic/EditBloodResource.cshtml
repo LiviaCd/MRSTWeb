@@ -1,0 +1,68 @@
+﻿@model proiect.Domain.Entities.BloodR.BloodResource
+
+@{
+    ViewBag.Title = "EditBloodResource";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>BloodResource</h2>
+<form method="post">
+     <table class="table">
+          <thead>
+               <tr>
+                    <th>Blood Group</th>
+                    <th>Quantity Available (ml)</th>
+               </tr>
+          </thead>
+          <tbody>
+               <tr>
+                    <td>Email Clinic</td>
+                    <td>@Html.TextBoxFor(model => model.EmailClinic)</td>
+               </tr>
+               <tr>
+                    <td>0 Rh(+)</td>
+                    <td>@Html.TextBoxFor(model => model.OnePozitive)</td>
+               </tr>
+               <tr>
+                    <td>A Rh(+)</td>
+                    <td>@Html.TextBoxFor(model => model.TwoPozitive)</td>
+               </tr>
+               <tr>
+                    <td>B Rh(+)</td>
+                    <td>@Html.TextBoxFor(model => model.ThirdPozitive)</td>
+               </tr>
+               <tr>
+                    <td>AB Rh(+)</td>
+                    <td>@Html.TextBoxFor(model => model.FourPozitive)</td>
+               </tr>
+               <tr>
+                    <td>0 Rh(-)</td>
+                    <td>@Html.TextBoxFor(model => model.OneNegative)</td>
+               </tr>
+               <tr>
+                    <td>A Rh(-)</td>
+                    <td>@Html.TextBoxFor(model => model.TwoNegative)</td>
+               </tr>
+               <tr>
+                    <td>B Rh(-)</td>
+                    <td>@Html.TextBoxFor(model => model.ThirdNegative)</td>
+               </tr>
+               <tr>
+                    <td>AB Rh(-)</td>
+                    <td>@Html.TextBoxFor(model => model.FourNegative)</td>
+               </tr>
+          </tbody>
+     </table>
+     <div class="text-right">
+          <button type="submit" class="btn btn-primary">Salveaza editari</button>
+     </div>
+     <div class="text-right">
+          <a href="@Url.Action("AllResources", "Clinic")" class="formbold-btn">Întoarcere la toate resursele</a>
+     </div>
+</form>
+<style>
+     .text-right {
+          text-align: right;
+     }
+
+</style>

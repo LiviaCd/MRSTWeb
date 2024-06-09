@@ -31,6 +31,11 @@
                     @using (Html.BeginForm("Appointment", "LoginUser", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
+                    <div class="col-sm-6 text-right">
+                       
+                         <button onclick="location.href='@Url.Action("MyAppointments","Appointment")';return false;" class="btn btn-btn-succes">Programarile mele</button>
+                    </div>
+
 
                     <div class="formbold-mb-5">
                          <label for="FirstName" class="formbold-form-label">Nume</label>
@@ -62,11 +67,27 @@
                     <div class="container-fluid px-1 px-sm-5 mx-auto">
                          <div class="row d-flex justify-content-sm-center px-2">
                               <div class="form-group row">
-                                   @Html.TextBoxFor(model => model.Time, new { id = "Time", @class = "datetimepicker", placeholder = "Enter the time", type = "datetime-local" })
-                                   @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                                   @Html.TextBoxFor(model => model.Date, new { id = "Date", @class = "datepicker", placeholder = "Enter the date", type = "date" })
+                                   @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                              </div>
+
+                         </div>
+                    </div>
+
+                    <div class="container-fluid px-1 px-sm-5 mx-auto">
+                         <div class="row d-flex justify-content-sm-center px-2">
+                              <div class="form-group row">
+                                   <label for="hour" class="formbold-form-label"> Selectati ora </label>
+                                   @Html.DropDownListFor(m => m.Time, new SelectList(new[]
+                                    {
+                                        new SelectListItem { Text = "9:00", Value = "NineAM" },
+                                    new SelectListItem { Text = "10:00", Value = "TenAM" },
+                                        new SelectListItem { Text = "11:00", Value = "ElevenAM" },
+                                    }, "Value", "Text"), new { @class = "dropdown" })
                               </div>
                          </div>
                     </div>
+
                     <div class="container-fluid px-1 px-sm-5 mx-auto">
                          <div class="row d-flex justify-content-sm-center px-2">
                               <div class="form-group row">

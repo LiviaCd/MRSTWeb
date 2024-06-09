@@ -2767,6 +2767,12 @@
     <Content Include="Views\ChatMessage\SearchUser.cshtml" />
     <Content Include="Views\Home\AddNewsPage.cshtml" />
     <Content Include="Views\Home\EditNews.cshtml" />
+    <Content Include="Views\Appointment\EditAppointment.cshtml" />
+    <Content Include="Views\Appointment\DeleteAppointment.cshtml" />
+    <Content Include="Views\Clinic\BloodResource.cshtml" />
+    <Content Include="Views\Clinic\EditBloodResource.cshtml" />
+    <Content Include="Views\Clinic\AllResources.cshtml" />
+    <Content Include="Views\Clinic\ReservBlood.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

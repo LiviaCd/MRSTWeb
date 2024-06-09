@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = "EditAppointment";
+Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model proiect.Domain.Entities.Appointment.UAppointment
+<div class="formbold-main-wrapper">
+     <!-- Author: FormBold Team -->
+     <!-- Learn More: https://formbold.com -->
+     <div class="formbold-form-wrapper">
+          <form method="POST">
+
+               @Html.AntiForgeryToken()
+
+
+
+               <div class="formbold-mb-5">
+                    <label for="FirstName" class="formbold-form-label">Nume</label>
+                    @Html.TextBoxFor(model => model.FirstName)
+               </div>
+
+               <div class="formbold-mb-5">
+                    <label for="last name" class="formbold-form-label">Prenume</label>
+                    @Html.TextBoxFor(model => model.LastName)
+               </div>
+               <div class="formbold-mb-5">
+                    <label for="email" class="formbold-form-label"> Email </label>
+                    @Html.TextBoxFor(model => model.Email)
+               </div>
+               <div class="formbold-mb-5">
+                    <label for="phone" class="formbold-form-label"> Phone Number </label>
+                    @Html.TextBoxFor(model => model.Phone)
+               </div>
+               <div class="formbold-mb-5">
+                    <label for="blood type" class="formbold-form-label"> Grupa sangvina </label>
+                    @Html.DropDownListFor(m => m.BloodType, new SelectList(new List<string> { "Grupa 0 Rh(+)", "Grupa A Rh(+)", "Grupa B Rh(+)", "Grupa AB Rh(+)", "Grupa 0 Rh(-)", "Grupa A Rh(-)", "Grupa B Rh(-)", "Grupa AB Rh(-)", "Nu cunosc grupa sangvina" }), new { @class = "formbold-form-input" })
+               </div>
+
+               <div class="container-fluid px-1 px-sm-5 mx-auto">
+                    <div class="row d-flex justify-content-sm-center px-2">
+                         <div class="form-group row">
+                              @Html.TextBoxFor(model => model.Date, new { id = "Date", @class = "datepicker", placeholder = "Enter the date", type = "date" })
+                         </div>
+
+                    </div>
+               </div>
+
+               <div class="container-fluid px-1 px-sm-5 mx-auto">
+                    <div class="row d-flex justify-content-sm-center px-2">
+                         <div class="form-group row">
+                              <label for="hour" class="formbold-form-label"> Selectati ora </label>
+                              @Html.DropDownListFor(m => m.Time, new SelectList(new[]
+                               {
+                                   new SelectListItem { Text = "9:00", Value = "NineAM" },
+                               new SelectListItem { Text = "10:00", Value = "TenAM" },
+                                   new SelectListItem { Text = "11:00", Value = "ElevenAM" },
+                               }, "Value", "Text"), new { @class = "dropdown" })
+                         </div>
+                    </div>
+               </div>
+
+               <div class="container-fluid px-1 px-sm-5 mx-auto">
+                    <div class="row d-flex justify-content-sm-center px-2">
+                         <div class="form-group row">
+                              <label for="address" class="formbold-form-label"> Selectati centrul de donare </label>
+                              @Html.DropDownListFor(model => model.Address, new SelectList(new List<string> { "SANCOS, Chisinau", "Invitro, Chisinau"}), new { @class = "formbold-form-input" })
+                         </div>
+                    </div>
+               </div>
+
+               <div>
+                    <button class="formbold-btn">Editeaza programarea</button>
+               </div>
+               }
+               @if (ViewData["ConfirmationMessage"] != null)
+     {
+               <div class="alert alert-success">
+                    @ViewData["ConfirmationMessage"]
+               </div>
+     }
+          </form>
+          </div>
+     </div>
+          <style>
+               * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+               }
+
+               body {
+                    font-family: "Inter", Arial, Helvetica, sans-serif;
+               }
+
+               .formbold-mb-5 {
+                    margin-bottom: 20px;
+               }
+
+               .formbold-pt-3 {
+                    padding-top: 12px;
+               }
+
+               .formbold-main-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 48px;
+               }
+
+               .formbold-form-wrapper {
+                    margin: 0 auto;
+                    max-width: 550px;
+                    width: 100%;
+                    background: white;
+               }
+
+               .formbold-form-label {
+                    display: block;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #07074d;
+                    margin-bottom: 12px;
+               }
+
+               .formbold-form-label-2 {
+                    font-weight: 600;
+                    font-size: 20px;
+                    margin-bottom: 20px;
+               }
+
+               .formbold-form-input {
+                    width: 100%;
+                    padding: 12px 24px;
+                    border-radius: 6px;
+                    border: 1px solid #e0e0e0;
+                    background: white;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #6b7280;
+                    outline: none;
+                    resize: none;
+               }
+
+                    .formbold-form-input:focus {
+                         border-color: #6a64f1;
+                         box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                    }
+
+               .formbold-btn {
+                    text-align: center;
+                    font-size: 16px;
+                    border-radius: 6px;
+                    padding: 14px 32px;
+                    border: none;
+                    font-weight: 600;
+                    background-color: #6a64f1;
+                    color: white;
+                    width: 100%;
+                    cursor: pointer;
+               }
+
+                    .formbold-btn:hover {
+                         box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                    }
+
+               .formbold--mx-3 {
+                    margin-left: -12px;
+                    margin-right: -12px;
+               }
+
+               .formbold-px-3 {
+                    padding-left: 12px;
+                    padding-right: 12px;
+               }
+
+               .flex {
+                    display: flex;
+               }
+
+               .flex-wrap {
+                    flex-wrap: wrap;
+               }
+
+               .w-full {
+                    width: 100%;
+               }
+          </style>
+          <script>
+
+               $(document).ready(function () {
+
+                    $('.datepicker').datepicker({
+                         format: 'dd-mm-yyyy',
+                         todayHighlight: true,
+                         toggleActive: true
+                    });
+
+               });
+               document.addEventListener('DOMContentLoaded', function () {
+                    var timeInput = document.getElementById('Time');
+                    // Dacă există o valoare prestabilită în model, asigurăm că aceasta este setată în controlul de timp
+                    if (timeInput.value) {
+                         var timeValue = new Date(timeInput.value);
+                         var localISOTime = timeValue.toISOString().slice(0, 16);
+                         timeInput.value = localISOTime;
+                    }
+               });
+
+                    });
+          </script>
+          </body>
+          </html>
+
+

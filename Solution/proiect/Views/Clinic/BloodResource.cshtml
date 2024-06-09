@@ -1,0 +1,67 @@
+﻿@model proiect.Domain.Entities.BloodR.BloodResource
+
+@{
+    ViewBag.Title = "BloodResource";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>BloodResource</h2>
+
+<table class="table">
+     <thead>
+          <tr>
+               <th>Blood Group</th>
+               <th>Quantity Available (ml)</th>
+          </tr>
+     </thead>
+     <tbody>
+          <tr>
+               <td>Email Clinic</td>
+               <td>@Html.DisplayFor(model => model.EmailClinic)</td>
+          </tr>
+          <tr>
+               <td>0 Rh(+)</td>
+               <td>@Html.DisplayFor(model => model.OnePozitive)</td>
+          </tr>
+          <tr>
+               <td>A Rh(+)</td>
+               <td>@Html.DisplayFor(model => model.TwoPozitive)</td>
+          </tr>
+          <tr>
+               <td>B Rh(+)</td>
+               <td>@Html.DisplayFor(model => model.ThirdPozitive)</td>
+          </tr>
+          <tr>
+               <td>AB Rh(+)</td>
+               <td>@Html.DisplayFor(model => model.FourPozitive)</td>
+          </tr>
+          <tr>
+               <td>0 Rh(-)</td>
+               <td>@Html.DisplayFor(model => model.OneNegative)</td>
+          </tr>
+          <tr>
+               <td>A Rh(-)</td>
+               <td>@Html.DisplayFor(model => model.TwoNegative)</td>
+          </tr>
+          <tr>
+               <td>B Rh(-)</td>
+               <td>@Html.DisplayFor(model => model.ThirdNegative)</td>
+          </tr>
+          <tr>
+               <td>AB Rh(-)</td>
+               <td>@Html.DisplayFor(model => model.FourNegative)</td>
+          </tr>
+     </tbody>
+</table>
+
+<div class="text-right">
+     <a href="@Url.Action("EditBloodResource", "Clinic")" class="formbold-btn">Editeaza datele</a>
+</div>
+<div class="text-right">
+     <a href="@Url.Action("AllResources", "Clinic")" class="formbold-btn">Întoarcere la toate resursele</a>
+</div>
+<style>
+     .text-right {
+          text-align: right;
+     }
+</style>

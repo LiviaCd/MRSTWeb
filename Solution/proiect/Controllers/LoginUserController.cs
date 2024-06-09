@@ -51,6 +51,11 @@ namespace proiect.Controllers
           public ActionResult UserPage()
           {
                SessionStatus();
+               DateTime? blockTime = Session["BlockTime"] as DateTime?;
+               if (blockTime == new DateTime(2000, 1, 1))
+               {
+                    return RedirectToAction("ChangePassword", "Login");
+               }
                return View();
           }
 

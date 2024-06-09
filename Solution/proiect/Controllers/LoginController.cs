@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
@@ -39,6 +40,12 @@ namespace proiect.Controllers
           }
         public ActionResult ChangePassword()
         {
+               string email = Session["Username"].ToString();
+               var db = new UserContext();
+               var user = db.Users.FirstOrDefault(u=> u.Email == email);
+               if (user != null)
+                    user.BlockTime = new DateTime(1900, 1, 1);
+               db.SaveChanges();
 
             return View();
         }
@@ -184,13 +191,18 @@ namespace proiect.Controllers
 
                          // Check block time
                          DateTime? blockTime = Session["BlockTime"] as DateTime?;
-                         if (blockTime.HasValue && blockTime > DateTime.Now)
+                         if (blockTime > DateTime.Now)
                          {
+                              
                               return RedirectToAction("AccountBlock", "LoginUser");
                          }
                          else
                          {
-                              // Handle case where block time is still active
+                              if (blockTime == new DateTime(2000, 1, 1))
+                              {
+                                   return RedirectToAction("ChangePassword", "Login", new { email = data.Email });
+                              }
+
                               return RedirectToAction("UserPage", "LoginUser");
                          }
                     }

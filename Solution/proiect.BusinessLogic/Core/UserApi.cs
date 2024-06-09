@@ -93,7 +93,8 @@ namespace proiect.BusinessLogic.Core
                          LasIp = "0.0.0.0",
                          LastLogin = DateTime.Now,
                          Level = URole.User,
-                         BlockTime = new DateTime(1900, 1, 1)
+                         BlockTime = new DateTime(1900, 1, 1),
+                        
                     };
                     if (data.Password != data.ConfirmPassword)
                          return new ULoginResp { Status = false, Message = "Wrong password" };
@@ -177,6 +178,7 @@ namespace proiect.BusinessLogic.Core
                if (curentUser == null) return null;
 
                var userMinimal = Mapper.Map<UserMinimal>(curentUser);
+               userMinimal.BlockTime = curentUser.BlockTime;
                using (var dbContext = new ProfileContext())
                {
                     userProfile = dbContext.PhotoProfile.FirstOrDefault(p => p.Email == curentUser.Email);
@@ -192,10 +194,6 @@ namespace proiect.BusinessLogic.Core
                }
                return userMinimal;
           }
-          
-          
-
-
      }
 }
 

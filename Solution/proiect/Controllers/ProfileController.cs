@@ -85,11 +85,9 @@ namespace proiect.Controllers
                               Level = userFromDB.Level,
                               LasIp = userFromDB.LasIp,
                          };
-
                          return View(userModel);
                     }
                }
-
                return RedirectToAction("LogIn", "Login");
           }
 

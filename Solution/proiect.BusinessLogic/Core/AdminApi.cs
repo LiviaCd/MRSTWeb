@@ -112,7 +112,7 @@ namespace proiect.BusinessLogic.Core
                     LasIp = "",
                     LastLogin = DateTime.Now,
                     Level = URole.User,
-                    BlockTime = new DateTime(1900, 1, 1)
+                    BlockTime = new DateTime(2000, 1, 1)
                 };
 
                 // Add new user to database and save changes

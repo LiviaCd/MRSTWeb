@@ -10,6 +10,9 @@ namespace proiect.BusinessLogic.Interfaces
      public interface IAppointment
      {
           StatusAppointment UserAppointment(UAppointment data);
-          List<UAppointment> ShowAppointment(UAppointment data);
+          List<UAppointment> ShowAppointment();
+          UAppointment GetAppointmentById (int id);
+          void EditAppointment(int id, UAppointment action);
+          void DeleteAppointment(int id);
      }
 }

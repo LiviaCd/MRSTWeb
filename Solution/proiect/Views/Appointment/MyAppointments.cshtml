@@ -1,7 +1,54 @@
-﻿
-@{
-    ViewBag.Title = "MyAppointments";
+﻿@{
+    ViewBag.Title = "MyAppointment";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+@model List<proiect.Domain.Entities.Appointment.UAppointment>
 
-<h2>MyAppointments</h2>
+<div class="appointment-item" data-aos="fade-up">
+     <br><br>
+     <h1 class="heading text-black mb-2" style="font-size: 2em; font-weight: bold; text-align: center;">My Appointment</h1>
+     <table class="table table-striped table-hover">
+          <thead>
+               <tr>
+                    
+                    <th>Data</th>
+                    <th>Ora</th>
+                    <th>Adresa</th>
+                    <th>Actiuni</th>
+                   
+               </tr>
+          </thead>
+          <tbody>
+               @foreach (var item in Model)
+               {
+               <tr>
 
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    @if((item.Time).ToString() =="NineAM")
+                    {
+                    <td>9:00</td>
+                    }
+                    @if((item.Time).ToString() =="TenAM")
+                    {
+                    <td>10:00</td>
+                    }
+                    @if((item.Time).ToString() =="ElevenAM")
+                    {
+                    <td>11:00</td>
+                    }
+
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+
+                    <td>
+                         <button onclick="location.href='@Url.Action("EditAppointment", "Appointment", new { id = item.AppointmentId })'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit"></i>Edit</button>
+                         <button onclick="location.href='@Url.Action("DeleteAppointment", "Appointment", new { id = item.AppointmentId })'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Block"></i>Delete</button>
+
+                    </td>
+
+<tr>
+               </tr>
+               </tr>
+                              }
+          </tbody>
+     </table>
+     </div>

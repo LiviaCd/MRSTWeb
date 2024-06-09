@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "AllResources";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model List<proiect.Domain.Entities.BloodR.BloodResource>
+<br><br><br>
+        <div class="text-right">
+             <a href="@Url.Action("BloodResource", "Clinic")" class="formbold-btn">Datele centrului</a>
+        </div>
+
+<table class="table">
+     <thead>
+          <tr>
+               <th>Email Clinic</th>
+               <th>0 Rh(+), ml</th>
+               <th>A Rh(+), ml</th>
+               <th>B Rh(+), ml</th>
+               <th>AB Rh(+), ml</th>
+               <th>0 Rh(-), ml</th>
+               <th>A Rh(-), ml</th>
+               <th>B Rh(-), ml</th>
+               <th>AB Rh(-), ml</th>
+               <th>Rezervat</th>
+               <th>Centru care a rezervat</th>
+               <th></th>
+          </tr>
+     </thead>
+     <tbody>
+          @foreach (var item in Model)
+        {
+          <tr>
+               <td>@Html.DisplayFor(modelItem => item.EmailClinic)</td>
+               <td>@Html.DisplayFor(modelItem => item.OnePozitive)</td>
+               <td>@Html.DisplayFor(modelItem => item.TwoPozitive)</td>
+               <td>@Html.DisplayFor(modelItem => item.ThirdPozitive)</td>
+               <td>@Html.DisplayFor(modelItem => item.FourPozitive)</td>
+               <td>@Html.DisplayFor(modelItem => item.OneNegative)</td>
+               <td>@Html.DisplayFor(modelItem => item.TwoNegative)</td>
+               <td>@Html.DisplayFor(modelItem => item.ThirdNegative)</td>
+               <td>@Html.DisplayFor(modelItem => item.FourNegative)</td>
+               <td>@Html.DisplayFor(modelItem => item.Reservat)</td>
+               <td>@Html.DisplayFor(modelItem => item.WhoReservate)</td>
+               <td>
+                    <button onclick="location.href='@Url.Action("ReservBlood", "Clinic", new { id = item.Id })'" class="btn btn-success">Rezervă</button>
+               </td>
+          </tr>
+        }
+     </tbody>
+</table>
+
+<style>
+     .text-right {
+          text-align: right;
+     }
+</style>
