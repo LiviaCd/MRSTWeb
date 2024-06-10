@@ -341,7 +341,7 @@
                                    <th>Poza de profil</th>
                                    <th>Numele, prenumele</th>
                                    <th>Email</th>
-                                   <th>Actiuni</th>
+                                
                               </tr>
                          </thead>
                          <tbody>
@@ -368,9 +368,7 @@
                                    <td>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</td>
                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
 
-                                   <td>
-                                        <button onclick="location.href='@Url.Action("SendMessageUser", "ChatMessage", new { id = item.Id })'" class="message" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Send message">&#xE0C9;</i></button>
-                                   </td>
+                                   
 
                               </tr>
                               }

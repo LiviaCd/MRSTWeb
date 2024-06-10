@@ -1,0 +1,16 @@
+﻿@model List<Message>
+
+<h2>Chat</h2>
+
+<ul id="chatMessages">
+     @foreach (var message in Model)
+    {
+     <li>@message.Sender: @message.Text</li>
+    }
+</ul>
+
+<form method="post" action="@Url.Action("SendMessage", "Chat")">
+     <input type="text" name="sender" placeholder="Your Name" required />
+     <input type="text" name="message" placeholder="Message" required />
+     <button type="submit">Send</button>
+</form>

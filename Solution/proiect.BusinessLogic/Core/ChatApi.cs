@@ -57,7 +57,8 @@ namespace proiect.BusinessLogic.Core
                          FirstName = u.FirstName,
                          LastName = u.LastName,
                          Email = u.Email,
-                         PhotoPath = null 
+                         PhotoPath = null,
+                         Id = u.Id,
                     }).ToList();
                }
 
@@ -128,7 +129,7 @@ namespace proiect.BusinessLogic.Core
                     {
                          FromUserEmail = HttpContext.Current.Session["Username"].ToString(),
                          ToUserEmail = email,
-                         TextMessage = model.TextMessage,
+                         TextMessage = model.NewMessage.TextMessage,
                          TimeToSend = DateTime.Now
                     };
                var db = new ChatMessageContext();

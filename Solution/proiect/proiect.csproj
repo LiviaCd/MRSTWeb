@@ -2468,6 +2468,7 @@
     <Compile Include="Controllers\AnchetaController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Chat2Controller.cs" />
     <Compile Include="Controllers\ChatMessageController.cs" />
     <Compile Include="Controllers\ClinicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2773,6 +2774,11 @@
     <Content Include="Views\Clinic\EditBloodResource.cshtml" />
     <Content Include="Views\Clinic\AllResources.cshtml" />
     <Content Include="Views\Clinic\ReservBlood.cshtml" />
+    <Content Include="Views\Chat2\Index.cshtml" />
+    <Content Include="Views\ChatMessage\SendMessage.cshtml" />
+    <Content Include="Views\ChatMessage\NewMessage.cshtml" />
+    <Content Include="Views\Login\ChangePasswordAdmin.cshtml" />
+    <Content Include="Views\Home\DeleteNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

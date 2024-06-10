@@ -35,21 +35,15 @@
 
                <li class='menusection'>Main</li>
                <li class="">
-                    <a href="@Url.Action("GeneralUserPage", "LoginUser")">
+                    <a href="@Url.Action("SearchUser", "ChatMessage")">
                          <i class="fa fa-dashboard"></i>
-                         <span class="title">General</span>
+                         <span class="title">Vezi utilizatori</span>
                     </a>
                </li>
                <li class="">
                     <a href="@Url.Action("ProfilePage", "Profile")">
                          <i class="fa fa-suitcase"></i>
                          <span class="title">Profilul meu</span>
-                    </a>
-
-               <li class="">
-                    <a href="@Url.Action("NewsUserPage", "LoginUser")">
-                         <i class="fa fa-suitcase"></i>
-                         <span class="title">Noutăți</span>
                     </a>
 
                <li class="">
@@ -68,6 +62,12 @@
                     <a href="@Url.Action("SearchDonator", "Clinic")">
                          <i class="fa fa-dashboard"></i>
                          <span class="title">Căutare donatori</span>
+                    </a>
+               </li>
+               <li class="">
+                    <a href="@Url.Action("AllResources", "Clinic")">
+                         <i class="fa fa-dashboard"></i>
+                         <span class="title">Resurse de sânge</span>
                     </a>
                </li>
 
@@ -89,7 +89,7 @@
                <li class="">
                     <a href="@Url.Action("AllResources", "Clinic")">
                          <i class="fa fa-dashboard"></i>
-                         <span class="title">Căutare donatori</span>
+                         <span class="title">Resurse de sânge</span>
                     </a>
                </li>
                   }
@@ -109,26 +109,7 @@
                               <span class="title">Anchetă</span>
                               <span class="arrow "></span>
                          </a>
-                         <ul class="sub-menu">
-                              <li>
-                                   <a class="" href="widget-misc.html">Miscellaneous</a>
-                              </li>
-                              <li>
-                                   <a class="" href="widget-tiles-counter.html">Counter Tiles</a>
-                              </li>
-                              <li>
-                                   <a class="" href="widget-tiles-progress.html">Progress Tiles</a>
-                              </li>
-                              <li>
-                                   <a class="" href="widget-socialmedia.html">Social Media</a>
-                              </li>
-                              <li>
-                                   <a class="" href="widget-graphs.html">Graphs</a>
-                              </li>
-                              <li>
-                                   <a class="" href="widget-todo.html">To Do Tasks</a>
-                              </li>
-                         </ul>
+                        
                     </li>
                     <li class="">
                          <a href="@Url.Action("Appointment", "Appointment")">
@@ -136,31 +117,8 @@
                               <span class="title">Programările mele</span>
                          </a>
                     </li>
-                    <li class='menusection'>Statistici generale</li>
-                    <li class="">
-                         <a href="javascript:;">
-                              <i class="fa fa-bar-chart"></i>
-                              <span class="title">Statistici despre donatori</span>
 
-                         </a>
-                         <ul class="sub-menu">
-                              <li>
-                                   <a class="" href="charts-echart-line.html">Line & Area Charts</a>
-                              </li>
-                              <li>
-                                   <a class="" href="charts-echart-bar.html">Bar & Stacked Charts</a>
-                              </li>
-                              <li>
-                                   <a class="" href="charts-echart-scatter.html">Scatter Charts</a>
-                              </li>
-                              <li>
-                                   <a class="" href="charts-echart-pie.html">Pie Charts</a>
-                              </li>
-                              <li>
-                                   <a class="" href="charts-echart-gauge.html">Gauge Charts</a>
-                              </li>
-                         </ul>
-                    </li>
+                    
                </ul>
      </div>
 </div>

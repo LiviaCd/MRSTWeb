@@ -1,5 +1,5 @@
 ﻿﻿@{
-    ViewBag.Title = "ChatPage";
+    ViewBag.Title = "SendMessage";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @model List<proiect.Domain.Entities.ChatMessage.ChatDBTable>
@@ -286,8 +286,7 @@
                font-weight: normal;
           }
      </style>
-     <script>
-          $(document).ready(function () {
+     <script>$(document).ready(function () {
                // Activate tooltip
                $('[data-toggle="tooltip"]').tooltip();
 
@@ -309,9 +308,7 @@
                          $("#selectAll").prop("checked", false);
                     }
                });
-          });
-
-     </script>
+          });</script>
 </head>
 <body>
      <br></br>
@@ -323,7 +320,7 @@
                          <div class="row">
 
                               <div class="col-sm-6">
-                                   <h2>Mesaje primite</h2>
+                                   <h2>Mesaje trimise</h2>
                               </div>
                               <div class="col-sm-6">
                                    <button onclick="location.href='@Url.Action("NewMessage","ChatMessage")';return false;" class="btn btn-btn-succes">Mesaj nou</button>
@@ -331,7 +328,7 @@
                               </div>
 
                               <div class="col-sm-6">
-                                   <button onclick="location.href='@Url.Action("SendMessage","ChatMessage")';return false;" class="btn btn-btn-succes">Mesaje trimise</button>
+                                   <button onclick="location.href='@Url.Action("ChatPage","ChatMessage")';return false;" class="btn btn-btn-succes">Mesaje primite</button>
 
                               </div>
 
@@ -346,7 +343,7 @@
                                              <label for="selectAll"></label>
                                         </span>
                                    </th>
-                                   
+
                               </tr>
                          </thead>
                          <tbody>
@@ -359,10 +356,10 @@
                                              <label for="checkbox1"></label>
                                         </span>
                                    </td>
-                                   <td>@Html.DisplayFor(modelItem => item.FromUserEmail)</td>
+                                   <td>@Html.DisplayFor(modelItem => item.ToUserEmail)</td>
                                    <td>@Html.DisplayFor(modelItem => item.TextMessage)</td>
                                    <td>@Html.DisplayFor(modelItem => item.TimeToSend)</td>
-                                  
+
 
                               <tr>
                               </tr>

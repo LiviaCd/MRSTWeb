@@ -52,6 +52,8 @@
     <Compile Include="Entities\ChatMessage\ChatDBTable.cs" />
     <Compile Include="Entities\ChatMessage\DChatMessage.cs" />
     <Compile Include="Entities\ChatMessage\FindUsers.cs" />
+    <Compile Include="Entities\ChatMessage\Message.cs" />
+    <Compile Include="Entities\ChatMessage\User.cs" />
     <Compile Include="Entities\ChatMessage\UserViewChat.cs" />
     <Compile Include="Entities\News\AddNews.cs" />
     <Compile Include="Entities\Profile\UserProfileDBTable.cs" />

@@ -1,0 +1,30 @@
+﻿@model proiect.Domain.Entities.ChatMessage.ChatDBTable
+@{
+    ViewBag.Title = "NewMessage";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- meta tags, title, and styles -->
+</head>
+<body>
+     <div class="container">
+          <h2>Mesaj nou</h2>
+          @using (Html.BeginForm("NewMessage", "ChatMessage", FormMethod.Post))
+        {
+          @Html.AntiForgeryToken()
+          <div class="form-group">
+               <label for="to">To:</label>
+               @Html.TextBoxFor(model => model.ToUserEmail, new { @class = "form-control", required = "required" })
+          </div>
+          <div class="form-group">
+               <label for="message">Message:</label>
+               @Html.TextAreaFor(model => model.TextMessage, new { @class = "form-control", required = "required" })
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        }
+     </div>
+</body>
+</html>

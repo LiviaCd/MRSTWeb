@@ -38,18 +38,61 @@ namespace proiect.Controllers
                SessionStatus();
                return View();
           }
-        public ActionResult ChangePassword()
+        public ActionResult ChangePasswordAdmin()
         {
-               string email = Session["Username"].ToString();
-               var db = new UserContext();
-               var user = db.Users.FirstOrDefault(u=> u.Email == email);
-               if (user != null)
-                    user.BlockTime = new DateTime(1900, 1, 1);
-               db.SaveChanges();
-
+               if (Session["LoginStatus"].ToString() == "login")
+               {
+                    string email = Session["Username"].ToString();
+                    var db = new UserContext();
+                    var user = db.Users.FirstOrDefault(u => u.Email == email);
+                    if (user != null)
+                         user.BlockTime = new DateTime(1900, 1, 1);
+                    db.SaveChanges();
+               }
             return View();
         }
-        [HttpPost]
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult ChangePasswordAdmin(UserRegister user)
+          {
+               var _dbContext = new UserContext();
+               if (ModelState.IsValid)
+               {
+                    if (user.Password == user.ConfirmPassword)
+                    {
+                         var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
+
+                         if (existingUser != null)
+                         {
+                              // Criptează noua parolă înainte de a o salva în baza de date
+                              string encryptedPassword = LoginHelper.HashGen(user.Password);
+
+                              // Actualizează parola criptată în baza de date
+                              existingUser.Password = encryptedPassword;
+
+                              _dbContext.SaveChanges();
+
+                              return RedirectToAction("LogIn", "Login");
+                         }
+                         else
+                         {
+                              ModelState.AddModelError("", "Utilizatorul nu a fost găsit.");
+                         }
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", "Parola nouă și confirmarea parolei nu coincid.");
+                    }
+               }
+
+               return View(user);
+          }
+          public ActionResult ChangePassword()
+          {
+               
+               return View();
+          }
+          [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(UserRegister user)
         {
@@ -191,17 +234,14 @@ namespace proiect.Controllers
 
                          // Check block time
                          DateTime? blockTime = Session["BlockTime"] as DateTime?;
-                         if (blockTime > DateTime.Now)
+                         if (blockTime.HasValue && blockTime > DateTime.Now)
                          {
                               
                               return RedirectToAction("AccountBlock", "LoginUser");
                          }
                          else
                          {
-                              if (blockTime == new DateTime(2000, 1, 1))
-                              {
-                                   return RedirectToAction("ChangePassword", "Login", new { email = data.Email });
-                              }
+                              
 
                               return RedirectToAction("UserPage", "LoginUser");
                          }

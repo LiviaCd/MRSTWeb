@@ -24,6 +24,7 @@ namespace proiect.BusinessLogic.Interfaces
         bool AddNewNews(AddNews news);
         AddNews RGetNewsById (int Id);
         void EditNewsAction(int id, AddNews news);
+          void DeleteNewsAction(int id, AddNews news);
 
      }
 }

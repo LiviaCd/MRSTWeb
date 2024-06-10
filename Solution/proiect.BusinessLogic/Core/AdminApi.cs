@@ -229,7 +229,17 @@ namespace proiect.BusinessLogic.Core
                     dbContext.SaveChanges();
                }
           }
-
+          public void RDeleteNewsAction(int id, AddNews news)
+          {
+               using (var dbContext = new NewsContext())
+               {
+                    var user = dbContext.News.FirstOrDefault(us => us.Id == id);
+                    if (user == null) return;
+                   
+                    dbContext.News.Remove(user);
+                    dbContext.SaveChanges();
+               }
+          }
 
      }
 }

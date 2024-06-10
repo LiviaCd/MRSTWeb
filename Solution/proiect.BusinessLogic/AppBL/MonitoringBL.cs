@@ -63,6 +63,10 @@ namespace proiect.BusinessLogic.AppBL
           {
                REditNewsAction(id, news);
           }
+          public void DeleteNewsAction(int id, AddNews news)
+          {
+               RDeleteNewsAction(id, news);
+          }
 
      }
 }

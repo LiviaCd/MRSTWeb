@@ -54,7 +54,7 @@ namespace proiect.Controllers
                DateTime? blockTime = Session["BlockTime"] as DateTime?;
                if (blockTime == new DateTime(2000, 1, 1))
                {
-                    return RedirectToAction("ChangePassword", "Login");
+                    return RedirectToAction("ChangePasswordAdmin", "Login");
                }
                return View();
           }

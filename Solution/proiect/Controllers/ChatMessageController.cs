@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace proiect.Controllers
 {
-    public class ChatMessageController : BaseController
-    {
-          // GET: ChatMessage
+     public class ChatMessageController : BaseController
+     {
           private readonly IChatMessage _conversation;
 
           public ChatMessageController()
@@ -26,63 +26,88 @@ namespace proiect.Controllers
                var bl = new BussinessLogic();
                _conversation = bl.GetChatBL();
           }
+          public List<string> GetRecentUsers(string currentUserEmail)
+          {
+               var db = new ChatMessageContext();
+               var recentUsers = db.Chats
+                   .Where(m => m.FromUserEmail == currentUserEmail || m.ToUserEmail == currentUserEmail)
+                   .OrderByDescending(m => m.TimeToSend)
+                   .Select(m => m.FromUserEmail == currentUserEmail ? m.ToUserEmail : m.FromUserEmail)
+                   .Distinct()
+                   .Take(10) 
+                   .ToList();
+
+               return recentUsers;
+          }
+
           public ActionResult ChatPage()
           {
                string email = Session["Username"].ToString();
-               var model = new ChatPageViewModel
+
+               using (var db = new ChatMessageContext())
                {
-                    ChatMessages = GetMessagesByEmail(),
-                    NewMessage = new MChatMessage() // Inițializați noul mesaj aici dacă este nevoie
-               };
-               return View(model);
+                    var chatsPrimite = db.Chats
+                        .Where(msg =>
+                            (msg.FromUserEmail != email && msg.ToUserEmail == email))
+                        .OrderByDescending(msg => msg.TimeToSend) // Sortează mesajele descrescător după timp
+                        .ToList();
+
+                    return View(chatsPrimite);
+               }
+          }
+
+          public ActionResult SendMessage()
+          {
+               string email = Session["Username"].ToString();
+
+               using (var db = new ChatMessageContext())
+               {
+                    var chatsPrimite = db.Chats
+                        .Where(msg =>
+                            (msg.FromUserEmail == email && msg.ToUserEmail != email))
+                        .OrderByDescending(msg => msg.TimeToSend) // Sortează mesajele descrescător după timp
+                        .ToList();
+
+                    return View(chatsPrimite);
+               }
+          }
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult NewMessage(ChatDBTable message)
+          {
+               string email = Session["Username"].ToString();
+               var db = new ChatMessageContext();
+               if (ModelState.IsValid)
+               {
+                    var messageDB = new ChatDBTable
+                    {
+                         FromUserEmail = email,
+                         ToUserEmail = message.ToUserEmail,
+                         TextMessage = message.TextMessage,
+                         TimeToSend = DateTime.Now
+                    };
+                    db.Chats.Add(messageDB);
+                    db.SaveChanges();
+
+                    return RedirectToAction("SendMessage", "ChatMessage"); 
+               }
+
+               return View("NewMessage", message);
           }
           public ActionResult SearchUser()
           {
                SessionStatus();
                var allUsers = _conversation.DisplayAllUser();
-               return View(allUsers);  
+               return View(allUsers);
           }
-          /*
-          [HttpGet]
-          public ActionResult SearchUser(string searchTerm)
+          public ActionResult NewMessage()
           {
-               var viewModel = new ChatPageViewModel
-               {
-                    ChatMessages = new List<ChatDBTable>(), // Assuming you initialize it empty or with some data
-                    NewMessage = new MChatMessage(), // Assuming you initialize it empty or with some data
-                    FindUsers = new List<FindUsers>()
-               };
+               SessionStatus();
 
-               using (var userDb = new UserContext())
-               {
-                    var users = userDb.Users
-                                      .Where(user => user.FirstName.Contains(searchTerm) ||
-                                                     user.LastName.Contains(searchTerm) ||
-                                                     user.Email.Contains(searchTerm))
-                                      .ToList();
-
-                    // Extract emails from the users list
-                    var userEmails = users.Select(user => user.Email).ToList();
-
-                    using (var profileDb = new ProfileContext())
-                    {
-                         var profiles = profileDb.PhotoProfile
-                                                 .Where(profile => userEmails.Contains(profile.Email))
-                                                 .ToList();
-
-                         viewModel.FindUsers = users.Select(user => new FindUsers
-                         {
-                              Email = user.Email,
-                              FirstName = user.FirstName,
-                              LastName = user.LastName,
-                              PhotoPath = profiles.FirstOrDefault(profile => profile.Email == user.Email)?.PhotoPath ?? "~/Content/PhotosUsers/user.png"
-                         }).ToList();
-                    }
-               }
-
-               return RedirectToAction("SearchPage", "ChatMessage");
+               return View();
           }
-          */
+
           [HttpGet]
           [Route("ChatMessage/SendMessageUser/{id}")]
           public ActionResult SendMessageUser(int id)
@@ -91,13 +116,19 @@ namespace proiect.Controllers
                UserMinimal userFromDB = _conversation.GetUserByEmailChat(id);
                if (userFromDB == null)
                {
-                    return View();
+                    return View(new UserMinimal()); // Returnăm o instanță goală dacă utilizatorul nu există
                }
                else
                {
-                    return View("SendMessageUser", userFromDB);
+                    var userModel = new UserViewChat
+                    {
+                         UserToSend = userFromDB,
+                         NewMessage = new DChatMessage() // Inițializăm un nou mesaj pentru a evita NullReferenceException
+                    };
+                    return View("SendMessageUser", userModel);
                }
           }
+
           [HttpPost]
           [Route("ChatMessage/SendMessageUser/{id}")]
           [ValidateAntiForgeryToken]
@@ -106,34 +137,55 @@ namespace proiect.Controllers
                SessionStatus();
                if (ModelState.IsValid)
                {
+                    // Obțineți toate mesajele între utilizatorul curent și utilizatorul găsit după ID
+                    var currentUserEmail = Session["Username"].ToString();
+                    var messages = GetMessagesBetweenUsers(currentUserEmail, id);
+
+                    // Adăugați logica pentru trimiterea mesajului, în cazul în care este necesar
                     _conversation.SendMessage(id, userModel);
-                    return RedirectToAction("ChatPage");
+
+                    // Afișați mesajele și returnați la pagina de chat
+                    userModel.ChatMessages = messages; // Asigurați-vă că modelul are lista completă de mesaje
+                    //return RedirectToAction("ChatPage", userModel);
                }
                return View("SendMessageUser", userModel);
           }
-          
-          private List<ChatDBTable> RDisplayAllChat()
+
+          public List<ChatDBTable> GetMessagesBetweenUsers(string currentUserEmail, int otherUserId)
           {
-               string email = Session["Username"].ToString();
+               string email = null;
+               var dbContext = new UserContext();
+               var user = dbContext.Users.FirstOrDefault(u => u.Id == otherUserId);
+               if (user != null)
+                    email = user.Email;
                var db = new ChatMessageContext();
-               var existentChat = db.Chats
-                   .Where(u => u.FromUserEmail == email || u.ToUserEmail == email)
-                   .GroupBy(u => u.FromUserEmail == email ? u.ToUserEmail : u.FromUserEmail)
-                   .Select(g => g.OrderByDescending(m => m.TimeToSend).FirstOrDefault())
+               var messages = db.Chats
+                   .Where(msg =>
+                       (msg.FromUserEmail == currentUserEmail && msg.ToUserEmail == email) ||
+                       (msg.FromUserEmail == email && msg.ToUserEmail == currentUserEmail))
                    .ToList();
-               return existentChat;
+
+               return messages;
           }
-          public List<ChatDBTable> GetMessagesByEmail()
+          // Metoda pentru adăugarea unui utilizator în lista de utilizatori recente
+          private void AddUserToRecentUsers(int userId)
+          {
+               // Implementează logica pentru adăugarea utilizatorului în lista de utilizatori recente,
+               // probabil ar trebui să fie stocată într-un serviciu sau în sesiune, depinzând de necesitățile aplicației tale
+          }
+
+
+          private List<ChatDBTable> GetMessagesByEmail()
           {
                string email = Session["Username"].ToString();
                using (var db = new ChatMessageContext())
                {
-                    // Obținem toate mesajele care implică email-ul dat
                     List<ChatDBTable> messages = db.Chats
                         .Where(u => u.FromUserEmail == email || u.ToUserEmail == email)
                         .ToList();
 
-                    // Grupăm toate mesajele implicate, indiferent cine le-a trimis
+                    // Grupăm mesajele după adresa de email a destinatarului sau expeditorului,
+                    // apoi selectăm cel mai recent mesaj din fiecare grupă
                     var allMessages = messages
                         .GroupBy(u => u.FromUserEmail == email ? u.ToUserEmail : u.FromUserEmail)
                         .Select(g => g.OrderByDescending(m => m.TimeToSend).FirstOrDefault())
@@ -145,19 +197,6 @@ namespace proiect.Controllers
 
 
 
-
-          /*
-          private List<ChatDBTable> DisplayAllUserChat()
-          {
-               string email = Session["Username"].ToString();
-               var db = new ChatMessageContext();
-               var existentChat = db.Chats
-                                    .Where(u => u.FromUserEmail == email || u.ToUserEmail == email)
-                                    .GroupBy(u => u.ToUserEmail)
-                                    .Select(g => g.OrderByDescending(u => u.TimeToSend).FirstOrDefault())
-                                    .ToList();
-               return existentChat;
-          }
-          */
      }
+
 }

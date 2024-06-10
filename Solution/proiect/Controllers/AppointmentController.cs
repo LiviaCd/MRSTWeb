@@ -27,18 +27,18 @@ namespace proiect.Controllers
           [LoginUserMod]
           public ActionResult Appointment()
           {
-               SessionStatus();
+           
                return View();
           }
           
           [LoginUserMod]
           public ActionResult MyAppointments()
           {
-               SessionStatus();
+          
                var app = _appointment.ShowAppointment();
                return View(app);
           }
-          
+          [LoginUserMod]
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult Appointment(Appointment data)
@@ -77,7 +77,7 @@ namespace proiect.Controllers
           [Route("Appointment/EditAppointment/{id}")]
           public ActionResult EditAppointment(int id)
           {
-               SessionStatus();
+             
                var userFromDB = _appointment.GetAppointmentById(id);
                if (userFromDB == null)
                {
@@ -89,13 +89,13 @@ namespace proiect.Controllers
                }
           }
 
-          [AdminMod]
+          [LoginUserMod]
           [HttpPost]
           [Route("Appointment/EditAppointment/{id}")]
           [ValidateAntiForgeryToken]
           public ActionResult EditAppointment(int id, Appointment appModel)
           {
-               SessionStatus();
+              
                UAppointment uData = new UAppointment();
                if (ModelState.IsValid)
                {
@@ -113,7 +113,7 @@ namespace proiect.Controllers
                          AppointmentId = appModel.AppointmentId,
                     };
                     _appointment.EditAppointment(id, uData);
-                    return RedirectToAction("Appointment");
+                    return RedirectToAction("MyAppointments");
                }
                return View("EditAppointment", uData);
           }
@@ -123,7 +123,7 @@ namespace proiect.Controllers
           [Route("Appointment/DeleteAppointment/{id}")]
           public ActionResult DeleteAppointment(int id)
           {
-               SessionStatus();
+          
                var userFromDB = _appointment.GetAppointmentById(id);
                if (userFromDB == null)
                {
@@ -135,13 +135,13 @@ namespace proiect.Controllers
                }
           }
 
-          [AdminMod]
+          [LoginUserMod]
           [HttpPost]
           [Route("Appointment/DeleteAppointment/{id}")]
           [ValidateAntiForgeryToken]
           public ActionResult DeleteAppointment(int id, Appointment appModel)
           {
-               SessionStatus();
+              
                UAppointment uData = new UAppointment();
                if (ModelState.IsValid)
                {

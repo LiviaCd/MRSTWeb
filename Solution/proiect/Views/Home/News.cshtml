@@ -60,6 +60,7 @@ var role = (proiect.Domain.Enums.URole)HttpContext.Current.Session["Role"];
      if (role.ToString() == "Admin")
      {
                               <button onclick="location.href='@Url.Action("EditNews", "Home", new { id = item.Id })'" class="btn btn-success">Edit</button>
+                              <button onclick="location.href='@Url.Action("DeleteNews", "Home", new { id = item.Id })'" class="btn btn-success">Delete</button>
 
      }
 }

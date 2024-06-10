@@ -191,5 +191,35 @@ namespace proiect.Controllers
                }
                return View("EditNews", newsModel);
           }
+          [AdminMod]
+          [HttpGet]
+          [Route("Home/DeleteNews/{id}")]
+          public ActionResult DeleteNews(int id)
+          {
+               SessionStatus();
+               var userFromDB = _monitoring.RGetNewsById(id);
+               if (userFromDB == null)
+               {
+                    return View();
+               }
+               else
+               {
+                    return View("DeleteNews", userFromDB);
+               }
+          }
+          [AdminMod]
+          [HttpPost]
+          [Route("Home/DeleteNews/{id}")]
+          [ValidateAntiForgeryToken]
+          public ActionResult DeleteNews(int id, AddNews newsModel)
+          {
+               SessionStatus();
+               if (ModelState.IsValid)
+               {
+                    _monitoring.DeleteNewsAction(id, newsModel);
+                    return RedirectToAction("News");
+               }
+               return View("DeleteNews", newsModel);
+          }
      }
 }
